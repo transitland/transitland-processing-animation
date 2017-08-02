@@ -3,7 +3,7 @@ Animating scheduled transit trips using the Transitland API and Processing.
 
 This repository contains two examples:
 
-`1_LongIslandRailRoad` is a simple example of animating a single transit operator (the Long Island Railroad).
+`1_LongIslandRailRoad` is a simple example of animating a single transit operator (the Long Island Rail Road).
 `2_BayArea` is a slightly more complex example of animating every transit operator in a given bounding box, the "greater" Bay Area, in this case, along with a stacked area chart to indicate # of vehicles on the road at a given time.
 
 Each example contains four things:
@@ -26,7 +26,9 @@ Required: requests, pandas, numpy, datetime, glob, os
 Optional (for plotting): matplotlib, plotly
 
 ### Instructions:
-- 
+- If you only want to run the Processing sketches, you simply need to unzip the csv files, open the processing sketch and hit play.
+
+
 
 
 ### To Do's:
