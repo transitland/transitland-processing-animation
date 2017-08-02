@@ -76,9 +76,6 @@ def get_vehicle_types(operator_onestop_id):
 # In[6]:
 
 
-from IPython.display import Image
-Image("http://i.imgur.com/Z9FPIdI.png")
-
 
 # These functions get all stop lats and lons for a particular operator.
 
