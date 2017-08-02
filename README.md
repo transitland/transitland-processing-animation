@@ -52,7 +52,7 @@ Each example contains four things:
 - *[NYC Taxis: A Day in the Life](http://chriswhong.github.io/nyctaxi/)*, Chris Whong
 - *[Shanghai Metro Flow](http://tillnagel.com/2013/12/shanghai-metro-flow/)*, Till Nagel
 - *[Barcelona Cycle Challenge](http://juanfrans.com/projects/barcelonaCycleChallenge.html)*, Juan Francisco Saldarriaga
-- *[Multimodal Symphony: 24 Hours if Transit in New York City](https://vimeo.com/212484620)*, Will Geary
+- *[Multimodal Symphony: 24 Hours of Transit in New York City](https://vimeo.com/212484620)*, Will Geary
 - *[Transit Flows in Los Angeles](https://vimeo.com/227178693)*, Will Geary
 
 ### To Do's:
