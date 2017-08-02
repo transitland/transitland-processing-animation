@@ -1,4 +1,4 @@
-# Transitland Processing Animation
+# Transitland Processing Animation (work in progress)
 Animating scheduled transit trips using the [Transitland API](https://transit.land/) from Mapzen and the [Processing](https://processing.org/) language with the [Unfolding Maps](http://unfoldingmaps.org/) library.
 
 This repository contains two examples:
@@ -37,7 +37,9 @@ Hopefully the examples are easy enough to follow that either can be repurposed f
 ### Room for future improvments...
 - The Processing sketch currently uses simple linear interpolation to animate a point from stop A to stop B given the departure and arrival times. It does not show vehicles following their actual, real-life routes. The sketch would be more meaningful if vehicles actually followed their routes. This seems entirely possible to do for operators that provide route shapes... just haven't gotten there yet!
 
-- Known isses: Python script is runnning into API timeouts and failing to process the biggest transit operators, including NYC MTA and Chicago Transit Authority. 
+### Known isses: 
+- Python script is runnning into API timeouts and failing to process some of the biggest transit operators, including NYC MTA and Chicago Transit Authority. 
+- Bay Area script is failing to download the Santa Cruz Metro due to an API issue (work in progress)
 
 ### Credits:
 - Data: [Mapzen](https://mapzen.com/), [Transitland](https://transit.land/)
