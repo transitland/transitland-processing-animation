@@ -1,5 +1,5 @@
-# transitland-processing-animation
-Animating scheduled transit trips using the Transitland API and Processing.
+# Transitland Processing Animation
+Animating scheduled transit trips using the [Transitland API](https://transit.land/) from Mapzen and the [Processing](https://processing.org/) language with the [Unfolding Maps](http://unfoldingmaps.org/) library.
 
 This repository contains two examples:
 
@@ -15,7 +15,7 @@ Each example contains four things:
 
 ### Set up Processing:
 1. Download [Processing 3](https://processing.org/)
-2. Download [Unfolding Maps version 0.9.9 for Processing 3](http://services.informatik.hs-mannheim.de/~nagel/GDV/Unfolding_for_processing_0.9.9beta.zip). You can read more about [Unfolding Maps](http://unfoldingmaps.org/).
+2. Download [Unfolding Maps version 0.9.9 for Processing 3](http://services.informatik.hs-mannheim.de/~nagel/GDV/Unfolding_for_processing_0.9.9beta.zip).
 3. Navigate to `~/Documents/Processing/libraries` on your machine
 4. Drag and drop the unzipped Unfolding Maps folder into `~/Documents/Processing/libraries`
 
