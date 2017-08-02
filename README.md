@@ -18,10 +18,12 @@ Each example contains four things:
 4. `Sketch` folder containing the Processing sketch
 
 ### Set up Processing:
-1. Download [Processing 3](https://processing.org/)
+1. Download [Processing 3](https://processing.org/).
 2. Download [Unfolding Maps version 0.9.9 for Processing 3](http://services.informatik.hs-mannheim.de/~nagel/GDV/Unfolding_for_processing_0.9.9beta.zip).
-3. Navigate to `~/Documents/Processing/libraries` on your machine
-4. Drag and drop the unzipped Unfolding Maps folder into `~/Documents/Processing/libraries`
+3. Navigate to `~/Documents/Processing/libraries` on your machine.
+4. Drag and drop the unzipped Unfolding Maps folder into `~/Documents/Processing/libraries`.
+5. Open Processing, navigate to Sketch > Import Library > Add Libary. Search for "Video Export" and click Install.
+6. Quit and re-open Processing.
 
 ### Python libraries used:
 - Required: requests, pandas, numpy, datetime, glob, os
