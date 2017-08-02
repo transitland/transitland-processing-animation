@@ -48,11 +48,11 @@ Hopefully the examples are easy enough to follow that either can be repurposed f
 
 The processing code builds off of code from [this workshop](https://github.com/juanfrans-courses/DataScienceSocietyWorkshop) by [Juan Francisco Saldarriaga](http://juanfrans.com/), a researcher at the Center for Spatial Research at Columbia University and an adjunct assistant professor of urban planning and architecture at the Graduate School of Architecture, Planning and Preservation (GSAPP). It also relies heavily on the fantastic [Unfolding Maps](http://unfoldingmaps.org/) library and its many useful examples. Unfolding Maps was created and is primarily maintained by [Till Nagel](http://tillnagel.com/), a professor of visual analytics at University of Applied Sciences Mannheim and previously a postdoc at the FHP Urban Complexity Lab.
 
-### Inspirations:
+### Related Projects:
 - *[NYC Taxis: A Day in the Life](http://chriswhong.github.io/nyctaxi/)*, Chris Whong
 - *[Shanghai Metro Flow](http://tillnagel.com/2013/12/shanghai-metro-flow/)*, Till Nagel
 - *[Barcelona Cycle Challenge](http://juanfrans.com/projects/barcelonaCycleChallenge.html)*, Juan Francisco Saldarriaga
-- *[Mulimodal Symphony](https://vimeo.com/212484620)*, Will Geary
+- *[Multimodal Symphony](https://vimeo.com/212484620)*, Will Geary
 
 ### To Do's:
 - Add Transitland, Mapzen, Carto, OSM attributions into animation
