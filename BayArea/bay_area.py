@@ -29,11 +29,6 @@ south, west, north, east = 37.011326,-123.280334,38.955137,-120.607910
 
 # In[3]:
 
-
-from IPython.display import Image
-Image("http://i.imgur.com/QoyEwFm.png")
-
-
 # ### Import python libraries
 
 # In[4]:
@@ -533,106 +528,4 @@ metros_counts_output.to_csv("data/{}_metros_count_900.csv".format(name))
 cablecars_counts_output.to_csv("data/{}_cablecars_count_900.csv".format(name))
 trains_counts_output.to_csv("data/{}_trains_count_900.csv".format(name))
 ferries_counts_output.to_csv("data/{}_ferries_count_900.csv".format(name))
-
-
-# ### Optional: Interactive plot showing the number of vehicles on the road
-
-# In[53]:
-
-
-import matplotlib.pyplot as plt
-import plotly.plotly as py
-import plotly.graph_objs as go
-get_ipython().magic(u'matplotlib inline')
-
-
-# In[54]:
-
-
-# A list of times at every 15 second interval throughout the day
-the_day = [pd.to_datetime(date) + dt.timedelta(seconds=i*15) for i in range(60 * 24 * 4)]
-
-
-# In[55]:
-
-
-df = pd.DataFrame({
-    'time': the_day,
-    'total': vehicles['count'],
-    'buses': buses['count'],
-    'trams': trams['count'],
-    'metros': metros['count'],
-    'cablecars': cablecars['count'],
-    'train': trains['count'],
-    'ferries': ferries['count']
-})
-
-
-# Visualize with plotly.
-
-# In[58]:
-
-
-def make_stacked_area_plot(df):
-
-    bus = go.Bar(
-        x=df['time'],
-        y=df['buses'],
-        name='Bus'
-    )
-    tram = go.Bar(
-        x=df['time'],
-        y=df['trams'],
-        name='Tram'
-    )
-    metro = go.Bar(
-        x=df['time'],
-        y=df['metros'],
-        name='Metro'
-    )
-    train = go.Bar(
-        x=df['time'],
-        y=df['train'],
-        name='Train'
-    )
-    cablecar = go.Bar(
-        x=df['time'],
-        y=df['cablecars'],
-        name='Cable Cars'
-    )
-    
-    ferry = go.Bar(
-        x=df['time'],
-        y=df['ferries'],
-        name='Ferry'
-    )
-
-    data = [bus, train, tram, metro, cablecar, ferry]
-    layout = go.Layout(
-        barmode='stack',
-        title="Number of Public Transit Vehicles Scheduled to be on the Road in the Bay Area on a Typical Monday",
-        xaxis=dict(
-            title='Time of Day',
-            titlefont=dict(
-                size=18,
-                color='#7f7f7f'
-            )
-        ),
-        yaxis=dict(
-            title='Number of Vehicles',
-            titlefont=dict(
-                size=18,
-                color='#7f7f7f'
-            )
-        )
-    )
-
-    fig = go.Figure(data=data, layout=layout)
-    return py.iplot(fig, filename='stacked-bar')
-
-
-# In[59]:
-
-
-make_stacked_area_plot(df)
 
