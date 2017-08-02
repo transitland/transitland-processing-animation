@@ -52,8 +52,7 @@ The processing code builds off of code from [this workshop](https://github.com/j
 - *[NYC Taxis: A Day in the Life](http://chriswhong.github.io/nyctaxi/)*, Chris Whong
 - *[Shanghai Metro Flow](http://tillnagel.com/2013/12/shanghai-metro-flow/)*, Till Nagel
 - *[Barcelona Cycle Challenge](http://juanfrans.com/projects/barcelonaCycleChallenge.html)*, Juan Francisco Saldarriaga
-- *[Global Sea Ice Area Spiral](https://github.com/kjpluck/GlobalSeaIceAreaSpiral)*, Kevin Pluck
-
+- *[Mulimodal Symphony](https://vimeo.com/212484620)*, Will Geary
 
 ### To Do's:
 - Add Transitland, Mapzen, Carto, OSM attributions into animation
