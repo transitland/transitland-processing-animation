@@ -23,7 +23,7 @@ Each example contains four things:
 
 ### Python libraries used:
 Required: requests, pandas, numpy, datetime, glob, os
-Optional (for plotting): matplotlib, seaborn, plotly
+Optional (for plotting): matplotlib, plotly
 
 ### Instructions:
 - 
