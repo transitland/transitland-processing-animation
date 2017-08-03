@@ -17,9 +17,7 @@ mapzen_api_key = "mapzen-ai1duha"
 directory = r"lirr" # determines how to name the output csv file
 
 
-# ### Find the onestop id for the LIRR on Transitland
-
-# Using Transitland: https://transit.land/feed-registry/operators/o-dr5-longislandrailroad
+# Get the onestop id for the LIRR on Transitland: https://transit.land/feed-registry/operators/o-dr5-longislandrailroad
 
 # In[2]:
 
@@ -75,6 +73,9 @@ def get_vehicle_types(operator_onestop_id):
 
 # In[6]:
 
+
+from IPython.display import Image
+Image("http://i.imgur.com/Z9FPIdI.png")
 
 
 # These functions get all stop lats and lons for a particular operator.
@@ -205,6 +206,7 @@ def generate_output(operator_onestop_id, origin_datetimes, destination_datetimes
         'duration': durations
     })
     output = output[['start_time', 'start_lat', 'start_lon', 'end_time', 'end_lat', 'end_lon', 'duration', 'route_type']]
+    
     return output
 
 
@@ -223,7 +225,9 @@ def animate_one_day(operator_onestop_id, date):
     origin_times_clean, destination_times_clean = clean_times(origin_times, destination_times)
     origin_datetimes, destination_datetimes = add_dates(date, origin_times_clean, destination_times_clean)
     output = generate_output(operator_onestop_id, origin_datetimes, destination_datetimes, durations, origin_stops, destination_stops, route_ids, lookup_stop_lats, lookup_stop_lons, lookup_vehicle_types)
-    output = output.sort_values(by='start_time').reset_index(drop=True)
+    output['start_time'] = pd.to_datetime(output['start_time'])
+    output['end_time'] = pd.to_datetime(output['end_time'])
+    output = output.sort_values(by=['start_time', 'end_time']).reset_index(drop=True)
     
     return output
 
@@ -241,16 +245,10 @@ output = animate_one_day(operator_onestop_id, date)
 # In[16]:
 
 
-output.head()
+print output.shape[0], "rows."
 
 
 # In[17]:
-
-
-print output.shape
-
-
-# In[18]:
 
 
 output.to_csv("data/{}.csv".format(directory))
