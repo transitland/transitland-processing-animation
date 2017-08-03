@@ -73,13 +73,6 @@ def get_vehicle_types(operator_onestop_id):
     return lookup_vehicle_types
 
 
-# Here are the possible vehicle types: (Source: [Google](https://github.com/google/transit/blob/master/gtfs/spec/en/reference.md#routestxt))
-
-# In[7]:
-
-
-Image("http://i.imgur.com/Z9FPIdI.png")
-
 
 # These functions get all stop lats and lons for a particular operator.
 
