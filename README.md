@@ -46,14 +46,22 @@ Each example contains four things:
 ### Credits:
 - Data: [Mapzen](https://mapzen.com/), [Transitland](https://transit.land/)
 - Basemap: Carto, OpenStreetMap
-- Processing Code: The processing code builds off of code from [this workshop](https://github.com/juanfrans-courses/DataScienceSocietyWorkshop) by [Juan Francisco Saldarriaga](http://juanfrans.com/), a researcher at the Center for Spatial Research at Columbia University and an adjunct assistant professor of urban planning and architecture at the Graduate School of Architecture, Planning and Preservation (GSAPP). It also relies heavily on the fantastic [Unfolding Maps](http://unfoldingmaps.org/) library and its many useful examples. Unfolding Maps was created and is primarily maintained by [Till Nagel](http://tillnagel.com/), a professor of visual analytics at University of Applied Sciences Mannheim and previously a postdoc researcher at the FHP Urban Complexity Lab.
+- Processing Code: The processing code builds off of code from [this workshop](https://github.com/juanfrans-courses/DataScienceSocietyWorkshop) by [Juan Francisco Saldarriaga](http://juanfrans.com/), a researcher at the Center for Spatial Research at Columbia University and an adjunct assistant professor of urban planning and architecture. It also relies on the fantastic [Unfolding Maps](http://unfoldingmaps.org/) library and its many useful examples. Unfolding Maps was created and is primarily maintained by [Till Nagel](http://tillnagel.com/), a professor of visual analytics at University of Applied Sciences Mannheim and previously a researcher with the FHP Urban Complexity Lab and MIT Senseable City Lab.
 
-### Related Projects:
-- *[NYC Taxis: A Day in the Life](http://chriswhong.github.io/nyctaxi/)*, Chris Whong
+### Related projects / inspirations:
 - *[Shanghai Metro Flow](http://tillnagel.com/2013/12/shanghai-metro-flow/)*, Till Nagel
 - *[Barcelona Cycle Challenge](http://juanfrans.com/projects/barcelonaCycleChallenge.html)*, Juan Francisco Saldarriaga
-- *[Multimodal Symphony: 24 Hours of Transit in New York City](https://vimeo.com/212484620)*, Will Geary
-- *[Transit Flows in Los Angeles](https://vimeo.com/227178693)*, Will Geary
+- *[Seven Days of Carsharing in Milan](http://labs.densitydesign.org/carsharing/))*, Matteo Azzi, Daniele Ciminieri, others 
+- *[NYC Taxis: A Day in the Life](http://chriswhong.github.io/nyctaxi/)*, Chris Whong
+- *[TaxiVis](http://vgc.poly.edu/projects/taxivis/)
+
+And a few more of my own:
+- *[Multimodal Symphony: 24 Hours of Transit in New York City](https://vimeo.com/212484620)*
+- *[Los Angeles Transit Flows](https://vimeo.com/227178693)*
+- *[California Transit Flows](https://vimeo.com/227178693)*
+- *[New York City Taxi Flows](https://vimeo.com/210264431)*
+- *[New York City Subway Flows](https://vimeo.com/194378581)*
+
 
 ### To Do's:
 - Add Transitland, Mapzen, Carto, OSM attributions into animation
