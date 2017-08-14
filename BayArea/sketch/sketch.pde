@@ -1,5 +1,5 @@
 ////// MAIN INPUTS ///////
-String inputFile = "../data/output/bay_area.csv"; // works!
+String inputFile = "../data/bay_area.csv"; // works!
 String scenario = "Bay Area";
 boolean recording = false;
 boolean HQ = false;
@@ -36,24 +36,24 @@ UnfoldingMap map;
 // MAKES A 60 SECOND ANIMAION
 int totalFrames = 3600;
 // Statistics input files (for stacked area chart)
-String vehicleCountFile = "../data/output/bay_area_vehicle_counts_3600.csv";
-String busCountFile = "../data/output/bay_area_buses_count_3600.csv";
-String tramCountFile = "../data/output/bay_area_trams_count_3600.csv";
-String cablecarCountFile = "../data/output/bay_area_cablecars_count_3600.csv";
-String metroCountFile = "../data/output/bay_area_metros_count_3600.csv";
-String trainCountFile = "../data/output/bay_area_trains_count_3600.csv";
-String ferryCountFile = "../data/output/bay_area_ferries_count_3600.csv";
+String vehicleCountFile = "../data/bay_area_vehicle_counts_3600.csv";
+String busCountFile = "../data/bay_area_buses_count_3600.csv";
+String tramCountFile = "../data/bay_area_trams_count_3600.csv";
+String cablecarCountFile = "../data/bay_area_cablecars_count_3600.csv";
+String metroCountFile = "../data/bay_area_metros_count_3600.csv";
+String trainCountFile = "../data/bay_area_trains_count_3600.csv";
+String ferryCountFile = "../data/bay_area_ferries_count_3600.csv";
 
 /* // MAKES A 15 SECOND ANIMATION
 int totalFrames = 900;
 // Statistics input files (for stacked area chart)
-String vehicleCountFile = "../data/output/bay_area_vehicle_counts_900.csv";
-String busCountFile = "../data/output/bay_area_buses_count_900.csv";
-String tramCountFile = "../.data/output/bay_area_trams_count_900.csv";
-String cablecarCountFile = "../data/output/bay_area_cablecars_count_900.csv";
-String metroCountFile = "../data/output/bay_area_metros_count_900.csv";
-String trainCountFile = "../data/output/bay_area_trains_count_900.csv";
-String ferryCountFile = "../data/output/bay_area_ferries_count_900.csv";
+String vehicleCountFile = "../data/bay_area_vehicle_counts_900.csv";
+String busCountFile = "../data/bay_area_buses_count_900.csv";
+String tramCountFile = "../.data/bay_area_trams_count_900.csv";
+String cablecarCountFile = "../data/bay_area_cablecars_count_900.csv";
+String metroCountFile = "../data/bay_area_metros_count_900.csv";
+String trainCountFile = "../data/bay_area_trains_count_900.csv";
+String ferryCountFile = "../data/bay_area_ferries_count_900.csv";
 */
 
 int totalSeconds;
