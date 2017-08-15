@@ -1,5 +1,6 @@
 ////// MAIN INPUTS ///////
-String inputFile = "../data/output/stockton.csv"; // works!
+String directoryName = "sacramento";
+String inputFile = "../data/output/" + directoryName +".csv"; // works!
 String scenario = "Dynamic";
 boolean recording = false;
 boolean HQ = false;
@@ -36,13 +37,13 @@ UnfoldingMap map;
 // MAKES A 60 SECOND ANIMAION
 int totalFrames = 3600;
 // Statistics input files (for stacked area chart)
-String vehicleCountFile = "../data/vehicle_counts/bay_area_vehicle_counts_3600.csv";
-String busCountFile = "../data/vehicle_counts/bay_area_buses_count_3600.csv";
-String tramCountFile = "../data/vehicle_counts/bay_area_trams_count_3600.csv";
-String cablecarCountFile = "../data/vehicle_counts/bay_area_cablecars_count_3600.csv";
-String metroCountFile = "../data/vehicle_counts/bay_area_metros_count_3600.csv";
-String trainCountFile = "../data/vehicle_counts/bay_area_trains_count_3600.csv";
-String ferryCountFile = "../data/vehicle_counts/bay_area_ferries_count_3600.csv";
+String vehicleCountFile = "../data/vehicle_counts/" + directoryName + "/vehicle_counts_3600.csv";
+String busCountFile = "../data/vehicle_counts/" + directoryName + "/buses_count_3600.csv";
+String tramCountFile = "../data/vehicle_counts/" + directoryName + "/trams_count_3600.csv";
+String cablecarCountFile = "../data/vehicle_counts/" + directoryName + "/cablecars_count_3600.csv";
+String metroCountFile = "../data/vehicle_counts/" + directoryName + "/metros_count_3600.csv";
+String trainCountFile = "../data/vehicle_counts/" + directoryName + "/trains_count_3600.csv";
+String ferryCountFile = "../data/vehicle_counts/" + directoryName + "/ferries_count_3600.csv";
 
 /* // MAKES A 15 SECOND ANIMATION
 int totalFrames = 900;
