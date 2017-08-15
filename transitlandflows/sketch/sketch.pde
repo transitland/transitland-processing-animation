@@ -1,10 +1,11 @@
 ////// MAIN INPUTS ///////
 String directoryName = "sacramento";
-String DATE = "2017-08-14";
+String DATE = "2017-08-15";
 String inputFile = "../data/" + directoryName + "/" + DATE + "/output.csv";
 String scenario = "Dynamic";
 boolean recording = false;
 boolean HQ = false;
+boolean rotateBearing = true;
 //////////////////////////
 
 // Import Unfolding Maps
@@ -64,6 +65,7 @@ Table tripTable;
 ArrayList<Trips> trips = new ArrayList<Trips>();
 ArrayList<String> operators = new ArrayList<String>();
 ArrayList<String> vehicle_types = new ArrayList<String>();
+ArrayList<Float> bearings = new ArrayList<Float>();
 
 Table busCount;
 ArrayList<Line> busLines = new ArrayList<Line>();
@@ -298,6 +300,9 @@ void loadData() {
   for (TableRow row : tripTable.rows()) {
     String vehicle_type = row.getString("route_type");
     vehicle_types.add(vehicle_type); 
+    
+    Float bearing = row.getFloat("bearing");
+    bearings.add(bearing);
 
     int tripduration = row.getInt("duration");
     int duration = round(map(tripduration, 0, totalSeconds, 0, totalFrames));
@@ -319,7 +324,7 @@ void loadData() {
     float endLon = row.getFloat("end_lon");
     startLocation = new Location(startLat, startLon);
     endLocation = new Location(endLat, endLon);
-    trips.add(new Trips(duration, startFrame, endFrame, startLocation, endLocation));
+    trips.add(new Trips(duration, startFrame, endFrame, startLocation, endLocation, bearing));
   }
   
   
