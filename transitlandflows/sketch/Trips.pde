@@ -17,14 +17,20 @@ class Trips {
  Location currentLocation;
  ScreenPosition currentPosition;
  int s;
+ float bearing;
+ float radians;
+ float xscale = 1.8;
+ float yscale = 0.8;
  
  // class constructor
- Trips(int duration, int start_frame, int end_frame, Location startLocation, Location endLocation) {
+ Trips(int duration, int start_frame, int end_frame, Location startLocation, Location endLocation, float _bearing) {
        tripFrames = duration;
        startFrame = start_frame;
        endFrame = end_frame;
        start = startLocation;
        end = endLocation;
+       bearing = _bearing;
+       radians = radians(bearing);
      }
    
    // function to draw each trip
@@ -52,8 +58,20 @@ class Trips {
        } else if (z == 8192.0){ s = 8;
        } else if (z >= 16384.0){ s = 10;
        }
-       ellipse(currentPosition.x, currentPosition.y, s, s);
-   }
+       
+       
+       if (rotateBearing == false) ellipse(currentPosition.x, currentPosition.y, s, s);
+       else { 
+         pushMatrix();
+         pushStyle();
+           translate(currentPosition.x, currentPosition.y);
+           rotate(radians + PI/2);
+           rectMode(CENTER);
+           rect(0, 0, s*xscale, s*yscale, 7);
+         popStyle();
+         popMatrix();
+       }
+    }
   }
   
   void plotBus(){
@@ -80,7 +98,17 @@ class Trips {
        } else if (z == 8192.0){ s = 7;
        } else if (z >= 16384.0){ s = 9;
        }
-       ellipse(currentPosition.x, currentPosition.y, s, s);
+       if (rotateBearing == false) ellipse(currentPosition.x, currentPosition.y, s, s);
+       else { 
+         pushMatrix();
+         pushStyle();
+           translate(currentPosition.x, currentPosition.y);
+           rotate(radians + PI/2);
+           rectMode(CENTER);
+           rect(0, 0, s*xscale, s*yscale, 7);
+         popStyle();
+         popMatrix();
+       }
    }
   }
   
@@ -108,7 +136,18 @@ class Trips {
        } else if (z == 8192.0){ s = 10;
        } else if (z >= 16384.0){ s = 11;
        }
-       ellipse(currentPosition.x, currentPosition.y, s, s);
+       
+       if (rotateBearing == false) ellipse(currentPosition.x, currentPosition.y, s, s);
+       else { 
+         pushMatrix();
+         pushStyle();
+           translate(currentPosition.x, currentPosition.y);
+           rotate(radians + PI/2);
+           rectMode(CENTER);
+           rect(0, 0, s*xscale, s*yscale, 7);
+         popStyle();
+         popMatrix();
+       }
    }
   }
   
@@ -136,7 +175,18 @@ class Trips {
        } else if (z == 8192.0){ s = 12;
        } else if (z >= 16384.0){ s = 13;
        }
-       ellipse(currentPosition.x, currentPosition.y, s, s);
+       
+       if (rotateBearing == false) ellipse(currentPosition.x, currentPosition.y, s, s);
+       else { 
+         pushMatrix();
+         pushStyle();
+           translate(currentPosition.x, currentPosition.y);
+           rotate(radians + PI/2);
+           rectMode(CENTER);
+           rect(0, 0, s*xscale, s*yscale, 7);
+         popStyle();
+         popMatrix();
+       }
    }
   }
   
@@ -164,7 +214,18 @@ class Trips {
        } else if (z == 8192.0){ s = 10;
        } else if (z >= 16384.0){ s = 11;
        }
-       ellipse(currentPosition.x, currentPosition.y, s, s);
+       
+       if (rotateBearing == false) ellipse(currentPosition.x, currentPosition.y, s, s);
+       else { 
+         pushMatrix();
+         pushStyle();
+           translate(currentPosition.x, currentPosition.y);
+           rotate(radians + PI/2);
+           rectMode(CENTER);
+           rect(0, 0, s*xscale, s*yscale, 7);
+         popStyle();
+         popMatrix();
+       }
    }
   }
 }
