@@ -8,6 +8,7 @@ import argparse
 
 MAPZEN_APIKEY = None
 OUTPUT_NAME = None
+DATE = None
 
 # Helper functions
 
@@ -159,9 +160,6 @@ def animate_one_day(operator_onestop_id, date):
 
 def animate_many_operators(operators, date):
     """Main."""
-    starttime = dt.datetime.now()
-    print starttime
-
     results = []
     failures = []
 
@@ -175,16 +173,13 @@ def animate_many_operators(operators, date):
             results.append(output)
             print "success!"
             print ""
-            output.to_csv("data/indiv_operators/{}/{}.csv".format(OUTPUT_NAME,i))
+            output.to_csv("data/{}/{}/indiv_operators/{}.csv".format(OUTPUT_NAME, DATE, i))
         except StandardError:
             failures.append(i)
             print "failed"
             print ""
         count += 1
 
-    endtime = dt.datetime.now()
-    print endtime
-    print "Time taken:", endtime - starttime
     return results, failures
 
 # Stacked bar chart functions
@@ -275,13 +270,16 @@ if __name__ == "__main__":
 
     MAPZEN_APIKEY = args.apikey
     OUTPUT_NAME = args.name
-    date = args.date
+    DATE = args.date
     south, west, north, east = args.bbox.split(",")
 
-    print "date: ", date
+    print ""
+    print "INPUTS:"
+    print "date: ", DATE
     print "name: ", OUTPUT_NAME
-    print "apikey: ", MAPZEN_APIKEY
-    print "south, west, north, east", south, west, north, east
+    print "API key: ", MAPZEN_APIKEY
+    print "bbox: ", south, west, north, east
+    print ""
 
     # First, let's get a list of the onestop id's for every operator in our bounding box.
     operators_url = "http://transit.land/api/v1/operators?bbox={},{},{},{}&per_page=1000&api_key={}".format(west, south, east, north, MAPZEN_APIKEY)
@@ -293,19 +291,18 @@ if __name__ == "__main__":
     print len(operators_in_bbox), "operators to be downloaded."
 
     # ### Run script on every operator and save each operator's results to a separate csv
-    if not os.path.exists("data/indiv_operators/{}".format(OUTPUT_NAME)):
-        os.makedirs("data/indiv_operators/{}".format(OUTPUT_NAME))
-    results, failures = animate_many_operators(operators_in_bbox, date)
+    if not os.path.exists("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE)):
+        os.makedirs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
+    results, failures = animate_many_operators(operators_in_bbox, DATE)
     print len(results), "operators successfully downloaded."
     print len(failures), "operators failed."
     if len(failures): print "failed operators:", failures
 
     # ### Concatenate all individual operator csv files into one big dataframe
-    concatenated_df = concatenate_csvs("data/indiv_operators/{}".format(OUTPUT_NAME))
-    concatenated_df.head()
-    concatenated_df.to_csv("data/output/{}.csv".format(OUTPUT_NAME))
+    concatenated_df = concatenate_csvs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
+    concatenated_df.to_csv("data/{}/{}/output.csv".format(OUTPUT_NAME, DATE))
 
-    print concatenated_df.shape
+    print "Total rows: ", concatenated_df.shape[0]
 
     # ### That's it for the trip data!
 
@@ -330,7 +327,7 @@ if __name__ == "__main__":
     # counting vehicles.
 
     print "Counting number of vehicles in transit."
-    vehicles, buses, trams, metros, cablecars, trains, ferries = count_vehicles_on_screen(concatenated_df, date)
+    vehicles, buses, trams, metros, cablecars, trains, ferries = count_vehicles_on_screen(concatenated_df, DATE)
 
     # ### Save vehicle counts to csv (3600 frame version)
     # Our Processing sketch has 3,600 frames (at 60 frames per second makes
@@ -366,12 +363,12 @@ if __name__ == "__main__":
     ferries_counts_output['frame'] = ferries_counts_output.index
 
     # Save these vehicle count stats to csv's.
-    if not os.path.exists("data/vehicle_counts/{}".format(OUTPUT_NAME)):
-        os.makedirs("data/vehicle_counts/{}".format(OUTPUT_NAME))
-    vehicles_counts_output.to_csv("data/vehicle_counts/{}/vehicles_count_{}.csv".format(OUTPUT_NAME, frames))
-    buses_counts_output.to_csv("data/vehicle_counts/{}/buses_count_{}.csv".format(OUTPUT_NAME, frames))
-    trams_counts_output.to_csv("data/vehicle_counts/{}/trams_count_{}.csv".format(OUTPUT_NAME, frames))
-    metros_counts_output.to_csv("data/vehicle_counts/{}/metros_count_{}.csv".format(OUTPUT_NAME, frames))
-    cablecars_counts_output.to_csv("data/vehicle_counts/{}/cablecars_count_{}.csv".format(OUTPUT_NAME, frames))
-    trains_counts_output.to_csv("data/vehicle_counts/{}/trains_count_{}.csv".format(OUTPUT_NAME, frames))
-    ferries_counts_output.to_csv("data/vehicle_counts/{}/ferries_count_{}.csv".format(OUTPUT_NAME, frames))
+    if not os.path.exists("data/{}/{}/vehicle_counts".format(OUTPUT_NAME, DATE)):
+        os.makedirs("data/{}/{}/vehicle_counts".format(OUTPUT_NAME, DATE))
+    vehicles_counts_output.to_csv("data/{}/{}/vehicle_counts/vehicles_count_{}.csv".format(OUTPUT_NAME, DATE, frames))
+    buses_counts_output.to_csv("data/{}/{}/vehicle_counts/buses_count_{}.csv".format(OUTPUT_NAME, DATE, frames))
+    trams_counts_output.to_csv("data/{}/{}/vehicle_counts/trams_count_{}.csv".format(OUTPUT_NAME, DATE, frames))
+    metros_counts_output.to_csv("data/{}/{}/vehicle_counts/metros_count_{}.csv".format(OUTPUT_NAME, DATE, frames))
+    cablecars_counts_output.to_csv("data/{}/{}/vehicle_counts/cablecars_count_{}.csv".format(OUTPUT_NAME, DATE, frames))
+    trains_counts_output.to_csv("data/{}/{}/vehicle_counts/trains_count_{}.csv".format(OUTPUT_NAME, DATE, frames))
+    ferries_counts_output.to_csv("data/{}/{}/vehicle_counts/ferries_count_{}.csv".format(OUTPUT_NAME, DATE, frames))
