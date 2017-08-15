@@ -86,13 +86,14 @@ class Trips {
        currentPosition = map.getScreenPosition(currentLocation);
 
        // Zoom dependent ellipse size
-       float z = map.getZoom();       
+       float z = map.getZoom();
+       println(z);
        if (z <= 32.0){ s = 2;
        } else if (z == 64.0){ s = 2;
        } else if (z == 128.0){ s = 2;
-       } else if (z == 256.0){ s = 2;
-       } else if (z == 512.0){ s = 3;
-       } else if (z == 1024.0){ s = 4;
+       } else if (z == 256.0){ s = 3;
+       } else if (z == 512.0){ s = 4;
+       } else if (z == 1024.0){ s = 5;
        } else if (z == 2048.0){ s = 5;
        } else if (z == 4096.0){ s = 6;
        } else if (z == 8192.0){ s = 7;
@@ -208,11 +209,11 @@ class Trips {
        } else if (z == 128.0){ s = 3;
        } else if (z == 256.0){ s = 4;
        } else if (z == 512.0){ s = 5;
-       } else if (z == 1024.0){ s = 7;
-       } else if (z == 2048.0){ s = 8;
-       } else if (z == 4096.0){ s = 9;
-       } else if (z == 8192.0){ s = 10;
-       } else if (z >= 16384.0){ s = 11;
+       } else if (z == 1024.0){ s = 6;
+       } else if (z == 2048.0){ s = 7;
+       } else if (z == 4096.0){ s = 8;
+       } else if (z == 8192.0){ s = 9;
+       } else if (z >= 16384.0){ s = 10;
        }
        
        if (rotateBearing == false) ellipse(currentPosition.x, currentPosition.y, s, s);
