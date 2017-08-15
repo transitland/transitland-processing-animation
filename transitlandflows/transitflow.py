@@ -5,6 +5,7 @@ import datetime as dt
 import glob
 import os
 import argparse
+import math
 
 MAPZEN_APIKEY = None
 OUTPUT_NAME = None
@@ -182,8 +183,29 @@ def animate_many_operators(operators, date):
 
     return results, failures
 
-# Stacked bar chart functions
+# Calculate bearing
+# See: https://gis.stackexchange.com/questions/29239/calculate-bearing-between-two-decimal-gps-coordinates/48911
+def calc_bearing_between_points(startLat, startLong, endLat, endLong):
 
+    startLat = math.radians(startLat)
+    startLong = math.radians(startLong)
+    endLat = math.radians(endLat)
+    endLong = math.radians(endLong)
+
+    dLong = endLong - startLong
+
+    dPhi = math.log(math.tan(endLat/2.0+math.pi/4.0)/math.tan(startLat/2.0+math.pi/4.0))
+    if abs(dLong) > math.pi:
+        if dLong > 0.0:
+            dLong = -(2.0 * math.pi - dLong)
+        else:
+            dLong = (2.0 * math.pi + dLong)
+
+    bearing = (math.degrees(math.atan2(dLong, dPhi)) + 360.0) % 360.0;
+
+    return bearing
+
+# Stacked bar chart functions
 def count_vehicles_on_screen(concatenated_df, date):
     number_of_vehicles = []
     number_of_buses = []
@@ -300,6 +322,7 @@ if __name__ == "__main__":
 
     # ### Concatenate all individual operator csv files into one big dataframe
     concatenated_df = concatenate_csvs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
+    concatenated_df['bearing'] = concatenated_df.apply(lambda row: calc_bearing_between_points(row['start_lat'], row['start_lon'], row['end_lat'], row['end_lon']), axis=1)
     concatenated_df.to_csv("data/{}/{}/output.csv".format(OUTPUT_NAME, DATE))
 
     print "Total rows: ", concatenated_df.shape[0]
