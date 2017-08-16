@@ -36,17 +36,12 @@ def get_vehicle_types(operator_onestop_id):
     return lookup_vehicle_types
 
 # Get stops
-def get_stop_lats(operator_onestop_id):
-    """Get stop lats for a particular operator."""
+def get_stop_lat_lons(operator_onestop_id):
+    """Get stop lats and stop lons for a particular operator."""
     stops_url = "http://transit.land/api/v1/stops?served_by={}&per_page={}&api_key={}".format(operator_onestop_id, PER_PAGE, MAPZEN_APIKEY)
     lookup_stop_lats = {i['onestop_id']: i['geometry']['coordinates'][1] for i in transitland_request(stops_url)}
-    return lookup_stop_lats
-
-def get_stop_lons(operator_onestop_id):
-    """Get stop lons for a particular operator."""
-    stops_url = "http://transit.land/api/v1/stops?served_by={}&per_page={}&api_key={}".format(operator_onestop_id, PER_PAGE,MAPZEN_APIKEY)
     lookup_stop_lons = {i['onestop_id']: i['geometry']['coordinates'][0] for i in transitland_request(stops_url)}
-    return lookup_stop_lons
+    return lookup_stop_lats, lookup_stop_lons
 
 # Get Schedule data
 def get_schedule_stop_pairs(operator_onestop_id, date):
@@ -107,7 +102,6 @@ def add_dates(date, origin_times_clean, destination_times_clean):
     return origin_datetimes, destination_datetimes
 
 # Output
-
 def generate_output(operator_onestop_id, origin_datetimes, destination_datetimes, durations, origin_stops, destination_stops, route_ids, lookup_stop_lats, lookup_stop_lons, lookup_vehicle_types):
     """This function generates the output table, to be saved later as a csv."""
     origin_stop_lats = [lookup_stop_lats[i] for i in origin_stops]
@@ -136,7 +130,6 @@ def generate_output(operator_onestop_id, origin_datetimes, destination_datetimes
     return output
 
 # Combine data
-
 def concatenate_csvs(path):
     all_files = glob.glob(os.path.join(path, "*.csv"))     # advisable to use os.path.join as this makes concatenation OS independent
     df_from_each_file = (pd.read_csv(f) for f in all_files) # generators
@@ -150,8 +143,7 @@ def concatenate_csvs(path):
 def animate_one_day(operator_onestop_id, date):
     """This is the main function that ties all of the above together!"""
     lookup_vehicle_types = get_vehicle_types(operator_onestop_id)
-    lookup_stop_lats = get_stop_lats(operator_onestop_id)
-    lookup_stop_lons = get_stop_lons(operator_onestop_id)
+    lookup_stop_lats, lookup_stop_lons = get_stop_lat_lons(operator_onestop_id)
     origin_times, destination_times, origin_stops, destination_stops, route_ids = get_schedule_stop_pairs(operator_onestop_id, date)
     durations = calculate_durations(origin_times, destination_times)
     origin_times_clean, destination_times_clean = clean_times(origin_times, destination_times)
@@ -160,7 +152,7 @@ def animate_one_day(operator_onestop_id, date):
     output = output.sort_values(by='start_time').reset_index(drop=True)
     return output
 
-def animate_many_operators(operators, date):
+def animate_operators(operators, date):
     """Main."""
     results = []
     failures = []
@@ -344,7 +336,7 @@ if __name__ == "__main__":
         # ### Run script on every operator and save each operator's results to a separate csv
         if not os.path.exists("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE)):
             os.makedirs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
-        results, failures = animate_many_operators(operators_in_bbox, DATE)
+        results, failures = animate_operators(operators_in_bbox, DATE)
         print len(results), "operators successfully downloaded."
         print len(failures), "operators failed."
         if len(failures): print "failed operators:", failures
@@ -364,7 +356,7 @@ if __name__ == "__main__":
         # ### Run script on every operator and save each operator's results to a separate csv
         if not os.path.exists("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE)):
             os.makedirs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
-        results, failures = animate_many_operators([OPERATOR], DATE)
+        results, failures = animate_operators([OPERATOR], DATE)
         print len(results), "operators successfully downloaded."
         print len(failures), "operators failed."
         if len(failures): print "failed operators:", failures
