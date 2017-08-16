@@ -272,17 +272,24 @@ if __name__ == "__main__":
     parser.add_argument(
       "--name",
       help="Output directory name",
-      default="bay_area"
+      default="output"
     )
     parser.add_argument(
       "--bbox",
-      help="Bounding box",
-      default="37.011326,-123.280334,38.955137,-120.607910"
+      help="Bounding box"
     )
     parser.add_argument(
       "--frames",
       help="Number of frames in animation. 3600 frames = 60 second animation.",
       default=3600
+    )
+    parser.add_argument(
+      "--exclude",
+      help="Exclude particular operators by operator onestop_id",
+    )
+    parser.add_argument(
+      "--operator",
+      help="Download data for a single operator by operator onestop_id",
     )
 
     args = parser.parse_args()
@@ -296,43 +303,77 @@ if __name__ == "__main__":
     MAPZEN_APIKEY = args.apikey
     OUTPUT_NAME = args.name
     DATE = args.date
-    south, west, north, east = args.bbox.split(",")
+    BBOX = False
+    try:
+        south, west, north, east = args.bbox.split(",")
+        BBOX = True
+    except:
+        pass
+    OPERATOR = False
+    try:
+        OPERATOR = args.operator
+    except:
+        pass
     FRAMES = args.frames
+    EXCLUDE = None
+    try:
+        EXCLUDE = args.excude
+    except:
+        pass
 
     print ""
     print "INPUTS:"
     print "date: ", DATE
     print "name: ", OUTPUT_NAME
     print "API key: ", MAPZEN_APIKEY
-    print "bbox: ", south, west, north, east
-    print ""
 
-    # First, let's get a list of the onestop id's for every operator in our bounding box.
-    operators_url = "http://transit.land/api/v1/operators?bbox={},{},{},{}&per_page=1000&api_key={}".format(west, south, east, north, MAPZEN_APIKEY)
-    operators_in_bbox = {i['onestop_id'] for i in transitland_request(operators_url)}
-    print len(operators_in_bbox), "operators in bounding box."
 
-    # We will exclude national Amtrak trips from the visualizaiton and vehicle counts.
-    operators_in_bbox -= {'o-9-amtrak'}
-    print len(operators_in_bbox), "operators to be downloaded."
-    print ""
+    if BBOX:
+        print "bbox: ", south, west, north, east
+        print ""
+        # First, let's get a list of the onestop id's for every operator in our bounding box.
+        operators_url = "http://transit.land/api/v1/operators?bbox={},{},{},{}&per_page=1000&api_key={}".format(west, south, east, north, MAPZEN_APIKEY)
+        operators_in_bbox = {i['onestop_id'] for i in transitland_request(operators_url)}
+        print len(operators_in_bbox), "operators in bounding box."
 
-    # ### Run script on every operator and save each operator's results to a separate csv
-    if not os.path.exists("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE)):
-        os.makedirs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
-    results, failures = animate_many_operators(operators_in_bbox, DATE)
-    print len(results), "operators successfully downloaded."
-    print len(failures), "operators failed."
-    if len(failures): print "failed operators:", failures
+        # I.e. you may want to exclude national Amtrak trips from the visualizaton
+        # and vehicle counts: 'o-9-amtrak'
+        if EXCLUDE: operators_in_bbox -= {EXCLUDE}
+        print len(operators_in_bbox), "operators to be downloaded."
+        print ""
 
-    # ### Concatenate all individual operator csv files into one big dataframe
-    print "Concatenating individual operator outputs."
-    concatenated_df = concatenate_csvs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
-    print "Calculating trip segment bearings."
-    concatenated_df['bearing'] = concatenated_df.apply(lambda row: calc_bearing_between_points(row['start_lat'], row['start_lon'], row['end_lat'], row['end_lon']), axis=1)
-    concatenated_df.to_csv("data/{}/{}/output.csv".format(OUTPUT_NAME, DATE))
+        # ### Run script on every operator and save each operator's results to a separate csv
+        if not os.path.exists("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE)):
+            os.makedirs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
+        results, failures = animate_many_operators(operators_in_bbox, DATE)
+        print len(results), "operators successfully downloaded."
+        print len(failures), "operators failed."
+        if len(failures): print "failed operators:", failures
 
-    print "Total rows: ", concatenated_df.shape[0]
+        # ### Concatenate all individual operator csv files into one big dataframe
+        print "Concatenating individual operator outputs."
+        concatenated_df = concatenate_csvs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
+        print "Calculating trip segment bearings."
+        concatenated_df['bearing'] = concatenated_df.apply(lambda row: calc_bearing_between_points(row['start_lat'], row['start_lon'], row['end_lat'], row['end_lon']), axis=1)
+        concatenated_df.to_csv("data/{}/{}/output.csv".format(OUTPUT_NAME, DATE))
+
+        print "Total rows: ", concatenated_df.shape[0]
+
+    elif OPERATOR:
+        print "operator: ", OPERATOR
+        print ""
+        # ### Run script on every operator and save each operator's results to a separate csv
+        if not os.path.exists("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE)):
+            os.makedirs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
+        results, failures = animate_many_operators([OPERATOR], DATE)
+        print len(results), "operators successfully downloaded."
+        print len(failures), "operators failed."
+        if len(failures): print "failed operators:", failures
+
+        # ### Concatenate all individual operator csv files into one big dataframe
+        print "Calculating trip segment bearings."
+        results['bearing'] = results.apply(lambda row: calc_bearing_between_points(row['start_lat'], row['start_lon'], row['end_lat'], row['end_lon']), axis=1)
+        results.to_csv("data/{}/{}/output.csv".format(OUTPUT_NAME, DATE))
 
     # ### That's it for the trip data!
 
@@ -406,9 +447,9 @@ if __name__ == "__main__":
     with open("templates/template.pde") as f:
         data = f.read()
     s = Template(data)
-    if not os.path.exists("sketch_{}".format(OUTPUT_NAME)):
-        os.makedirs("sketch_{}".format(OUTPUT_NAME))
-    with open("sketch_{}/sketch_{}.pde".format(OUTPUT_NAME, OUTPUT_NAME), "w") as f:
+    if not os.path.exists("sketches/{}".format(OUTPUT_NAME)):
+        os.makedirs("sketches/{}".format(OUTPUT_NAME))
+    with open("sketches/{}/{}.pde".format(OUTPUT_NAME, OUTPUT_NAME), "w") as f:
         f.write(
             s.substitute(
                 DIRECTORY_NAME=OUTPUT_NAME,
