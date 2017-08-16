@@ -211,7 +211,7 @@ void setup() {
 
   switch(scenario) {
   case "Dynamic":
-    place_start = new Location(firstLat, firstLon);
+    place_start = new Location(${AVG_LAT}, ${AVG_LON});
     zoom_start = 9;
     break;
   case "USA":
@@ -702,8 +702,6 @@ class Line {
     line(startx, starty, endx, endy);
   }
 }
-
-
 
 
 class Trips {
