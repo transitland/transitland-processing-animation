@@ -794,7 +794,6 @@ class Trips {
 
        // Zoom dependent ellipse size
        float z = map.getZoom();
-       println(z);
        if (z <= 32.0){ s = 2;
        } else if (z == 64.0){ s = 2;
        } else if (z == 128.0){ s = 2;
