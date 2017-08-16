@@ -184,18 +184,14 @@ def calc_bearing_between_points(startLat, startLong, endLat, endLong):
     startLong = math.radians(startLong)
     endLat = math.radians(endLat)
     endLong = math.radians(endLong)
-
     dLong = endLong - startLong
-
     dPhi = math.log(math.tan(endLat/2.0+math.pi/4.0)/math.tan(startLat/2.0+math.pi/4.0))
     if abs(dLong) > math.pi:
         if dLong > 0.0:
             dLong = -(2.0 * math.pi - dLong)
         else:
             dLong = (2.0 * math.pi + dLong)
-
     bearing = (math.degrees(math.atan2(dLong, dPhi)) + 360.0) % 360.0;
-
     return bearing
 
 # Stacked bar chart functions
@@ -275,11 +271,16 @@ if __name__ == "__main__":
     )
     parser.add_argument(
       "--exclude",
-      help="Exclude particular operators by operator onestop_id",
+      help="Exclude particular operators by operator onestop_id"
     )
     parser.add_argument(
       "--operator",
       help="Download data for a single operator by operator onestop_id",
+    )
+    parser.add_argument(
+      "--clip_to_bbox",
+      help="Clip trips to bounding box",
+      action="store_true"
     )
 
     args = parser.parse_args()
@@ -293,23 +294,7 @@ if __name__ == "__main__":
     MAPZEN_APIKEY = args.apikey
     OUTPUT_NAME = args.name
     DATE = args.date
-    BBOX = False
-    try:
-        south, west, north, east = args.bbox.split(",")
-        BBOX = True
-    except:
-        pass
-    OPERATOR = False
-    try:
-        OPERATOR = args.operator
-    except:
-        pass
     FRAMES = args.frames
-    EXCLUDE = None
-    try:
-        EXCLUDE = args.excude
-    except:
-        pass
 
     print ""
     print "INPUTS:"
@@ -317,48 +302,57 @@ if __name__ == "__main__":
     print "name: ", OUTPUT_NAME
     print "API key: ", MAPZEN_APIKEY
 
-    if BBOX:
+    if args.bbox:
+        south, west, north, east = args.bbox.split(",")
+        # west, south, east, north = args.bbox.split(",")
+        # bbox = true
+
+    operators = set()
+    if args.operator:
+        operators |= set(args.operator.split(","))
+
+    exclude_operators = set()
+    if args.exclude:
+        exclude_operators |= set(args.exclude.split(","))
+        print "exclude: ", list(exclude_operators)
+
+    if args.bbox:
         print "bbox: ", south, west, north, east
         print ""
         # First, let's get a list of the onestop id's for every operator in our bounding box.
         operators_url = "http://transit.land/api/v1/operators?bbox={},{},{},{}&per_page={}&api_key={}".format(west, south, east, north, PER_PAGE,MAPZEN_APIKEY)
         operators_in_bbox = {i['onestop_id'] for i in transitland_request(operators_url)}
         print len(operators_in_bbox), "operators in bounding box."
+        operators |= operators_in_bbox
 
-        # I.e. you may want to exclude national Amtrak trips from the visualizaton
-        # and vehicle counts: 'o-9-amtrak'
-        if EXCLUDE: operators_in_bbox -= {EXCLUDE}
-        print len(operators_in_bbox), "operators to be downloaded."
-        print ""
+    # I.e. you may want to exclude national Amtrak trips from the visualizaton
+    # and vehicle counts: 'o-9-amtrak'
+    operators -= exclude_operators
+    print len(operators), "operators to be downloaded."
+    print ""
 
-        # ### Run script on every operator and save each operator's results to a separate csv
-        if not os.path.exists("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE)):
-            os.makedirs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
-        results, failures = animate_operators(operators_in_bbox, DATE)
-        print len(results), "operators successfully downloaded."
-        print len(failures), "operators failed."
-        if len(failures): print "failed operators:", failures
-
-    elif OPERATOR:
-        print "operator: ", OPERATOR
-        print ""
-        # ### Run script on every operator and save each operator's results to a separate csv
-        if not os.path.exists("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE)):
-            os.makedirs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
-        results, failures = animate_operators([OPERATOR], DATE)
-        print len(results), "operators successfully downloaded."
-        print len(failures), "operators failed."
-        if len(failures): print "failed operators:", failures
-
+    ############
+    if not os.path.exists("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE)):
+        os.makedirs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
+    results, failures = animate_operators(operators, DATE)
+    print len(results), "operators successfully downloaded."
+    print len(failures), "operators failed."
+    if len(failures): print "failed operators:", failures
 
     # ### Concatenate all individual operator csv files into one big dataframe
     print "Concatenating individual operator outputs."
-    concatenated_df = concatenate_csvs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
+    df = concatenate_csvs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
     print "Calculating trip segment bearings."
-    concatenated_df['bearing'] = concatenated_df.apply(lambda row: calc_bearing_between_points(row['start_lat'], row['start_lon'], row['end_lat'], row['end_lon']), axis=1)
-    concatenated_df.to_csv("data/{}/{}/output.csv".format(OUTPUT_NAME, DATE))
-    print "Total rows: ", concatenated_df.shape[0]
+    df['bearing'] = df.apply(lambda row: calc_bearing_between_points(row['start_lat'], row['start_lon'], row['end_lat'], row['end_lon']), axis=1)
+    df.to_csv("data/{}/{}/output.csv".format(OUTPUT_NAME, DATE))
+    print "Total rows: ", df.shape[0]
 
+    # Clip to bbox. Either the start stop is within the bbox OR the end stop is within the bbox
+    if args.bbox and args.clip_to_bbox:
+        df = df[
+            ((df['start_lat'] >= float(south)) & (df['start_lat'] <= float(north)) & (df['start_lon'] >= float(west)) & (df['start_lon'] <= float(east))) |
+            ((df['end_lat'] >= float(south)) & (df['end_lat'] <= float(north)) & (df['end_lon'] >= float(west)) & (df['end_lon'] <= float(east)))
+        ]
 
     # ### That's it for the trip data!
 
@@ -370,19 +364,8 @@ if __name__ == "__main__":
     # The Processing sketch will read in each file and use them to plot a
     # stacked area chart.
 
-    # Vehicle counting logic:
-    #
-    # At any given time t, every vehicle on the road will have started its
-    # current trip before $t$ and will end its current trip after t. So we
-    # can filter our data by end time and start time to calculate the number
-    # of vehicles scheduled to be on the road at any given time. We will be
-    # inclusive on the start date but exclusive on the end date to avoid
-    # double counting a trip -- i.e. if a trip starts at 10:00am then it
-    # is "on the road" at 10:00am, but if a trip ends at 10:15am, then it is
-    # not considered "on the road" at 10:15am. This way, we avoid double
-    # counting vehicles.
     print "Counting number of vehicles in transit."
-    vehicles, buses, trams, metros, cablecars, trains, ferries = count_vehicles_on_screen(concatenated_df, DATE)
+    vehicles, buses, trams, metros, cablecars, trains, ferries = count_vehicles_on_screen(df, DATE)
 
     # ### Save vehicle counts to csv (3600 frame version)
     # Our Processing sketch has 3,600 frames (at 60 frames per second makes
@@ -422,8 +405,8 @@ if __name__ == "__main__":
     ferries_counts_output.to_csv("data/{}/{}/vehicle_counts/ferries_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
 
     # Hacky way to center the sketch
-    if OPERATOR:
-        south, west, north, east = concatenated_df['start_lat'][0], concatenated_df['start_lon'][0], concatenated_df['start_lat'][-1], concatenated_df['start_lon'][-1]
+    if not args.bbox:
+        south, west, north, east = df['start_lat'][0], df['start_lon'][0], df['start_lat'][1], df['start_lon'][1]
 
     ## Use processing sketch template to create processing sketch file
     with open("templates/template.pde") as f:
