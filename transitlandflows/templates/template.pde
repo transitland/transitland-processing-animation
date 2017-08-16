@@ -58,8 +58,6 @@ ArrayList<Float> bearings = new ArrayList<Float>();
 Table busCount;
 ArrayList<Line> busLines = new ArrayList<Line>();
 ArrayList<Line> busXAxis = new ArrayList<Line>();
-ArrayList<Line> busTrails = new ArrayList<Line>();
-int busTrailsLength = 10;
 ArrayList<String> busXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> busFrames = new ArrayList<Integer>();
 ArrayList<Integer> busCounts = new ArrayList<Integer>();
@@ -69,8 +67,6 @@ ArrayList<Float> busHeights = new ArrayList<Float>();
 Table tramCount;
 ArrayList<Line> tramLines = new ArrayList<Line>();
 ArrayList<Line> tramXAxis = new ArrayList<Line>();
-ArrayList<Line> tramTrails = new ArrayList<Line>();
-int tramTrailsLength = 10;
 ArrayList<String> tramXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> tramFrames = new ArrayList<Integer>();
 ArrayList<Integer> tramCounts = new ArrayList<Integer>();
@@ -80,8 +76,6 @@ ArrayList<Float> tramHeights = new ArrayList<Float>();
 Table metroCount;
 ArrayList<Line> metroLines = new ArrayList<Line>();
 ArrayList<Line> metroXAxis = new ArrayList<Line>();
-ArrayList<Line> metroTrails = new ArrayList<Line>();
-int metroTrailsLength = 10;
 ArrayList<String> metroXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> metroFrames = new ArrayList<Integer>();
 ArrayList<Integer> metroCounts = new ArrayList<Integer>();
@@ -91,8 +85,6 @@ ArrayList<Float> metroHeights = new ArrayList<Float>();
 Table cablecarCount;
 ArrayList<Line> cablecarLines = new ArrayList<Line>();
 ArrayList<Line> cablecarXAxis = new ArrayList<Line>();
-ArrayList<Line> cablecarTrails = new ArrayList<Line>();
-int cablecarTrailsLength = 10;
 ArrayList<String> cablecarXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> cablecarFrames = new ArrayList<Integer>();
 ArrayList<Integer> cablecarCounts = new ArrayList<Integer>();
@@ -102,8 +94,6 @@ ArrayList<Float> cablecarHeights = new ArrayList<Float>();
 Table trainCount;
 ArrayList<Line> trainLines = new ArrayList<Line>();
 ArrayList<Line> trainXAxis = new ArrayList<Line>();
-ArrayList<Line> trainTrails = new ArrayList<Line>();
-int trainTrailsLength = 10;
 ArrayList<String> trainXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> trainFrames = new ArrayList<Integer>();
 ArrayList<Integer> trainCounts = new ArrayList<Integer>();
@@ -113,8 +103,6 @@ ArrayList<Float> trainHeights = new ArrayList<Float>();
 Table ferryCount;
 ArrayList<Line> ferryLines = new ArrayList<Line>();
 ArrayList<Line> ferryXAxis = new ArrayList<Line>();
-ArrayList<Line> ferryTrails = new ArrayList<Line>();
-int ferryTrailsLength = 10;
 ArrayList<String> ferryXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> ferryFrames = new ArrayList<Integer>();
 ArrayList<Integer> ferryCounts = new ArrayList<Integer>();
@@ -470,7 +458,7 @@ void draw() {
     float epoch_float = map(frameCount, 0, totalFrames, int(minDate.getTime()/1000), int(maxDate.getTime()/1000));
     int epoch = int(epoch_float);
 
-    //String date = new java.text.SimpleDateFormat("MM/dd/yyyy hh:mm:ss").format(new java.util.Date(epoch * 1000L));
+    String date = new java.text.SimpleDateFormat("M/d/yy").format(new java.util.Date(epoch * 1000L));
     String day = new java.text.SimpleDateFormat("EEEE").format(new java.util.Date(epoch * 1000L));
     String time = new java.text.SimpleDateFormat("h:mm a").format(new java.util.Date(epoch * 1000L));
 
@@ -624,7 +612,10 @@ void draw() {
     noStroke();
     text(time, 75, 55);
     textFont(ralewayBold);
-    text(day, 75, 108);
+    text(day, 75, 107);
+
+    textSize(16);
+    text(date, 75, 128);
 
     if (recording == true) {
       if (frameCount < totalFrames) {
