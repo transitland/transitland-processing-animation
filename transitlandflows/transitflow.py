@@ -6,10 +6,12 @@ import glob
 import os
 import argparse
 import math
+from string import Template
 
 MAPZEN_APIKEY = None
 OUTPUT_NAME = None
 DATE = None
+FRAMES = None
 
 # Helper functions
 
@@ -175,7 +177,7 @@ def animate_many_operators(operators, date):
             print "success!"
             print ""
             output.to_csv("data/{}/{}/indiv_operators/{}.csv".format(OUTPUT_NAME, DATE, i))
-        except StandardError:
+        except:# StandardError:
             failures.append(i)
             print "failed"
             print ""
@@ -264,9 +266,6 @@ def count_vehicles_on_screen(concatenated_df, date):
 
 
 if __name__ == "__main__":
-    # Sign up for a [Mapzen API key](https://mapzen.com/developers/sign_up) if you don't already have one.
-    name = r"bay_area" # this determines how to name output csv files
-
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", help="Animation day") # default=TODAY
     parser.add_argument("--apikey", help="Mapzen API Key")
@@ -280,7 +279,11 @@ if __name__ == "__main__":
       help="Bounding box",
       default="37.011326,-123.280334,38.955137,-120.607910"
     )
-    # parser.add_argument("operator", nargs=1, help="Operator Onestop ID")
+    parser.add_argument(
+      "--frames",
+      help="Number of frames in animation. 3600 frames = 60 second animation.",
+      default=3600
+    )
 
     args = parser.parse_args()
 
@@ -294,6 +297,7 @@ if __name__ == "__main__":
     OUTPUT_NAME = args.name
     DATE = args.date
     south, west, north, east = args.bbox.split(",")
+    FRAMES = args.frames
 
     print ""
     print "INPUTS:"
@@ -311,6 +315,7 @@ if __name__ == "__main__":
     # We will exclude national Amtrak trips from the visualizaiton and vehicle counts.
     operators_in_bbox -= {'o-9-amtrak'}
     print len(operators_in_bbox), "operators to be downloaded."
+    print ""
 
     # ### Run script on every operator and save each operator's results to a separate csv
     if not os.path.exists("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE)):
@@ -321,7 +326,9 @@ if __name__ == "__main__":
     if len(failures): print "failed operators:", failures
 
     # ### Concatenate all individual operator csv files into one big dataframe
+    print "Concatenating individual operator outputs."
     concatenated_df = concatenate_csvs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
+    print "Calculating trip segment bearings."
     concatenated_df['bearing'] = concatenated_df.apply(lambda row: calc_bearing_between_points(row['start_lat'], row['start_lon'], row['end_lat'], row['end_lon']), axis=1)
     concatenated_df.to_csv("data/{}/{}/output.csv".format(OUTPUT_NAME, DATE))
 
@@ -361,8 +368,7 @@ if __name__ == "__main__":
     # vehicle types by using a consitent set of random indices to select
     # counts for different vehicle types.
 
-    frames = 3600
-    random_indices = np.sort(np.random.choice(vehicles.index, frames, replace=False))
+    random_indices = np.sort(np.random.choice(vehicles.index, FRAMES, replace=False))
 
     vehicles_counts_output = vehicles.loc[random_indices].reset_index(drop=True)
     vehicles_counts_output['frame'] = vehicles_counts_output.index
@@ -388,10 +394,22 @@ if __name__ == "__main__":
     # Save these vehicle count stats to csv's.
     if not os.path.exists("data/{}/{}/vehicle_counts".format(OUTPUT_NAME, DATE)):
         os.makedirs("data/{}/{}/vehicle_counts".format(OUTPUT_NAME, DATE))
-    vehicles_counts_output.to_csv("data/{}/{}/vehicle_counts/vehicles_count_{}.csv".format(OUTPUT_NAME, DATE, frames))
-    buses_counts_output.to_csv("data/{}/{}/vehicle_counts/buses_count_{}.csv".format(OUTPUT_NAME, DATE, frames))
-    trams_counts_output.to_csv("data/{}/{}/vehicle_counts/trams_count_{}.csv".format(OUTPUT_NAME, DATE, frames))
-    metros_counts_output.to_csv("data/{}/{}/vehicle_counts/metros_count_{}.csv".format(OUTPUT_NAME, DATE, frames))
-    cablecars_counts_output.to_csv("data/{}/{}/vehicle_counts/cablecars_count_{}.csv".format(OUTPUT_NAME, DATE, frames))
-    trains_counts_output.to_csv("data/{}/{}/vehicle_counts/trains_count_{}.csv".format(OUTPUT_NAME, DATE, frames))
-    ferries_counts_output.to_csv("data/{}/{}/vehicle_counts/ferries_count_{}.csv".format(OUTPUT_NAME, DATE, frames))
+    vehicles_counts_output.to_csv("data/{}/{}/vehicle_counts/vehicles_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
+    buses_counts_output.to_csv("data/{}/{}/vehicle_counts/buses_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
+    trams_counts_output.to_csv("data/{}/{}/vehicle_counts/trams_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
+    metros_counts_output.to_csv("data/{}/{}/vehicle_counts/metros_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
+    cablecars_counts_output.to_csv("data/{}/{}/vehicle_counts/cablecars_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
+    trains_counts_output.to_csv("data/{}/{}/vehicle_counts/trains_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
+    ferries_counts_output.to_csv("data/{}/{}/vehicle_counts/ferries_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
+
+
+    ## Use processing sketch template to create processing sketch file
+    with open("assets/template.pde") as f:
+        data = f.read()
+    s = Template(data)
+    if not os.path.exists("sketch_{}".format(OUTPUT_NAME)):
+        os.makedirs("sketch_{}".format(OUTPUT_NAME))
+    with open("sketch_{}/sketch_{}.pde".format(OUTPUT_NAME, OUTPUT_NAME), "w") as f:
+        f.write(
+            s.substitute(DIRECTORY_NAME=OUTPUT_NAME, DATE=DATE, TOTAL_FRAMES=FRAMES)
+        )
