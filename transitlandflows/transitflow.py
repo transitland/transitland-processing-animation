@@ -12,7 +12,7 @@ MAPZEN_APIKEY = None
 OUTPUT_NAME = None
 DATE = None
 FRAMES = None
-PER_PAGE = 500
+PER_PAGE = 1000
 
 # Helper functions
 
@@ -255,7 +255,6 @@ def count_vehicles_on_screen(concatenated_df, date):
 
     return vehicles, buses, trams, metros, cablecars, trains, ferries
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", help="Animation day") # default=TODAY
@@ -318,7 +317,6 @@ if __name__ == "__main__":
     print "name: ", OUTPUT_NAME
     print "API key: ", MAPZEN_APIKEY
 
-
     if BBOX:
         print "bbox: ", south, west, north, east
         print ""
@@ -341,15 +339,6 @@ if __name__ == "__main__":
         print len(failures), "operators failed."
         if len(failures): print "failed operators:", failures
 
-        # ### Concatenate all individual operator csv files into one big dataframe
-        print "Concatenating individual operator outputs."
-        concatenated_df = concatenate_csvs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
-        print "Calculating trip segment bearings."
-        concatenated_df['bearing'] = concatenated_df.apply(lambda row: calc_bearing_between_points(row['start_lat'], row['start_lon'], row['end_lat'], row['end_lon']), axis=1)
-        concatenated_df.to_csv("data/{}/{}/output.csv".format(OUTPUT_NAME, DATE))
-
-        print "Total rows: ", concatenated_df.shape[0]
-
     elif OPERATOR:
         print "operator: ", OPERATOR
         print ""
@@ -361,10 +350,15 @@ if __name__ == "__main__":
         print len(failures), "operators failed."
         if len(failures): print "failed operators:", failures
 
-        # ### Concatenate all individual operator csv files into one big dataframe
-        print "Calculating trip segment bearings."
-        results['bearing'] = results.apply(lambda row: calc_bearing_between_points(row['start_lat'], row['start_lon'], row['end_lat'], row['end_lon']), axis=1)
-        results.to_csv("data/{}/{}/output.csv".format(OUTPUT_NAME, DATE))
+
+    # ### Concatenate all individual operator csv files into one big dataframe
+    print "Concatenating individual operator outputs."
+    concatenated_df = concatenate_csvs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
+    print "Calculating trip segment bearings."
+    concatenated_df['bearing'] = concatenated_df.apply(lambda row: calc_bearing_between_points(row['start_lat'], row['start_lon'], row['end_lat'], row['end_lon']), axis=1)
+    concatenated_df.to_csv("data/{}/{}/output.csv".format(OUTPUT_NAME, DATE))
+    print "Total rows: ", concatenated_df.shape[0]
+
 
     # ### That's it for the trip data!
 
@@ -387,7 +381,6 @@ if __name__ == "__main__":
     # is "on the road" at 10:00am, but if a trip ends at 10:15am, then it is
     # not considered "on the road" at 10:15am. This way, we avoid double
     # counting vehicles.
-
     print "Counting number of vehicles in transit."
     vehicles, buses, trams, metros, cablecars, trains, ferries = count_vehicles_on_screen(concatenated_df, DATE)
 
@@ -404,22 +397,16 @@ if __name__ == "__main__":
 
     vehicles_counts_output = vehicles.loc[random_indices].reset_index(drop=True)
     vehicles_counts_output['frame'] = vehicles_counts_output.index
-
     buses_counts_output = buses.loc[random_indices].reset_index(drop=True)
     buses_counts_output['frame'] = buses_counts_output.index
-
     trams_counts_output = trams.loc[random_indices].reset_index(drop=True)
     trams_counts_output['frame'] = trams_counts_output.index
-
     metros_counts_output = metros.loc[random_indices].reset_index(drop=True)
     metros_counts_output['frame'] = metros_counts_output.index
-
     cablecars_counts_output = cablecars.loc[random_indices].reset_index(drop=True)
     cablecars_counts_output['frame'] = cablecars_counts_output.index
-
     trains_counts_output = trains.loc[random_indices].reset_index(drop=True)
     trains_counts_output['frame'] = trains_counts_output.index
-
     ferries_counts_output = ferries.loc[random_indices].reset_index(drop=True)
     ferries_counts_output['frame'] = ferries_counts_output.index
 
@@ -433,6 +420,10 @@ if __name__ == "__main__":
     cablecars_counts_output.to_csv("data/{}/{}/vehicle_counts/cablecars_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
     trains_counts_output.to_csv("data/{}/{}/vehicle_counts/trains_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
     ferries_counts_output.to_csv("data/{}/{}/vehicle_counts/ferries_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
+
+    # Hacky way to center the sketch
+    if OPERATOR:
+        south, west, north, east = concatenated_df['start_lat'][0], concatenated_df['start_lon'][0], concatenated_df['start_lat'][-1], concatenated_df['start_lon'][-1]
 
     ## Use processing sketch template to create processing sketch file
     with open("templates/template.pde") as f:

@@ -30,17 +30,19 @@ Each example contains four things:
 - Optional (for plotting): matplotlib, plotly
 
 ### Instructions:
-- If you only want to run the Processing sketches you can simply open `01_LIRR/sketch/sketch.pde` or `02_BayArea/sketch/sketch.pde` and hit play. Be sure to unzip the `02_BayArea/data/output.zip` file first.
+`cd transitlandflows`
 
-- If you want to use the python scripts to download data from transitland for either example, `cd` to either example folder and enter `python LIRR.py` or `python bay_area.py` into your terminal. This will download the csv. Once the csv has downloaded, open the appropriate `sketch.pde` file and hit play. Note: LIRR script should only take a few minutes. The Bay Area script takes 1.5 hours for me.
+- To visualize a single operator:
+`python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --operator=o-9q9-bart`
 
-- Hopefully the examples are easy enough to follow that either can be repurposed for new operators and cities without too much effort.
+- To visualize every operator within a bounding box:
+`python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=sacramento --bbox=38.466493,-121.640625,38.683366,-121.297302`
 
 ### Room for future improvments...
 - The Processing sketch currently uses simple linear interpolation to animate a point from stop A to stop B given the departure and arrival times. It does not show vehicles following their actual, real-life routes. The sketch would be more meaningful if vehicles actually followed their routes. This seems entirely possible to do for operators that provide route shapes... just haven't gotten there yet!
 
-### Known isses: 
-- Python script is runnning into API timeouts and failing to process some of the biggest transit operators, including NYC MTA and Chicago Transit Authority. 
+### Known isses:
+- Python script is runnning into API timeouts and failing to process some of the biggest transit operators, including NYC MTA and Chicago Transit Authority.
 - Bay Area script is failing to download the Santa Cruz Metro due to an API issue (work in progress)
 
 ### Credits:
@@ -51,7 +53,7 @@ Each example contains four things:
 ### Related projects / inspirations:
 - *[Shanghai Metro Flow](http://tillnagel.com/2013/12/shanghai-metro-flow/)*, Till Nagel
 - *[Barcelona Cycle Challenge](http://juanfrans.com/projects/barcelonaCycleChallenge.html)*, Juan Francisco Saldarriaga
-- *[Seven Days of Carsharing in Milan](http://labs.densitydesign.org/carsharing/))*, Matteo Azzi, Daniele Ciminieri, others 
+- *[Seven Days of Carsharing in Milan](http://labs.densitydesign.org/carsharing/))*, Matteo Azzi, Daniele Ciminieri, others
 - *[NYC Taxis: A Day in the Life](http://chriswhong.github.io/nyctaxi/)*, Chris Whong
 - *[TaxiVis](http://vgc.poly.edu/projects/taxivis/)
 
