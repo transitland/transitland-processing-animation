@@ -403,7 +403,7 @@ if __name__ == "__main__":
     ferries_counts_output.to_csv("data/{}/{}/vehicle_counts/ferries_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
 
     ## Use processing sketch template to create processing sketch file
-    with open("assets/template.pde") as f:
+    with open("templates/template.pde") as f:
         data = f.read()
     s = Template(data)
     if not os.path.exists("sketch_{}".format(OUTPUT_NAME)):
