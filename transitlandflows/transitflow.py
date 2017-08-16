@@ -12,6 +12,7 @@ MAPZEN_APIKEY = None
 OUTPUT_NAME = None
 DATE = None
 FRAMES = None
+PER_PAGE = 500
 
 # Helper functions
 
@@ -30,29 +31,27 @@ def transitland_request(url):
 
 def get_vehicle_types(operator_onestop_id):
     """This function will get all **vehicle types** for an operator, by route. So we can ask *"what vehicle type is this particular trip?"* and color code trips by vehicle type."""
-    routes_url = "http://transit.land/api/v1/routes?operated_by={}&per_page=1000&api_key={}".format(operator_onestop_id, MAPZEN_APIKEY)
+    routes_url = "http://transit.land/api/v1/routes?operated_by={}&per_page={}&api_key={}".format(operator_onestop_id, PER_PAGE, MAPZEN_APIKEY)
     lookup_vehicle_types = {i['onestop_id']: i['vehicle_type'] for i in transitland_request(routes_url)}
     return lookup_vehicle_types
 
 # Get stops
-
 def get_stop_lats(operator_onestop_id):
     """Get stop lats for a particular operator."""
-    stops_url = "http://transit.land/api/v1/stops?served_by={}&per_page=1000&api_key={}".format(operator_onestop_id, MAPZEN_APIKEY)
+    stops_url = "http://transit.land/api/v1/stops?served_by={}&per_page={}&api_key={}".format(operator_onestop_id, PER_PAGE, MAPZEN_APIKEY)
     lookup_stop_lats = {i['onestop_id']: i['geometry']['coordinates'][1] for i in transitland_request(stops_url)}
     return lookup_stop_lats
 
 def get_stop_lons(operator_onestop_id):
     """Get stop lons for a particular operator."""
-    stops_url = "http://transit.land/api/v1/stops?served_by={}&per_page=1000&api_key={}".format(operator_onestop_id, MAPZEN_APIKEY)
+    stops_url = "http://transit.land/api/v1/stops?served_by={}&per_page={}&api_key={}".format(operator_onestop_id, PER_PAGE,MAPZEN_APIKEY)
     lookup_stop_lons = {i['onestop_id']: i['geometry']['coordinates'][0] for i in transitland_request(stops_url)}
     return lookup_stop_lons
 
 # Get Schedule data
-
 def get_schedule_stop_pairs(operator_onestop_id, date):
     """This function gets origin-destination pairs and timestamps from the schedule stop pairs API. This is the most important function and the largest API request."""
-    schedule_stop_pairs_url = "http://transit.land/api/v1/schedule_stop_pairs?date={}&operator_onestop_id={}&per_page=1000&api_key={}".format(date, operator_onestop_id, MAPZEN_APIKEY)
+    schedule_stop_pairs_url = "http://transit.land/api/v1/schedule_stop_pairs?date={}&operator_onestop_id={}&per_page={}&api_key={}".format(date, operator_onestop_id, PER_PAGE,MAPZEN_APIKEY)
     print schedule_stop_pairs_url
     origin_times = []
     destination_times = []
@@ -332,7 +331,7 @@ if __name__ == "__main__":
         print "bbox: ", south, west, north, east
         print ""
         # First, let's get a list of the onestop id's for every operator in our bounding box.
-        operators_url = "http://transit.land/api/v1/operators?bbox={},{},{},{}&per_page=1000&api_key={}".format(west, south, east, north, MAPZEN_APIKEY)
+        operators_url = "http://transit.land/api/v1/operators?bbox={},{},{},{}&per_page={}&api_key={}".format(west, south, east, north, PER_PAGE,MAPZEN_APIKEY)
         operators_in_bbox = {i['onestop_id'] for i in transitland_request(operators_url)}
         print len(operators_in_bbox), "operators in bounding box."
 
