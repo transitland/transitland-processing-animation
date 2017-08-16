@@ -1,5 +1,6 @@
 # https://github.com/github/gitignore/blob/master/Python.gitignore
 *.csv
+*.DS_Store
 virtualenv/
 
 # Byte-compiled / optimized / DLL files
