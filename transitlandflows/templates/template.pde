@@ -1,7 +1,7 @@
 ////// MAIN INPUTS ///////
 String directoryName = "${DIRECTORY_NAME}";
 String date = "${DATE}";
-String inputFile = "../data/" + directoryName + "/" + date + "/output.csv";
+String inputFile = "../../data/" + directoryName + "/" + date + "/output.csv";
 String scenario = "Dynamic";
 int totalFrames = ${TOTAL_FRAMES};
 boolean recording = false;
@@ -39,13 +39,13 @@ VideoExport videoExport;
 UnfoldingMap map;
 
 // Statistics input files (for stacked area chart)
-String vehicleCountFile = "../data/" + directoryName + "/" + date + "/vehicle_counts/vehicles_" + totalFrames + ".csv";
-String busCountFile = "../data/" + directoryName + "/" + date + "/vehicle_counts/buses_" + totalFrames + ".csv";
-String tramCountFile = "../data/" + directoryName + "/" + date + "/vehicle_counts/trams_" + totalFrames + ".csv";
-String cablecarCountFile = "../data/" + directoryName + "/" + date + "/vehicle_counts/cablecars_" + totalFrames + ".csv";
-String metroCountFile = "../data/" + directoryName + "/" + date + "/vehicle_counts/metros_" + totalFrames + ".csv";
-String trainCountFile = "../data/" + directoryName + "/" + date + "/vehicle_counts/trains_" + totalFrames + ".csv";
-String ferryCountFile = "../data/" + directoryName + "/" + date + "/vehicle_counts/ferries_" + totalFrames + ".csv";
+String vehicleCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/vehicles_" + totalFrames + ".csv";
+String busCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/buses_" + totalFrames + ".csv";
+String tramCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/trams_" + totalFrames + ".csv";
+String cablecarCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/cablecars_" + totalFrames + ".csv";
+String metroCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/metros_" + totalFrames + ".csv";
+String trainCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/trains_" + totalFrames + ".csv";
+String ferryCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/ferries_" + totalFrames + ".csv";
 
 int totalSeconds;
 Table tripTable;
@@ -246,9 +246,9 @@ void setup() {
   // Fonts and icons
   raleway  = createFont("Raleway-Heavy", 32);
   ralewayBold  = createFont("Raleway-Bold", 28);
-  clock = loadImage("../assets/clock_icon.png");
+  clock = loadImage("../../assets/clock_icon.png");
   clock.resize(0, 35);
-  calendar = loadImage("../assets/calendar_icon.png");
+  calendar = loadImage("../../assets/calendar_icon.png");
   calendar.resize(0, 35);
 
   videoExport = new VideoExport(this);
@@ -936,4 +936,44 @@ class Trips {
        }
    }
   }
+
+  void plotFerry(){
+     if (frameCount >= startFrame && frameCount < endFrame){
+       float percentTravelled = (float(frameCount) - float(startFrame)) / float(tripFrames);
+
+       currentLocation = new Location(
+
+         lerp(start.x, end.x, percentTravelled),
+         lerp(start.y, end.y, percentTravelled));
+
+       currentPosition = map.getScreenPosition(currentLocation);
+
+       // Zoom dependent ellipse size
+       float z = map.getZoom();
+       if (z <= 32.0){ s = 3;
+       } else if (z == 64.0){ s = 3;
+       } else if (z == 128.0){ s = 3;
+       } else if (z == 256.0){ s = 4;
+       } else if (z == 512.0){ s = 5;
+       } else if (z == 1024.0){ s = 6;
+       } else if (z == 2048.0){ s = 7;
+       } else if (z == 4096.0){ s = 8;
+       } else if (z == 8192.0){ s = 9;
+       } else if (z >= 16384.0){ s = 10;
+       }
+
+       if (rotateBearing == false) ellipse(currentPosition.x, currentPosition.y, s, s);
+       else {
+         pushMatrix();
+         pushStyle();
+           translate(currentPosition.x, currentPosition.y);
+           rotate(radians + PI/2);
+           rectMode(CENTER);
+           rect(0, 0, s*xscale*0.8, s*yscale, 7);
+         popStyle();
+         popMatrix();
+       }
+   }
+  }
+
 }
