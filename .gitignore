@@ -1,5 +1,6 @@
 # https://github.com/github/gitignore/blob/master/Python.gitignore
 *.csv
+virtualenv/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
