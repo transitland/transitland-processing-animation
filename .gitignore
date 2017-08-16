@@ -2,6 +2,7 @@
 *.csv
 *.DS_Store
 virtualenv/
+venv/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -60,8 +61,3 @@ docs/_build/
 
 # PyBuilder
 target/
-
-# Virtual Environment
-venv/
-transitlandflows/sketches/london/london.pde
-transitlandflows/sketches/portugal/portugal.pde
