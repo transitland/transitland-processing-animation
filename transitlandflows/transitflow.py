@@ -402,7 +402,6 @@ if __name__ == "__main__":
     trains_counts_output.to_csv("data/{}/{}/vehicle_counts/trains_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
     ferries_counts_output.to_csv("data/{}/{}/vehicle_counts/ferries_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
 
-
     ## Use processing sketch template to create processing sketch file
     with open("assets/template.pde") as f:
         data = f.read()
@@ -411,5 +410,11 @@ if __name__ == "__main__":
         os.makedirs("sketch_{}".format(OUTPUT_NAME))
     with open("sketch_{}/sketch_{}.pde".format(OUTPUT_NAME, OUTPUT_NAME), "w") as f:
         f.write(
-            s.substitute(DIRECTORY_NAME=OUTPUT_NAME, DATE=DATE, TOTAL_FRAMES=FRAMES)
+            s.substitute(
+                DIRECTORY_NAME=OUTPUT_NAME,
+                DATE=DATE,
+                TOTAL_FRAMES=FRAMES,
+                AVG_LAT=(float(south) + float(north))/2.0,
+                AVG_LON=(float(west) + float(east))/2.0
         )
+)
