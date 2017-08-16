@@ -63,3 +63,5 @@ target/
 
 # Virtual Environment
 venv/
+transitlandflows/sketches/london/london.pde
+transitlandflows/sketches/portugal/portugal.pde
