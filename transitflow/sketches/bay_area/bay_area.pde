@@ -636,7 +636,7 @@ void draw() {
     textSize(16);
     text(date, 75, 128);
     textSize(12);
-    text("© Mapzen | Transitland | CARTO | OpenStreetMap | Unfolding Maps", width-50, height-20);
+    text("© Mapzen | Transitland | Carto | OpenStreetMap | Unfolding Maps", width-400, height-10);
     
     if (recording == true) {
       if (frameCount < totalFrames) {
