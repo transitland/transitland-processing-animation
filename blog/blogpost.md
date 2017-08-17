@@ -1,4 +1,4 @@
-# Visualizing Transit Frequency with *TransitFlow*
+# Visualizing Transit Frequency with *TransitLand*
 
 Urban planner Jarrett Walker emphasizes the importance of transit **frequency**:
 
@@ -14,7 +14,7 @@ In particular, we will make use of Mapzen's `ScheduleStopPair` representation. E
 
 The python script `transitflow.py` uses the [schedule stop pairs API](http://transit.land/api/v1/schedule_stop_pairs) endpoint to search for all `ScheduleStopPair`s for a specified operator or within a specified bounding box. It then concatenates these `ScheduleStopPair`s into a table and outputs a single output csv file which will drive the animation. The Processing sketch reads in this output csv file, uses the [Unfolding Maps](http://unfoldingmaps.org/) by Till Nagel to convert geolocations to pixels, and animates vehicle movements using linear interpolation.
 
-# Animate a particular operator
+### Animate a particular operator
 
 To animate a particular transit operator, search for that operator's `onestop_id` using the [Transitland Feed Registery](https://transit.land/feed-registry/). The `onestop_id` for BART, for example, is `o-9q9-bart`.
 
@@ -22,7 +22,7 @@ Then, you can download the data and create an animation for that operator using 
 
 `python transitflow.py --date=2017-08-15 --name=bay_area --operator=o-9q9-bart`
 
-# Animate all operators in a bounding box
+### Animate all operators in a bounding box
 
 To animate every operator in a bounding box, you may pass in the bounding box as a command line argument. You may also decide to clip the results to that bounding box, or exclude particular operators.
 
