@@ -1,6 +1,8 @@
 # https://github.com/github/gitignore/blob/master/Python.gitignore
 *.csv
 *.DS_Store
+*ffmpeg.txt
+*.mp4
 virtualenv/
 venv/
 
