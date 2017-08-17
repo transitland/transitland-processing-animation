@@ -35,8 +35,8 @@ class TransitlandRequest(object):
         req = urllib2.Request(uri)
         req.add_header('Content-Type', 'application/json')
         response = urllib2.urlopen(req)
-        if response.status_code >= 400:
-          raise StandardError('http error: %s'%(response.status_code))
+        if response.getcode() >= 400:
+          raise StandardError('http error: %s'%(response.getcode()))
         else:
           success = True
           data = json.loads(response.read())
