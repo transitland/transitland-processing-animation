@@ -4,7 +4,7 @@ String date = "2017-08-15";
 String inputFile = "../../data/" + directoryName + "/" + date + "/output.csv";
 String scenario = "Dynamic";
 int totalFrames = 3600;
-boolean recording = false;
+boolean recording = true;
 boolean HQ = false;
 boolean rotateBearing = true;
 
@@ -172,9 +172,9 @@ boolean saturday = false;
 boolean sunday = false;
 
 void setup() {
-  size(1000, 800, P3D);
+  //size(1000, 800, P3D);
   //size(1000, 960, P3D);
-  //fullScreen(P3D);
+  fullScreen(P3D);
 
   provider1 = new OpenStreetMap.OpenStreetMapProvider();
   provider2 = new OpenStreetMap.OSMGrayProvider();
