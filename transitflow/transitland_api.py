@@ -7,7 +7,7 @@ class TransitlandRequest(object):
   """Simple transitland API interface, with rate limits."""
   last_request_time = 0.0 # time of last request
 
-  def __init__(self, host=None, apikey=None, ratelimit=8, retrylimit=5):
+  def __init__(self, host='https://transit.land', apikey=None, ratelimit=8, retrylimit=5):
     self.host = host
     self.apikey = apikey
     self.ratelimit = ratelimit
