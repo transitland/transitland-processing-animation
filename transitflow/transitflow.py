@@ -408,11 +408,13 @@ if __name__ == "__main__":
         south, west, north, east = df['start_lat'][0], df['start_lon'][0], df['start_lat'][1], df['start_lon'][1]
 
     ## Use processing sketch template to create processing sketch file
-    with open("templates/template.pde") as f:
+    template_path = os.path.join(os.path.dirname(__file__), 'templates', 'template.pde')
+    with open(template_path) as f:
         data = f.read()
     s = Template(data)
     if not os.path.exists("sketches/{}".format(OUTPUT_NAME)):
         os.makedirs("sketches/{}".format(OUTPUT_NAME))
+
     with open("sketches/{}/{}.pde".format(OUTPUT_NAME, OUTPUT_NAME), "w") as f:
         f.write(
             s.substitute(
@@ -422,5 +424,5 @@ if __name__ == "__main__":
                 RECORDING=str(RECORDING).lower(),
                 AVG_LAT=(float(south) + float(north))/2.0,
                 AVG_LON=(float(west) + float(east))/2.0
+            )
         )
-)
