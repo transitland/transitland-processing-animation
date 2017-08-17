@@ -67,16 +67,3 @@ class TransitlandRequest(object):
         main_key = (set(data.keys()) - set(['meta'])).pop()
         for item in data[main_key]:
             yield item
-
-
-api = TransitlandRequest(host='http://transit.land', ratelimit=8.0)
-for stop in api.request('schedule_stop_pairs', per_page=100000):
-  print stop['onestop_id']
-
-
-
-
-
-
-
-#
