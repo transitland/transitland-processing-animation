@@ -1,10 +1,10 @@
 ////// MAIN INPUTS ///////
-String directoryName = "minneapolis";
+String directoryName = "bay_area";
 String date = "2017-08-15";
 String inputFile = "../../data/" + directoryName + "/" + date + "/output.csv";
-String scenario = "Dynamic";
+String scenario = "Bay Area";
 int totalFrames = 3600;
-boolean recording = false;
+boolean recording = true;
 boolean HQ = false;
 boolean rotateBearing = true;
 
@@ -54,6 +54,11 @@ ArrayList<Trips> trips = new ArrayList<Trips>();
 ArrayList<String> operators = new ArrayList<String>();
 ArrayList<String> vehicle_types = new ArrayList<String>();
 ArrayList<Float> bearings = new ArrayList<Float>();
+
+Table vehicleCount;  
+IntList vehicleCounts;
+int maxVehicleCount;
+float hscale = float(totalFrames) / float(width)*0.12; //*0.78
 
 Table busCount;
 ArrayList<Line> busLines = new ArrayList<Line>();
@@ -124,7 +129,7 @@ PImage calendar;
 PImage airport;
 PFont raleway;
 PFont ralewayBold;
-Integer screenfillalpha = 100;
+Integer screenfillalpha = 80;
 
 Location place_start;
 Float firstLat;
@@ -304,7 +309,21 @@ void loadData() {
   }
 
 
-  int lineAlpha = 60;
+  int lineAlpha = 80;
+  // total vehicle counts
+  vehicleCount = loadTable(vehicleCountFile, "header");
+  vehicleCounts = new IntList();
+  for (int i = 0; i < vehicleCount.getRowCount(); i++) {
+    TableRow row = vehicleCount.getRow(i);
+    int count = row.getInt("count");
+    vehicleCounts.append(count);
+  }
+  maxVehicleCount = int(vehicleCounts.max());
+  println("Max vehicles on road: " + maxVehicleCount);
+  
+  // maximum height of stacked bar chart in pixels
+  int maxPixels = 140; 
+  
   // bus stacked bar
   busCount = loadTable(busCountFile, "header");
   for (int i = 0; i < busCount.getRowCount(); i++) {
@@ -314,12 +333,13 @@ void loadData() {
     busFrames.add(frame);
     busCounts.add(count);
     float h = busCounts.get(i);
-    busHeights.add(h);
     c = color(0, 173, 253, lineAlpha);
     int xmargin = 50;
     int ymargin = 40;
     int xaxisoffset = 5;
-    Line line = new Line(xmargin + i/hscale, height-ymargin, xmargin + i/hscale, height-ymargin-h/vscale, c);
+    float lineHeight = map(h, 0, maxVehicleCount, 0, maxPixels);
+    busHeights.add(lineHeight);
+    Line line = new Line(xmargin + i/hscale, height-ymargin, xmargin + i/hscale, height-ymargin-lineHeight, c);
     c = color(255);
     Line xaxis = new Line(xmargin, height-ymargin+xaxisoffset, xmargin + i/hscale+1, height-ymargin+xaxisoffset, c);
     busLines.add(line);
@@ -335,12 +355,13 @@ void loadData() {
     tramFrames.add(frame);
     tramCounts.add(count);
     float h = tramCounts.get(i);
-    tramHeights.add(h);
+    float lineHeight = map(h, 0, maxVehicleCount, 0, maxPixels);
+    tramHeights.add(lineHeight);
     h_offset = busHeights.get(i);
     c = color(124, 252, 0, lineAlpha);
     int xmargin = 50;
     int ymargin = 40;
-    Line line = new Line(xmargin + i/hscale, height-ymargin-(h_offset)/vscale, xmargin + i/hscale, height-ymargin-(h+h_offset)/vscale, c);
+    Line line = new Line(xmargin + i/hscale, height-ymargin-(h_offset), xmargin + i/hscale, height-ymargin-(lineHeight+h_offset), c);
     tramLines.add(line);
   }
 
@@ -353,12 +374,13 @@ void loadData() {
     metroFrames.add(frame);
     metroCounts.add(count);
     float h = metroCounts.get(i);
-    metroHeights.add(h);
+    float lineHeight = map(h, 0, maxVehicleCount, 0, maxPixels);
+    metroHeights.add(lineHeight);
     h_offset = busHeights.get(i) + tramHeights.get(i);
     c = color(255, 0, 0, lineAlpha);
     int xmargin = 50;
     int ymargin = 40;
-    Line line = new Line(xmargin + i/hscale, height-ymargin-(h_offset)/vscale, xmargin + i/hscale, height-ymargin-(h+h_offset)/vscale, c);
+    Line line = new Line(xmargin + i/hscale, height-ymargin-(h_offset), xmargin + i/hscale, height-ymargin-(lineHeight+h_offset), c);
     metroLines.add(line);
   }
 
@@ -371,12 +393,13 @@ void loadData() {
     trainFrames.add(frame);
     trainCounts.add(count);
     float h = trainCounts.get(i);
-    trainHeights.add(h);
+    float lineHeight = map(h, 0, maxVehicleCount, 0, maxPixels);
+    trainHeights.add(lineHeight);
     h_offset = busHeights.get(i)+ tramHeights.get(i)+ metroHeights.get(i);
     c = color(255, 215, 0, lineAlpha);
     int xmargin = 50;
     int ymargin = 40;
-    Line line = new Line(xmargin + i/hscale, height-ymargin-(h_offset)/vscale, xmargin + i/hscale, height-ymargin-(h+h_offset)/vscale, c);
+    Line line = new Line(xmargin + i/hscale, height-ymargin-(h_offset), xmargin + i/hscale, height-ymargin-(lineHeight+h_offset), c);
     trainLines.add(line);
   }
 
@@ -389,12 +412,13 @@ void loadData() {
     cablecarFrames.add(frame);
     cablecarCounts.add(count);
     float h = cablecarCounts.get(i);
-    cablecarHeights.add(h);
+    float lineHeight = map(h, 0, maxVehicleCount, 0, maxPixels);
+    cablecarHeights.add(lineHeight);
     h_offset = busHeights.get(i) + tramHeights.get(i) + metroHeights.get(i) + trainHeights.get(i);
     c = color(255,140,0, lineAlpha);
     int xmargin = 50;
     int ymargin = 40;
-    Line line = new Line(xmargin + i/hscale, height-ymargin-(h_offset)/vscale, xmargin + i/hscale, height-ymargin-(h+h_offset)/vscale, c);
+    Line line = new Line(xmargin + i/hscale, height-ymargin-(h_offset), xmargin + i/hscale, height-ymargin-(lineHeight+h_offset), c);
     cablecarLines.add(line);
   }
 
@@ -407,24 +431,21 @@ void loadData() {
     ferryFrames.add(frame);
     ferryCounts.add(count);
     float h = ferryCounts.get(i);
-    ferryHeights.add(h);
+    float lineHeight = map(h, 0, maxVehicleCount, 0, maxPixels);
+    ferryHeights.add(lineHeight);
     h_offset = busHeights.get(i) + tramHeights.get(i) + metroHeights.get(i) + cablecarHeights.get(i) + trainHeights.get(i);
     c = color(255, 105, 180, lineAlpha);
     int xmargin = 50;
     int ymargin = 40;
-    Line line = new Line(xmargin + i/hscale, height-ymargin-(h_offset)/vscale, xmargin + i/hscale, height-ymargin-(h+h_offset)/vscale, c);
+    Line line = new Line(xmargin + i/hscale, height-ymargin-(h_offset), xmargin + i/hscale, height-ymargin-(lineHeight+h_offset), c);
     ferryLines.add(line);
   }
 }
 
-float hscale = float(totalFrames) / float(width)*0.12; //*0.78
-float vscale = 20;
 
 void draw() {
-
+  
   if (frameCount < totalFrames) {
-
-
 
     map.draw();
     noStroke();
@@ -665,7 +686,7 @@ void keyPressed() {
     map.mapDisplay.setProvider(providerr);
   } else if (key == 't') {
     map.mapDisplay.setProvider(providert);
-    screenfillalpha = 150;
+    screenfillalpha = 100;
   } else if (key == 'y') {
     map.mapDisplay.setProvider(providery);
   } else if (key == 'u') {
