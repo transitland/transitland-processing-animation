@@ -391,7 +391,7 @@ void loadData() {
     float h = cablecarCounts.get(i);
     cablecarHeights.add(h);
     h_offset = busHeights.get(i) + tramHeights.get(i) + metroHeights.get(i) + trainHeights.get(i);
-    c = color(238, 130, 238, lineAlpha);
+    c = color(255,140,0, lineAlpha);
     int xmargin = 50;
     int ymargin = 40;
     Line line = new Line(xmargin + i/hscale, height-ymargin-(h_offset)/vscale, xmargin + i/hscale, height-ymargin-(h+h_offset)/vscale, c);
@@ -507,7 +507,7 @@ void draw() {
     textAlign(LEFT);
 
     int h_cablecar = cablecarCounts.get(frameCount);
-    fill(238, 130, 238, 255);
+    fill(255,140,0, 255);
     text("Cable Cars: ", xmargin + frameCount/hscale, height-ymargin-45);
     textAlign(RIGHT);
     text(h_cablecar, xmargin + frameCount/hscale + 100, height-ymargin-45);
@@ -558,12 +558,12 @@ void draw() {
       switch(vehicle_type) {
       case "bus":
         c = color(0, 173, 253);
-        fill(c, 200);
+        fill(c, 250);
         trip.plotBus();
         break;
       case "bus_service":
         c = color(0, 173, 253);
-        fill(c, 200);
+        fill(c, 250);
         trip.plotBus();
         break;
       case("tram"):
@@ -584,10 +584,10 @@ void draw() {
       case("ferry"):
         c = color(255, 105, 180);
         fill(c, 200);
-        trip.plotRide();
+        trip.plotFerry();
         break;
       case("cablecar"):
-        c = color(238, 130, 238);
+        c = color(255,140,0);
         fill(c, 200);
         trip.plotRide();
       case("gondola"):
