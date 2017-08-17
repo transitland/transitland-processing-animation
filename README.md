@@ -24,7 +24,7 @@ Install python requirements:
 - `pip install -r requirements.txt`
 
 Navigate to folder:
-- `cd transitlandflows`
+- `cd transitflow`
 
 Visualize transit flows by operator onestop_id:
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --operator=o-9q9-bart`
