@@ -30,8 +30,8 @@ def get_stop_lat_lons(operator_onestop_id):
     lookup_stop_lats = {}
     lookup_stop_lons = {}
     for stop in stops_request:
-      lookup_stop_lats[stop['onestop_id']] = i['geometry']['coordinates'][1]
-      lookup_stop_lons[stop['onestop_id']] = i['geometry']['coordinates'][0]
+      lookup_stop_lats[stop['onestop_id']] = stop['geometry']['coordinates'][1]
+      lookup_stop_lons[stop['onestop_id']] = stop['geometry']['coordinates'][0]
     return lookup_stop_lats, lookup_stop_lons
 
 # Get Schedule data
