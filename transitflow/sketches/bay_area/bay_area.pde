@@ -173,6 +173,7 @@ boolean sunday = false;
 
 void setup() {
   size(1000, 800, P3D);
+  //size(1000, 960, P3D);
   //fullScreen(P3D);
 
   provider1 = new OpenStreetMap.OpenStreetMapProvider();
@@ -205,7 +206,7 @@ void setup() {
   switch(scenario) {
   case "Dynamic":
     place_start = new Location(37.9832315, -121.944122);
-    zoom_start = 8;
+    zoom_start = 9;
     break;
   case "USA":
     Location USA = new Location(41, -98);
@@ -322,7 +323,7 @@ void loadData() {
   println("Max vehicles on road: " + maxVehicleCount);
 
   // maximum height of stacked bar chart in pixels
-  int maxPixels = 130;
+  int maxPixels = 140;
 
   // bus stacked bar
   busCount = loadTable(busCountFile, "header");
@@ -637,7 +638,8 @@ void draw() {
     text(date, 75, 128);
     textSize(12);
     text("© Mapzen | Transitland | Carto | OpenStreetMap | Unfolding Maps", width-400, height-10);
-    
+
+
     if (recording == true) {
       if (frameCount < totalFrames) {
         if (HQ == true) {
