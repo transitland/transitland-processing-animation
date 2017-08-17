@@ -14,26 +14,32 @@ Here is an example animation generated for the Bay Area:
 6. Quit and re-open Processing.
 
 ### Instructions:
-To run with virtualenv:
+- `git `
+
+To run with virtualenv (optional):
 - `virtualenv virtualenv`
 - `source virtualenv/bin/activate`
+
+Install python requirements:
 - `pip install -r requirements.txt`
+
+Navigate to folder:
 - `cd transitlandflows`
 
-To visualize a single operator:
+To visualize by operator onestop_id:
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --operator=o-9q9-bart`
 
-To visualize every operator within a bounding box:
+To visualize by bounding box:
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=sacramento --bbox=38.466493,-121.640625,38.683366,-121.297302`
 
 Bay area:
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle,o-9q-amtrakcalifornia`
 
-### Room for future improvments...
+### Room for future improvements...
 - The Processing sketch currently uses simple linear interpolation to animate a point from stop A to stop B given the departure and arrival times. It does not show vehicles following their actual, real-life routes. The sketch would be more meaningful if vehicles actually followed their routes. This seems entirely possible to do for operators that provide route shapes... just haven't gotten there yet!
 
-### Known isses:
-- Python script is runnning into API timeouts and failing to process some of the biggest transit operators, including NYC MTA and Chicago Transit Authority.
+### Known issues:
+- Python script is running into API timeouts and failing to process some of the biggest transit operators, including NYC MTA and Chicago Transit Authority.
 - Bay Area script is failing to download the Santa Cruz Metro due to an API issue (work in progress)
 
 ### Credits:
@@ -48,12 +54,12 @@ Bay area:
 - *[NYC Taxis: A Day in the Life](http://chriswhong.github.io/nyctaxi/)*, Chris Whong
 - *[TaxiVis](http://vgc.poly.edu/projects/taxivis/)
 
-And a few more of my own:
-- *[Multimodal Symphony: 24 Hours of Transit in New York City](https://vimeo.com/212484620)*
-- *[Los Angeles Transit Flows](https://vimeo.com/227178693)*
-- *[California Transit Flows](https://vimeo.com/227178693)*
-- *[New York City Taxi Flows](https://vimeo.com/210264431)*
-- *[New York City Subway Flows](https://vimeo.com/194378581)*
+And here are a few that I've made in the past using similar methods:
+- *[Multimodal Symphony: 24 Hours of Transit in New York City](https://vimeo.com/212484620)*, Will Geary
+- *[Los Angeles Transit Flows](https://vimeo.com/227178693)*, Will Geary
+- *[California Transit Flows](https://vimeo.com/227178693)*, Will Geary
+- *[New York City Taxi Flows](https://vimeo.com/210264431)*, Will Geary
+- *[New York City Subway Flows](https://vimeo.com/194378581)*, Will Geary
 
 
 ### To Do's:
