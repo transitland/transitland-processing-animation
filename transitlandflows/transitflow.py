@@ -336,8 +336,8 @@ if __name__ == "__main__":
     operators -= exclude_operators
     print len(operators), "operators to be downloaded."
     print ""
-
     ############
+
     if not os.path.exists("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE)):
         os.makedirs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
     results, failures = animate_operators(operators, DATE)
@@ -350,8 +350,6 @@ if __name__ == "__main__":
     df = concatenate_csvs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
     print "Calculating trip segment bearings."
     df['bearing'] = df.apply(lambda row: calc_bearing_between_points(row['start_lat'], row['start_lon'], row['end_lat'], row['end_lon']), axis=1)
-    df.to_csv("data/{}/{}/output.csv".format(OUTPUT_NAME, DATE))
-    print "Total rows: ", df.shape[0]
 
     # Clip to bbox. Either the start stop is within the bbox OR the end stop is within the bbox
     if args.bbox and args.clip_to_bbox:
@@ -359,6 +357,10 @@ if __name__ == "__main__":
             ((df['start_lat'] >= float(south)) & (df['start_lat'] <= float(north)) & (df['start_lon'] >= float(west)) & (df['start_lon'] <= float(east))) |
             ((df['end_lat'] >= float(south)) & (df['end_lat'] <= float(north)) & (df['end_lon'] >= float(west)) & (df['end_lon'] <= float(east)))
         ]
+
+    # Save to csv.
+    df.to_csv("data/{}/{}/output.csv".format(OUTPUT_NAME, DATE))
+    print "Total rows: ", df.shape[0]
 
     # ### That's it for the trip data!
 
