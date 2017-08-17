@@ -27,9 +27,11 @@ def get_vehicle_types(operator_onestop_id):
 def get_stop_lat_lons(operator_onestop_id):
     """Get stop lats and stop lons for a particular operator."""
     stops_request = TLAPI.request('stops', served_by=operator_onestop_id, per_page=PER_PAGE)
-    stops = list(stops_request)
-    lookup_stop_lats = {i['onestop_id']: i['geometry']['coordinates'][1] for i in stops}
-    lookup_stop_lons = {i['onestop_id']: i['geometry']['coordinates'][0] for i in stops}
+    lookup_stop_lats = {}
+    lookup_stop_lons = {}
+    for stop in stops_request:
+      lookup_stop_lats[stop['onestop_id']] = i['geometry']['coordinates'][1]
+      lookup_stop_lons[stop['onestop_id']] = i['geometry']['coordinates'][0]
     return lookup_stop_lats, lookup_stop_lons
 
 # Get Schedule data
