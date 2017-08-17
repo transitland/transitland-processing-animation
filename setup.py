@@ -10,5 +10,6 @@ setup(
   author_email='willcgeary@gmail.com',
   url='https://github.com/transitland/transitland-processing-animation',
   license='License :: OSI Approved :: MIT License',
-  packages=['transitlandflows']
+  packages=['transitlandflows'],
+  zip_safe=False
 )
