@@ -172,7 +172,8 @@ boolean saturday = false;
 boolean sunday = false;
 
 void setup() {
-  size(1000, 960, P3D);
+  size(1000, 800, P3D);
+  //size(1000, 960, P3D);
   //fullScreen(P3D);
 
   provider1 = new OpenStreetMap.OpenStreetMapProvider();
@@ -637,7 +638,7 @@ void draw() {
     text(date, 75, 128);
     textSize(12);
     text("© Mapzen | Transitland | Carto | OpenStreetMap | Unfolding Maps", width-400, height-10);
-    
+
 
     if (recording == true) {
       if (frameCount < totalFrames) {
