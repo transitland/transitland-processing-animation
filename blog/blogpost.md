@@ -6,14 +6,16 @@ Urban planner Jarrett Walker emphasizes the importance of transit **frequency**:
 
 This makes intuitive sense. Transit networks with higher trip frequencies and shorter waiting times will yield a better, more empowering experience for passengers than those with lower frequencies and longer waiting times.
 
-Communicating about transit frequency in an intuitive way, however, can be difficult. Traditional, static transit maps give geographic context to a transit network but do not give any information about trip frequency. Daily or weekly timetables provide information about trip frequency but can be overwhelming, unintuitive and lacking geographic context. Thus, I am interested in the potential for spatial-temporal visualization to make it easier to think and talk about transit frequency. This is the motivation behind the following series of experimental transit animations. 
+Analyzing transit frequency in an intuitive way, however, can be difficult. Traditional, static transit maps provide geographic context to a transit network but do not give any information about trip frequency. Daily or weekly timetables provide information about trip frequency but can be overwhelming, unintuitive and lacking geographic context. Thus, I am interested in the potential for spatial-temporal visualization to make it easier to think and talk about transit frequency. This is the motivation behind *TransitFlow*, a software library to easily visualize transit networks from the command line.
+
+*TransitFlow* contains two parts: a python script to retrieve and wrangle data from the [Transitland API](https://transit.land/), and a [Processing](processing.org) script to visualize that data.
 
 Bay Area:
 [![IMAGE ALT TEXT](http://i.imgur.com/kkOxCil.png)](https://vimeo.com/226987064 "Transit Flow Map of San Francisco Bay Area")
 
 [Insert comments / observations about bay area transit frequency]
 
-London: 
+London:
 
 There are two main parts to creating an animation like these:
 
