@@ -39,13 +39,13 @@ VideoExport videoExport;
 UnfoldingMap map;
 
 // Statistics input files (for stacked area chart)
-String vehicleCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/vehicles_" + totalFrames + ".csv";
-String busCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/buses_" + totalFrames + ".csv";
-String tramCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/trams_" + totalFrames + ".csv";
-String cablecarCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/cablecars_" + totalFrames + ".csv";
-String metroCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/metros_" + totalFrames + ".csv";
-String trainCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/trains_" + totalFrames + ".csv";
-String ferryCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/ferries_" + totalFrames + ".csv";
+String vehicleCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/vehicles_" + 3600 + ".csv";
+String busCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/buses_" + 3600 + ".csv";
+String tramCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/trams_" + 3600 + ".csv";
+String cablecarCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/cablecars_" + 3600 + ".csv";
+String metroCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/metros_" + 3600 + ".csv";
+String trainCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/trains_" + 3600 + ".csv";
+String ferryCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/ferries_" + 3600 + ".csv";
 
 int totalSeconds;
 Table tripTable;
@@ -58,8 +58,6 @@ ArrayList<Float> bearings = new ArrayList<Float>();
 Table busCount;
 ArrayList<Line> busLines = new ArrayList<Line>();
 ArrayList<Line> busXAxis = new ArrayList<Line>();
-ArrayList<Line> busTrails = new ArrayList<Line>();
-int busTrailsLength = 10;
 ArrayList<String> busXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> busFrames = new ArrayList<Integer>();
 ArrayList<Integer> busCounts = new ArrayList<Integer>();
@@ -69,8 +67,6 @@ ArrayList<Float> busHeights = new ArrayList<Float>();
 Table tramCount;
 ArrayList<Line> tramLines = new ArrayList<Line>();
 ArrayList<Line> tramXAxis = new ArrayList<Line>();
-ArrayList<Line> tramTrails = new ArrayList<Line>();
-int tramTrailsLength = 10;
 ArrayList<String> tramXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> tramFrames = new ArrayList<Integer>();
 ArrayList<Integer> tramCounts = new ArrayList<Integer>();
@@ -80,8 +76,6 @@ ArrayList<Float> tramHeights = new ArrayList<Float>();
 Table metroCount;
 ArrayList<Line> metroLines = new ArrayList<Line>();
 ArrayList<Line> metroXAxis = new ArrayList<Line>();
-ArrayList<Line> metroTrails = new ArrayList<Line>();
-int metroTrailsLength = 10;
 ArrayList<String> metroXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> metroFrames = new ArrayList<Integer>();
 ArrayList<Integer> metroCounts = new ArrayList<Integer>();
@@ -91,8 +85,6 @@ ArrayList<Float> metroHeights = new ArrayList<Float>();
 Table cablecarCount;
 ArrayList<Line> cablecarLines = new ArrayList<Line>();
 ArrayList<Line> cablecarXAxis = new ArrayList<Line>();
-ArrayList<Line> cablecarTrails = new ArrayList<Line>();
-int cablecarTrailsLength = 10;
 ArrayList<String> cablecarXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> cablecarFrames = new ArrayList<Integer>();
 ArrayList<Integer> cablecarCounts = new ArrayList<Integer>();
@@ -102,8 +94,6 @@ ArrayList<Float> cablecarHeights = new ArrayList<Float>();
 Table trainCount;
 ArrayList<Line> trainLines = new ArrayList<Line>();
 ArrayList<Line> trainXAxis = new ArrayList<Line>();
-ArrayList<Line> trainTrails = new ArrayList<Line>();
-int trainTrailsLength = 10;
 ArrayList<String> trainXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> trainFrames = new ArrayList<Integer>();
 ArrayList<Integer> trainCounts = new ArrayList<Integer>();
@@ -113,8 +103,6 @@ ArrayList<Float> trainHeights = new ArrayList<Float>();
 Table ferryCount;
 ArrayList<Line> ferryLines = new ArrayList<Line>();
 ArrayList<Line> ferryXAxis = new ArrayList<Line>();
-ArrayList<Line> ferryTrails = new ArrayList<Line>();
-int ferryTrailsLength = 10;
 ArrayList<String> ferryXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> ferryFrames = new ArrayList<Integer>();
 ArrayList<Integer> ferryCounts = new ArrayList<Integer>();
@@ -147,8 +135,8 @@ color c;
 // define date format of raw data
 SimpleDateFormat myDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 SimpleDateFormat hour = new SimpleDateFormat("h:mm a");
-//SimpleDateFormat day = new SimpleDateFormat("MMMM dd, yyyy");
-SimpleDateFormat weekday = new SimpleDateFormat("EEEE");
+SimpleDateFormat day = new SimpleDateFormat("MMMM dd, yyyy");
+SimpleDateFormat week= new SimpleDateFormat("EEEE");
 
 // Basemap providers
 AbstractMapProvider provider1;
@@ -316,7 +304,7 @@ void loadData() {
   }
 
 
-  int lineAlpha = 30;
+  int lineAlpha = 60;
   // bus stacked bar
   busCount = loadTable(busCountFile, "header");
   for (int i = 0; i < busCount.getRowCount(); i++) {
@@ -429,8 +417,9 @@ void loadData() {
   }
 }
 
-float hscale = float(totalFrames) / float(width)*0.12; //*0.78
+float hscale = float(totalFrames) / float(width)*0.12;
 float vscale = 20;
+
 
 void draw() {
 
@@ -470,7 +459,7 @@ void draw() {
     float epoch_float = map(frameCount, 0, totalFrames, int(minDate.getTime()/1000), int(maxDate.getTime()/1000));
     int epoch = int(epoch_float);
 
-    //String date = new java.text.SimpleDateFormat("MM/dd/yyyy hh:mm:ss").format(new java.util.Date(epoch * 1000L));
+    String date = new java.text.SimpleDateFormat("M/d/yy").format(new java.util.Date(epoch * 1000L));
     String day = new java.text.SimpleDateFormat("EEEE").format(new java.util.Date(epoch * 1000L));
     String time = new java.text.SimpleDateFormat("h:mm a").format(new java.util.Date(epoch * 1000L));
 
@@ -624,7 +613,10 @@ void draw() {
     noStroke();
     text(time, 75, 55);
     textFont(ralewayBold);
-    text(day, 75, 108);
+    text(day, 75, 107);
+    
+    textSize(16);
+    text(date, 75, 128);
 
     if (recording == true) {
       if (frameCount < totalFrames) {

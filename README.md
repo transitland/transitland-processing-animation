@@ -14,17 +14,20 @@ Here is an example animation generated for the Bay Area:
 6. Quit and re-open Processing.
 
 ### Instructions:
-- To run with virtualenv:
-`virtualenv virtualenv`
-`source virtualenv/bin/activate`
-`pip install -r requirements.txt`
-`cd transitlandflows`
+To run with virtualenv:
+- `virtualenv virtualenv`
+- `source virtualenv/bin/activate`
+- `pip install -r requirements.txt`
+- `cd transitlandflows`
 
-- To visualize a single operator:
-`python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --operator=o-9q9-bart`
+To visualize a single operator:
+- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --operator=o-9q9-bart`
 
-- To visualize every operator within a bounding box:
-`python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=sacramento --bbox=38.466493,-121.640625,38.683366,-121.297302`
+To visualize every operator within a bounding box:
+- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=sacramento --bbox=38.466493,-121.640625,38.683366,-121.297302`
+
+Bay area:
+- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle,o-9q-amtrakcalifornia`
 
 ### Room for future improvments...
 - The Processing sketch currently uses simple linear interpolation to animate a point from stop A to stop B given the departure and arrival times. It does not show vehicles following their actual, real-life routes. The sketch would be more meaningful if vehicles actually followed their routes. This seems entirely possible to do for operators that provide route shapes... just haven't gotten there yet!

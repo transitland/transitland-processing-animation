@@ -282,6 +282,11 @@ if __name__ == "__main__":
       help="Clip trips to bounding box",
       action="store_true"
     )
+    parser.add_argument(
+      "--recording",
+      help="Records sketch to mp4",
+      action="store_true"
+    )
 
     args = parser.parse_args()
 
@@ -295,6 +300,7 @@ if __name__ == "__main__":
     OUTPUT_NAME = args.name
     DATE = args.date
     FRAMES = args.frames
+    RECORDING = args.recording
 
     print ""
     print "INPUTS:"
@@ -420,6 +426,7 @@ if __name__ == "__main__":
                 DIRECTORY_NAME=OUTPUT_NAME,
                 DATE=DATE,
                 TOTAL_FRAMES=FRAMES,
+                RECORDING=RECORDING,
                 AVG_LAT=(float(south) + float(north))/2.0,
                 AVG_LON=(float(west) + float(east))/2.0
         )

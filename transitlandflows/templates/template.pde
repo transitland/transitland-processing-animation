@@ -4,7 +4,7 @@ String date = "${DATE}";
 String inputFile = "../../data/" + directoryName + "/" + date + "/output.csv";
 String scenario = "Dynamic";
 int totalFrames = ${TOTAL_FRAMES};
-boolean recording = false;
+boolean recording = ${RECORDING};
 boolean HQ = false;
 boolean rotateBearing = true;
 
@@ -304,7 +304,7 @@ void loadData() {
   }
 
 
-  int lineAlpha = 30;
+  int lineAlpha = 60;
   // bus stacked bar
   busCount = loadTable(busCountFile, "header");
   for (int i = 0; i < busCount.getRowCount(); i++) {
