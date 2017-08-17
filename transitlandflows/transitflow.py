@@ -428,7 +428,7 @@ if __name__ == "__main__":
                 DIRECTORY_NAME=OUTPUT_NAME,
                 DATE=DATE,
                 TOTAL_FRAMES=FRAMES,
-                RECORDING=RECORDING.lower(),
+                RECORDING=str(RECORDING).lower(),
                 AVG_LAT=(float(south) + float(north))/2.0,
                 AVG_LON=(float(west) + float(east))/2.0
         )
