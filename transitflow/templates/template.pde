@@ -322,7 +322,7 @@ void loadData() {
   println("Max vehicles on road: " + maxVehicleCount);
 
   // maximum height of stacked bar chart in pixels
-  int maxPixels = 130;
+  int maxPixels = 140;
 
   // bus stacked bar
   busCount = loadTable(busCountFile, "header");
@@ -635,6 +635,9 @@ void draw() {
 
     textSize(16);
     text(date, 75, 128);
+    textSize(12);
+    text("© Mapzen | Transitland | Carto | OpenStreetMap | Unfolding Maps", width-400, height-10);
+    
 
     if (recording == true) {
       if (frameCount < totalFrames) {
