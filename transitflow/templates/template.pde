@@ -322,7 +322,7 @@ void loadData() {
   println("Max vehicles on road: " + maxVehicleCount);
 
   // maximum height of stacked bar chart in pixels
-  int maxPixels = 140;
+  int maxPixels = 130;
 
   // bus stacked bar
   busCount = loadTable(busCountFile, "header");
