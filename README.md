@@ -14,9 +14,9 @@ Here is an example animation generated for the Bay Area:
 6. Quit and re-open Processing.
 
 ### Instructions:
-- `git `
+- `git clone https://github.com/transitland/transitland-processing-animation.git`
 
-To run with virtualenv (optional):
+To run with virtualenv (optional, recommended):
 - `virtualenv virtualenv`
 - `source virtualenv/bin/activate`
 
@@ -26,10 +26,10 @@ Install python requirements:
 Navigate to folder:
 - `cd transitlandflows`
 
-To visualize by operator onestop_id:
+Visualize transit flows by operator onestop_id:
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --operator=o-9q9-bart`
 
-To visualize by bounding box:
+Visualize transit flows by bounding box:
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=sacramento --bbox=38.466493,-121.640625,38.683366,-121.297302`
 
 Bay area:
