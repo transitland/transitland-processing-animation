@@ -6,6 +6,7 @@
 *.mp4
 virtualenv/
 venv/
+sketches/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
