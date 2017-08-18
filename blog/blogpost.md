@@ -1,12 +1,12 @@
 # Visualizing Transit Frequency with *TransitLand*
 
-Urban planner Jarrett Walker emphasizes the importance of transit **frequency**:
+Urban planner Jarrett Walker emphasizes the importance of **transit frequency**:
 
 > Transit frequency is the elapsed time between consecutive buses (or trains, or ferries) on a line, which determines the maximum waiting time.  People who are used to getting around by a private vehicle (car or bike) often underestimate the importance of frequency, because there isn’t an equivalent to it in their experience.  A private vehicle is ready to go when you are, but transit is not going until it comes.  High frequency means transit is coming soon, which means that it approximates the feeling of liberty you have with your private vehicle – that you can go anytime.  Frequency is freedom! http://humantransit.org/2015/07/mega-explainer-the-ridership-recipe.html
 
 This makes intuitive sense. Transit networks with higher trip frequencies and shorter waiting times will yield a better, more empowering experience for passengers than those with lower frequencies and longer waiting times.
 
-Analyzing transit frequency in an intuitive way, however, can be difficult. Traditional, static transit maps provide geographic context to a transit network but do not give any information about trip frequency. Daily or weekly timetables provide information about trip frequency but can be overwhelming, unintuitive and lacking geographic context. Thus, I am interested in the potential for spatial-temporal visualization to make it easier to think and talk about transit frequency. This is the motivation behind *TransitFlow*, an experimental software package that can be used to easily visualize transit networks.
+Analyzing transit frequency in an intuitive way, however, can be difficult. Traditional, static transit maps provide geographic context to a transit network but do not give any information about trip frequency. Daily or weekly timetables provide information about trip frequency but can be overwhelming, unintuitive and lacking geographic context. Thus, I am interested in the potential for spatial-temporal visualization to make it easier to think and talk about transit frequency. This is the motivation behind *TransitFlow*, an experimental software package that can be used to easily animate transit networks.
 
 *TransitFlow* contains two parts: a python script to retrieve and wrangle data from the [Transitland API](https://transit.land/), an open-source project sponsored by [Mapzen](mapzen.com), and a [Processing](processing.org) script to create an animation from that data.
 
