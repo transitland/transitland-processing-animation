@@ -5,6 +5,7 @@ import glob
 import os
 import argparse
 import math
+import shutil
 from string import Template
 
 from transitland_api import TransitlandRequest
@@ -408,12 +409,19 @@ if __name__ == "__main__":
         south, west, north, east = df['start_lat'][0], df['start_lon'][0], df['start_lat'][1], df['start_lon'][1]
 
     ## Use processing sketch template to create processing sketch file
-    template_path = os.path.join(os.path.dirname(__file__), 'templates', 'template.pde')
+    module_path = os.path.join(os.path.dirname(__file__))
+    template_path = os.path.join(module_path, 'templates', 'template.pde')
     with open(template_path) as f:
         data = f.read()
     s = Template(data)
     if not os.path.exists("sketches/{}".format(OUTPUT_NAME)):
         os.makedirs("sketches/{}".format(OUTPUT_NAME))
+
+    for asset in ['calendar_icon.png', 'clock_icon.png']:
+      shutil.copyfile(
+        os.path.join(module_path, 'assets', asset),
+        os.path.join('sketches', OUTPUT_NAME, asset)
+      )
 
     with open("sketches/{}/{}.pde".format(OUTPUT_NAME, OUTPUT_NAME), "w") as f:
         f.write(

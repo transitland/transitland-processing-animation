@@ -240,9 +240,9 @@ void setup() {
   // Fonts and icons
   raleway  = createFont("Raleway-Heavy", 32);
   ralewayBold  = createFont("Raleway-Bold", 28);
-  clock = loadImage("../../assets/clock_icon.png");
+  clock = loadImage("clock_icon.png");
   clock.resize(0, 35);
-  calendar = loadImage("../../assets/calendar_icon.png");
+  calendar = loadImage("calendar_icon.png");
   calendar.resize(0, 35);
 
   videoExport = new VideoExport(this);
