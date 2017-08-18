@@ -129,7 +129,7 @@ PImage calendar;
 PImage airport;
 PFont raleway;
 PFont ralewayBold;
-Integer screenfillalpha = 80;
+Integer screenfillalpha = 60;
 
 Location place_start;
 Float firstLat;
@@ -172,7 +172,8 @@ boolean saturday = false;
 boolean sunday = false;
 
 void setup() {
-  size(1000, 960, P3D);
+  size(1000, 800, P3D);
+  //size(1000, 960, P3D);
   //fullScreen(P3D);
 
   provider1 = new OpenStreetMap.OpenStreetMapProvider();
@@ -239,9 +240,9 @@ void setup() {
   // Fonts and icons
   raleway  = createFont("Raleway-Heavy", 32);
   ralewayBold  = createFont("Raleway-Bold", 28);
-  clock = loadImage("../../assets/clock_icon.png");
+  clock = loadImage("clock_icon.png");
   clock.resize(0, 35);
-  calendar = loadImage("../../assets/calendar_icon.png");
+  calendar = loadImage("calendar_icon.png");
   calendar.resize(0, 35);
 
   videoExport = new VideoExport(this);
@@ -322,7 +323,7 @@ void loadData() {
   println("Max vehicles on road: " + maxVehicleCount);
 
   // maximum height of stacked bar chart in pixels
-  int maxPixels = 130;
+  int maxPixels = 140;
 
   // bus stacked bar
   busCount = loadTable(busCountFile, "header");
@@ -490,7 +491,9 @@ void draw() {
 
    fill(0,150);
    noStroke();
-   rect(xmargin + frameCount/hscale-5, height-ymargin-120, 110, 115,7);
+   rect(xmargin + frameCount/hscale-5, height-ymargin-120, 110, 135,7);
+   fill(150, 220);
+   rect(width-390, height-18, 390, 18, 1);
    c = color(255,255,255,255);
    strokeWeight(1);
    stroke(c);
@@ -635,6 +638,9 @@ void draw() {
 
     textSize(16);
     text(date, 75, 128);
+    textSize(12);
+    text("© Mapzen | Transitland | Carto | OpenStreetMap | Unfolding Maps", width-385, height-5);
+
 
     if (recording == true) {
       if (frameCount < totalFrames) {
