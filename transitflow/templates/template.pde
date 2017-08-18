@@ -129,7 +129,7 @@ PImage calendar;
 PImage airport;
 PFont raleway;
 PFont ralewayBold;
-Integer screenfillalpha = 80;
+Integer screenfillalpha = 60;
 
 Location place_start;
 Float firstLat;
@@ -491,7 +491,9 @@ void draw() {
 
    fill(0,150);
    noStroke();
-   rect(xmargin + frameCount/hscale-5, height-ymargin-120, 110, 115,7);
+   rect(xmargin + frameCount/hscale-5, height-ymargin-120, 110, 135,7);
+   fill(150, 220);
+   rect(width-390, height-18, 390, 18, 1);
    c = color(255,255,255,255);
    strokeWeight(1);
    stroke(c);
@@ -637,7 +639,7 @@ void draw() {
     textSize(16);
     text(date, 75, 128);
     textSize(12);
-    text("© Mapzen | Transitland | Carto | OpenStreetMap | Unfolding Maps", width-400, height-10);
+    text("© Mapzen | Transitland | Carto | OpenStreetMap | Unfolding Maps", width-385, height-5);
 
 
     if (recording == true) {
