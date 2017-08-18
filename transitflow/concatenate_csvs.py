@@ -5,6 +5,8 @@ import argparse
 import math
 import datetime as dt
 import numpy as np
+import shutil
+from string import Template
 
 def concatenate_csvs(path):
     all_files = glob.glob(os.path.join(path, "*.csv"))     # advisable to use os.path.join as this makes concatenation OS independent
@@ -114,6 +116,16 @@ if __name__ == "__main__":
       help="Number of frames in animation. 3600 frames = 60 second animation.",
       default=3600
     )
+    parser.add_argument(
+      "--animate",
+      help="Generate processing sketch file.",
+      action="store_true"
+    )
+    parser.add_argument(
+      "--recording",
+      help="Records sketch to mp4",
+      action="store_true"
+    )
     args = parser.parse_args()
 
     if not args.date:
@@ -127,6 +139,7 @@ if __name__ == "__main__":
     DATE = args.date
     south, west, north, east = 0, 0, 0, 0 #null island!
     FRAMES = args.frames
+    RECORDING = args.recording
 
     print ""
     print "INPUTS:"
@@ -193,3 +206,35 @@ if __name__ == "__main__":
     cablecars_counts_output.to_csv("data/{}/{}/vehicle_counts/cablecars_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
     trains_counts_output.to_csv("data/{}/{}/vehicle_counts/trains_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
     ferries_counts_output.to_csv("data/{}/{}/vehicle_counts/ferries_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
+
+    # Hacky way to center the sketch
+    if not args.bbox:
+        south, west, north, east = df['start_lat'][0], df['start_lon'][0], df['start_lat'][1], df['start_lon'][1]
+
+    ## Use processing sketch template to create processing sketch file
+    if args.animate:
+        module_path = os.path.join(os.path.dirname(__file__))
+        template_path = os.path.join(module_path, 'templates', 'template.pde')
+        with open(template_path) as f:
+            data = f.read()
+        s = Template(data)
+        if not os.path.exists("sketches/{}".format(OUTPUT_NAME)):
+            os.makedirs("sketches/{}".format(OUTPUT_NAME))
+
+        for asset in ['calendar_icon.png', 'clock_icon.png']:
+          shutil.copyfile(
+            os.path.join(module_path, 'assets', asset),
+            os.path.join('sketches', OUTPUT_NAME, asset)
+          )
+
+        with open("sketches/{}/{}.pde".format(OUTPUT_NAME, OUTPUT_NAME), "w") as f:
+            f.write(
+                s.substitute(
+                    DIRECTORY_NAME=OUTPUT_NAME,
+                    DATE=DATE,
+                    TOTAL_FRAMES=FRAMES,
+                    RECORDING=str(RECORDING).lower(),
+                    AVG_LAT=(float(south) + float(north))/2.0,
+                    AVG_LON=(float(west) + float(east))/2.0
+                )
+            )
