@@ -27,13 +27,13 @@ Navigate to folder:
 - `cd transitflow`
 
 Visualize transit flows by operator onestop_id:
-- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --operator=o-9q9-bart`
+- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bart --operator=o-9q9-bart`
 
 Visualize transit flows by bounding box:
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=sacramento --bbox=38.466493,-121.640625,38.683366,-121.297302`
 
 Bay area:
-- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle,o-9q-amtrakcalifornia`
+- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle'
 
 Vancouver:
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=vancouver --bbox=49.007249,-123.441010,49.426160,-122.632141 --clip_to_bbox`
