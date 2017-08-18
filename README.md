@@ -21,7 +21,7 @@ To run with virtualenv (optional, recommended):
 - `source virtualenv/bin/activate`
 
 Install python requirements:
-- `pip install -r requirements.txt`
+- `python virtualenv/bin/pip install -r requirements.txt`
 
 Navigate to folder:
 - `cd transitflow`
