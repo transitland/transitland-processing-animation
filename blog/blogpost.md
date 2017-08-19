@@ -6,7 +6,13 @@ Urban planner Jarrett Walker emphasizes the importance of **transit frequency**:
 
 This makes intuitive sense. Transit networks with higher trip frequencies and shorter waiting times will yield a better, more empowering experience for passengers than those with lower frequencies and longer waiting times.
 
-Analyzing transit frequency in an intuitive way, however, can be difficult. Traditional, static transit maps provide geographic context but do not give any information about trip frequency. Daily or weekly timetables provide information about trip frequency but can be overwhelming, unintuitive and lacking geographic context. Thus, I am interested in the potential for spatial-temporal visualization to make it easier to talk and think about transit frequency. This is the motivation behind *TransitFlow*, an experimental set of tools that can be used to generate transit network visualizations from the command line.
+Analyzing transit frequency in an intuitive way, however, can be difficult. Traditional, static transit maps provide geographic context but do not give any information about trip frequency. Daily or weekly timetables provide information about trip frequency but can be overwhelming, unintuitive and lacking geographic context.
+
+[![IMAGE ALT TEXT](http://i.imgur.com/41yPcRJ.png)]("SF Muni")
+*Mmmm... timetables. Provided by the San Francisco Municipal Transportation Agency.*
+
+
+Thus, I am interested in the potential for spatial-temporal visualization to make it easier to talk and think about transit frequency. This is the motivation behind *TransitFlow*, an experimental set of tools that can be used to generate transit network visualizations from the command line.
 
 *TransitFlow* consists of two parts:
 - 1) A python script to retrieve and wrangle transit schedule data from the [Transitland API](https://transit.land/), an open-source project sponsored by [Mapzen](mapzen.com)
