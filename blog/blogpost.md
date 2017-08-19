@@ -6,14 +6,13 @@ Urban planner Jarrett Walker emphasizes the importance of **transit frequency**:
 
 This makes intuitive sense. Transit networks with higher trip frequencies and shorter waiting times will yield a better, more empowering experience for passengers than those with lower frequencies and longer waiting times.
 
-Analyzing transit frequency in an intuitive way, however, can be difficult. Traditional, static transit maps provide geographic context but do not give any information about trip frequency. Daily or weekly timetables provide information about trip frequency but can be overwhelming, unintuitive and lacking geographic context.
+Analyzing transit frequency in an intuitive way, however, can be difficult. Traditional, static transit maps provide geographic context but do not give any information about trip frequency. Daily or weekly timetables provide information about trip frequency but can be overwhelming, unintuitive and lacking geographic context. Perhaps we can use animation to combine the spatial information of a static transit map with the temporal information of a timetable?
 
 ![IMAGE ALT TEXT](http://i.imgur.com/cMDfgkQ.png)
 
 *Mmmm... timetables. Provided by the San Francisco Municipal Transportation Agency.*
 
-
-Thus, I am interested in the potential for spatial-temporal visualization to make it easier to talk and think about transit frequency. This is the motivation behind *TransitFlow*, an experimental set of tools that can be used to generate transit network visualizations from the command line.
+So, I am interested in the potential for spatial-temporal visualization to make it easier to talk and think about transit frequency. This is the motivation behind *TransitFlow*, an experimental set of tools that can be used to generate spatial-temporal transit network visualizations from the command line.
 
 *TransitFlow* consists of two parts:
 - 1) A few python scripts to retrieve and wrangle transit schedule data from the [Transitland API](https://transit.land/), an open-source project sponsored by [Mapzen](mapzen.com)
@@ -22,18 +21,19 @@ Thus, I am interested in the potential for spatial-temporal visualization to mak
 Let's look at a few examples of what you can do with *TransitFlow*.
 
 ## Bay Area
-Command line argument:
+
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/749hhoE.png)](https://vimeo.com/226987064 "Transit Flow Map of San Francisco Bay Area")
 
 ## Los Angeles
-Command line argument:
+
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=los_angeles --bbox=32.925707,-119.448853,34.664841,-116.768188 --clip_to_bbox`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/749hhoE.png)](https://vimeo.com/226987064 "Transit Flow Map of San Francisco Bay Area")
 
 ## Atlanta
+
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=atlanta --bbox=33.321349,-84.880371,34.198173,-83.908081 --clip_to_bbox`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/749hhoE.png)](https://vimeo.com/226987064 "Transit Flow Map of San Francisco Bay Area")
