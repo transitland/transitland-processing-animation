@@ -79,8 +79,12 @@ For example, this command line argument will produce an animation of every trans
 
 `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle,o-9q-amtrakcalifornia`
 
-# Command line arguments
+### Command line arguments
 
-[TBD]
-
-Please try out the code yourself, and let us know about any visualizations you create!
+**Key **|**Status**|**Description**
+:-----:|:-----:|:-----:
+--date|required|The data that you want to animate
+--name|required|The name of your project.
+--operator|optional|Operator onestop, id
+--bbox|optional|Bounding box
+--clip\_to\_bbox|optional|Clip results to bounding box
