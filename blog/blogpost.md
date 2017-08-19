@@ -6,7 +6,9 @@ Urban planner Jarrett Walker emphasizes the importance of **transit frequency**:
 
 This makes intuitive sense. Transit networks with higher trip frequencies and shorter waiting times will yield a better, more empowering experience for passengers than those with lower frequencies and longer waiting times.
 
-Analyzing transit frequency in an intuitive way, however, can be difficult. Traditional, static transit maps provide geographic context but do not give any information about trip frequency. Daily or weekly timetables provide information about trip frequency but can be overwhelming, unintuitive and lacking geographic context. Perhaps we can use spatial-temporal visualization to combine the spatial information of a static transit map with the temporal information of a timetable, and make it easer to talk and think about transit frequency! This is the motivation behind *TransitFlow*, an experimental set of tools that can be used to generate spatial-temporal transit network visualizations from the command line.
+Analyzing transit frequency in an intuitive way, however, can be difficult. Traditional, static transit maps provide geographic context but do not give any information about trip frequency. Daily or weekly timetables provide information about trip frequency but can be overwhelming, unintuitive and lacking geographic context. Perhaps we can use spatial-temporal visualization to combine the spatial information of a static transit map with the temporal information of a timetable, and make it easer to talk and think about transit frequency!
+
+This is the motivation behind *TransitFlow*, an experimental set of tools that can be used to generate spatial-temporal transit network visualizations from the command line.
 
 ![IMAGE ALT TEXT](http://i.imgur.com/cMDfgkQ.png)
 
