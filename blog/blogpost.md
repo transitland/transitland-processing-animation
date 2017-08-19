@@ -24,7 +24,7 @@ Let's look at a few examples of what you can do with *TransitFlow*.
 
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/749hhoE.png)](https://vimeo.com/226987064 "Transit Flow Map of San Francisco Bay Area")
+[![IMAGE ALT TEXT](http://i.imgur.com/c8PAnuD.png)](https://vimeo.com/226987064 "Transit Flow Map of San Francisco Bay Area")
 
 ## Los Angeles
 
