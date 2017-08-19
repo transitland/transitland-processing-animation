@@ -8,7 +8,7 @@ This makes intuitive sense. Transit networks with higher trip frequencies and sh
 
 Analyzing transit frequency in an intuitive way, however, can be difficult. Traditional, static transit maps provide geographic context but do not give any information about trip frequency. Daily or weekly timetables provide information about trip frequency but can be overwhelming, unintuitive and lacking geographic context.
 
-[![IMAGE ALT TEXT](http://i.imgur.com/41yPcRJ.png)]("SF Muni")
+![IMAGE ALT TEXT](http://i.imgur.com/41yPcRJ.png)
 *Mmmm... timetables. Provided by the San Francisco Municipal Transportation Agency.*
 
 
