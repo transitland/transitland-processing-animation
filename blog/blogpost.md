@@ -15,8 +15,9 @@ This is the motivation behind *TransitFlow*, an experimental set of tools that c
 *Mmmm... timetables. Provided by the San Francisco Municipal Transportation Agency.*
 
 *TransitFlow* consists of two parts:
-- 1) A few python scripts to retrieve and wrangle transit schedule data from the [Transitland API](https://transit.land/), an open-source project sponsored by [Mapzen](mapzen.com)
-- 2) A template to generate a [Processing](processing.org) script to animate that data.
+  1) A few python scripts to retrieve and wrangle transit schedule data from the [Transitland API](https://transit.land/), an open-source project sponsored by [Mapzen](mapzen.com)
+
+  2) A template to generate a [Processing](processing.org) script to animate that data.
 
 Let's look at a few examples of what you can do with *TransitFlow*.
 
