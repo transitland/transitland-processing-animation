@@ -21,19 +21,19 @@ This is the motivation behind *TransitFlow*, an experimental set of tools that c
 
 Let's look at a few examples of what you can do with *TransitFlow*.
 
-## Bay Area
+## Bay Area Transit Flows
 
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/c8PAnuD.png)](https://vimeo.com/226987064 "Transit Flow Map of San Francisco Bay Area")
 
-## Los Angeles
+## Los Angeles Transit Flows
 
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=los_angeles --bbox=32.925707,-119.448853,34.664841,-116.768188 --clip_to_bbox`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/749hhoE.png)](https://vimeo.com/226987064 "Transit Flow Map of San Francisco Bay Area")
 
-## Atlanta
+## Atlanta Transit Flows
 
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=atlanta --bbox=33.321349,-84.880371,34.198173,-83.908081 --clip_to_bbox`
 
