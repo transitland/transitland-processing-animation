@@ -33,10 +33,21 @@ Visualize transit flows by bounding box:
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=sacramento --bbox=38.466493,-121.640625,38.683366,-121.297302`
 
 Bay area:
-- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle'
+- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
 
 Vancouver:
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=vancouver --bbox=49.007249,-123.441010,49.426160,-122.632141 --clip_to_bbox`
+
+Atlanta:
+- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=atlanta --bbox=33.321349,-84.880371,34.198173,-83.908081 --clip_to_bbox`
+
+Los Angeles:
+- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=los_angeles --bbox=32.925707,-119.448853,34.664841,-116.768188 --clip_to_bbox`
+
+New Zealand:
+- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=new_zealand --bbox=-48.980217,162.905273,-32.879587,182.329102 --clip_to_bbox`
+
+
 
 ### Room for future improvements...
 - The Processing sketch currently uses simple linear interpolation to animate a point from stop A to stop B given the departure and arrival times. It does not show vehicles following their actual, real-life routes. The sketch would be more meaningful if vehicles actually followed their routes. This seems entirely possible to do for operators that provide route shapes... just haven't gotten there yet!
