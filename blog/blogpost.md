@@ -8,7 +8,7 @@ This makes intuitive sense. Transit networks with higher trip frequencies and sh
 
 Analyzing transit frequency in an intuitive way, however, can be difficult. Traditional, static transit maps provide geographic context but do not give any information about trip frequency. Daily or weekly timetables provide information about trip frequency but can be overwhelming, unintuitive and lacking geographic context.
 
-![IMAGE ALT TEXT](http://i.imgur.com/41yPcRJ.png)
+![IMAGE ALT TEXT](http://i.imgur.com/NDwp6g3.png)
 
 *Mmmm... timetables. Provided by the San Francisco Municipal Transportation Agency.*
 
@@ -57,11 +57,7 @@ The python script `transitflow.py` uses the [schedule stop pairs API](http://tra
 
 ## How to use it
 
-There are two ways to go about using this tool.
-
-You can search for and visualize either:
-- 1) A particular transit operator by it's onestop_id
-- 2) Every transit operator within a geographic bounding box
+There are two ways to go about using this tool:
 
 #### 1) Search by transit operator onestop_id
 
