@@ -129,7 +129,7 @@ PImage calendar;
 PImage airport;
 PFont raleway;
 PFont ralewayBold;
-Integer screenfillalpha = 60;
+Integer screenfillalpha = 120;
 
 Location place_start;
 Float firstLat;
