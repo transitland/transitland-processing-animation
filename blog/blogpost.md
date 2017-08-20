@@ -21,21 +21,28 @@ This is the motivation behind *TransitFlow*, an experimental set of tools that c
 
 Let's look at a few examples of what you can do with *TransitFlow*.
 
-## Bay Area Transit Flows
+## BART Flows ##
+You can visualize a single operator like this:
 
-- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
+- `python transitflow.py --date=2017-08-15 --name=bart --operator=o-9q9-bart`
+
+[![IMAGE ALT TEXT](http://i.imgur.com/cssT1Vq.png)](https://vimeo.com/230364702 "One Day of BART Trips")
+
+## Bay Area Transit Flows
+You can visualize all operators within a bounding box like this:
+- `python transitflow.py --date=2017-08-15 --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/c8PAnuD.png)](https://vimeo.com/226987064 "Transit Flow Map of San Francisco Bay Area")
 
 ## Los Angeles Transit Flows
 
-- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=los_angeles --bbox=32.925707,-119.448853,34.664841,-116.768188 --clip_to_bbox`
+- `python transitflow.py --date=2017-08-15 --name=los_angeles --bbox=32.925707,-119.448853,34.664841,-116.768188 --clip_to_bbox`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/749hhoE.png)](https://vimeo.com/226987064 "Transit Flow Map of San Francisco Bay Area")
+[![IMAGE ALT TEXT](http://i.imgur.com/8J3Vv1a.jpg)](https://vimeo.com/226987064 "Transit Flow Map of San Francisco Bay Area")
 
 ## Atlanta Transit Flows
 
-- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=atlanta --bbox=33.321349,-84.880371,34.198173,-83.908081 --clip_to_bbox`
+- `python transitflow.py --date=2017-08-15 --name=atlanta --bbox=33.321349,-84.880371,34.198173,-83.908081 --clip_to_bbox`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/749hhoE.png)](https://vimeo.com/226987064 "Transit Flow Map of San Francisco Bay Area")
 
@@ -74,7 +81,7 @@ To animate every operator in a bounding box, you may pass in the bounding box as
 
 For example, this command line argument will produce an animation of every transit operator in the "greater" Bay Area, excluding Amtrak.
 
-`python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle,o-9q-amtrakcalifornia`
+`python transitflow.py --date=2017-08-15 --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle,o-9q-amtrakcalifornia`
 
 ## Command line arguments
 
