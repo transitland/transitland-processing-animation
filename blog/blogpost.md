@@ -8,7 +8,7 @@ This makes intuitive sense. Transit networks with higher trip frequencies and sh
 
 Analyzing transit frequency in an intuitive way, however, can be difficult. Traditional, static transit maps provide geographic context but do not give any information about trip frequency. Daily or weekly timetables provide information about trip frequency but can be overwhelming, unintuitive and lacking geographic context. Perhaps we can use spatial-temporal visualization to combine the spatial information of a static transit map with the temporal information of a timetable, and make it easer to talk and think about transit frequency!
 
-This is the motivation behind *TransitFlow*, an experimental set of tools that can be used to generate spatial-temporal transit network visualizations from the command line.
+This is the motivation behind *TransitFlow*, an experimental set of tools that can be used to generate spatial-temporal transit network datasets and visualizations from the command line.
 
 ![IMAGE ALT TEXT](http://i.imgur.com/cMDfgkQ.png)
 
@@ -76,10 +76,10 @@ For example, this command line argument will produce an animation of every trans
 
 `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle,o-9q-amtrakcalifornia`
 
-### Command line arguments
+## Command line arguments
 
-**Key **|**Status**|**Description**
-:-----:|:-----:|:-----:
+**Key**|**Status**|**Description**
+-----|-----|-----
 --date|required|The data that you want to animate
 --name|required|The name of your project.
 --operator|optional|Operator onestop, id
