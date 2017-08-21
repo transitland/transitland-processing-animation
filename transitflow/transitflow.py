@@ -301,7 +301,7 @@ if __name__ == "__main__":
     print "API key: ", args.apikey
 
     if args.bbox:
-        south, west, north, east = args.bbox.split(",")
+        west, south, east, north = args.bbox.split(",")
         # west, south, east, north = args.bbox.split(",")
         # bbox = true
 
@@ -315,7 +315,7 @@ if __name__ == "__main__":
         print "exclude: ", list(exclude_operators)
 
     if args.bbox:
-        print "bbox: ", south, west, north, east
+        print "bbox: ", west, south, east, north
         print ""
         # First, let's get a list of the onestop id's for every operator in our bounding box.
         operators_request = TLAPI.request('operators', bbox=','.join([west,south,east,north]), per_page=PER_PAGE)

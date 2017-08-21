@@ -137,7 +137,7 @@ if __name__ == "__main__":
     MAPZEN_APIKEY = args.apikey
     OUTPUT_NAME = args.name
     DATE = args.date
-    south, west, north, east = 0, 0, 0, 0 #null island!
+    west, south, east, north = 0, 0, 0, 0 #null island!
     FRAMES = args.frames
     RECORDING = args.recording
 
@@ -148,7 +148,7 @@ if __name__ == "__main__":
     print "API key: ", MAPZEN_APIKEY
 
     if args.bbox:
-        south, west, north, east = args.bbox.split(",")
+        west, south, east, north = args.bbox.split(",")
         # west, south, east, north = args.bbox.split(",")
         # bbox = true
 
