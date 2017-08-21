@@ -1,14 +1,18 @@
 # https://github.com/github/gitignore/blob/master/Python.gitignore
-*.csv
 *.csv.icloud
 *.tiff
 *.DS_Store
 *ffmpeg.txt
 *.mp4
+*.mp4.icloud
+*.m4v
+*.mov
+*.mov.icloud
 virtualenv/
 venv/
-sketches/
 census/
+indiv_operators/
+data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
