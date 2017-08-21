@@ -32,7 +32,7 @@ You can visualize a single operator like this:
 You can visualize all operators within a bounding box like this:
 - `python transitflow.py --date=2017-08-15 --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/c8PAnuD.png)](https://vimeo.com/226987064 "Transit Flow Map of San Francisco Bay Area")
+[![IMAGE ALT TEXT](http://i.imgur.com/c8PAnuD.png)](https://vimeo.com/226987064 "Bay Area Transit Flows")
 
 ## Los Angeles Transit Flows
 
@@ -44,7 +44,7 @@ You can visualize all operators within a bounding box like this:
 
 - `python transitflow.py --date=2017-08-15 --name=atlanta --bbox=33.321349,-84.880371,34.198173,-83.908081 --clip_to_bbox`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/749hhoE.png)](https://vimeo.com/226987064 "Transit Flow Map of San Francisco Bay Area")
+[![IMAGE ALT TEXT](http://i.imgur.com/749hhoE.png)](https://vimeo.com/230490552 "Atlanta Transit Flows")
 
 
 ## New Zealand
