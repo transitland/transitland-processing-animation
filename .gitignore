@@ -1,5 +1,6 @@
 # https://github.com/github/gitignore/blob/master/Python.gitignore
 *.csv
+*.csv.icloud
 *.tiff
 *.DS_Store
 *ffmpeg.txt
