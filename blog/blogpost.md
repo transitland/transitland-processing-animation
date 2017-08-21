@@ -38,7 +38,7 @@ You can visualize all operators within a bounding box like this:
 
 - `python transitflow.py --date=2017-08-15 --name=los_angeles --bbox=32.925707,-119.448853,34.664841,-116.768188 --clip_to_bbox`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/8J3Vv1a.jpg)](https://vimeo.com/226987064 "Transit Flow Map of San Francisco Bay Area")
+[![IMAGE ALT TEXT](http://i.imgur.com/8J3Vv1a.jpg)](https://vimeo.com/227178693 "Los Angeles Transit Flows")
 
 ## Atlanta Transit Flows
 
@@ -59,9 +59,7 @@ To get the data, the `transitflow.py` makes use of three Transitland API endpoin
 2) **Routes** to get operator vehicle types
 3) **ScheduleStopPairs** to get scheduled origin -> destination stop pairs, including timestamps and geolocations.
 
-The `ScheduleStopPairs` endpoint does the bulk of the work. Each `ScheduleStopPair` contains an origin stop, a destination stop, a route, an operator, and arrival and departure times. Each `ScheduleStopPair` also includes a service calendar, describing which days a trip is possible. Accessibility information for wheelchair and bicycle riders is included, if available.
-
-The python script `transitflow.py` uses the [schedule stop pairs API](http://transit.land/api/v1/schedule_stop_pairs) endpoint to search for all `ScheduleStopPair`s for a specified operator or within a specified bounding box. It then concatenates these `ScheduleStopPair`s into a table and outputs a single output csv file which will drive the animation. The Processing sketch reads in this output csv file, uses the [Unfolding Maps](http://unfoldingmaps.org/) by Till Nagel to convert geolocations to pixels, and animates vehicle movements using linear interpolation.
+The `ScheduleStopPairs` endpoint does the bulk of the work. Each `ScheduleStopPair` contains an origin stop, a destination stop, a route, an operator, and arrival and departure times. Each `ScheduleStopPair` also includes a service calendar, describing which days a trip is possible. *TransitFlow* uses the [schedule stop pairs API](http://transit.land/api/v1/schedule_stop_pairs) endpoint to search for all `ScheduleStopPair`s for a specified operator or within a specified bounding box. It then concatenates these `ScheduleStopPair`s into a table and outputs a single output csv file which will drive the animation. The Processing sketch reads in this output csv file, uses the [Unfolding Maps](http://unfoldingmaps.org/) library to convert geolocations into screen positions, and animates vehicle movements from origin stop to destination stop using linear interpolation.
 
 ## How to use it
 
