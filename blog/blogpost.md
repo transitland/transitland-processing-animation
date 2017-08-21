@@ -55,9 +55,9 @@ You can visualize all operators within a bounding box like this:
 
 To get the data, the `transitflow.py` makes use of three Transitland API endpoints:
 
-- 1) **Stops** to get transit stop locations
-- 2) **Routes** to get operator vehicle types
-- 3) **ScheduleStopPairs** to get scheduled origin -> destination stop pairs, including timestamps and geolocations.
+1) **Stops** to get transit stop locations
+2) **Routes** to get operator vehicle types
+3) **ScheduleStopPairs** to get scheduled origin -> destination stop pairs, including timestamps and geolocations.
 
 The `ScheduleStopPairs` endpoint does the bulk of the work. Each `ScheduleStopPair` contains an origin stop, a destination stop, a route, an operator, and arrival and departure times. Each `ScheduleStopPair` also includes a service calendar, describing which days a trip is possible. Accessibility information for wheelchair and bicycle riders is included, if available.
 
