@@ -163,6 +163,24 @@ AbstractMapProvider providery;
 AbstractMapProvider provideru;
 AbstractMapProvider provideri;
 
+String provider1Attrib;
+String provider2Attrib;
+String provider3Attrib;
+String provider4Attrib;
+String provider5Attrib;
+String provider6Attrib;
+String provider7Attrib;
+String provider8Attrib;
+String provider9Attrib;
+String provider0Attrib;
+String providerqAttrib;
+String providerwAttrib;
+String providereAttrib;
+String providerrAttrib;
+String providertAttrib;
+String provideryAttrib;
+String provideruAttrib;
+
 boolean monday = false;
 boolean tuesday = false;
 boolean wednesday = false;
@@ -171,37 +189,61 @@ boolean friday = false;
 boolean saturday = false;
 boolean sunday = false;
 
+String attrib;
+Float attribWidth;
+
 void setup() {
   size(1000, 800, P3D);
   //size(1000, 960, P3D);
   //fullScreen(P3D);
 
-  provider1 = new OpenStreetMap.OpenStreetMapProvider();
-  provider2 = new OpenStreetMap.OSMGrayProvider();
-  provider3 = new EsriProvider.WorldStreetMap();
-  provider4 = new EsriProvider.DeLorme();
-  provider5 = new EsriProvider.WorldShadedRelief();
-  provider6 = new EsriProvider.NatGeoWorldMap();
-  provider7 = new EsriProvider.OceanBasemap();
-  provider8 = new EsriProvider.WorldGrayCanvas();
-  provider9 = new EsriProvider.WorldPhysical();
-  provider0 = new EsriProvider.WorldStreetMap();
-  providerq = new EsriProvider.WorldTerrain();
-  providerw = new EsriProvider.WorldTopoMap();
-  providere = new Google.GoogleMapProvider();
-  providerr = new StamenMapProvider.TonerLite();
-  providert = new CartoDB.Positron();
-  providery = new StamenMapProvider.TonerBackground();
-  provideru = new Microsoft.AerialProvider();
-  provideri = new StamenMapProvider.TonerBackground();
+
+  provider1 = new CartoDB.Positron();
+  provider2 = new StamenMapProvider.TonerLite();
+  provider3 = new StamenMapProvider.TonerBackground();
+  provider4 = new Microsoft.AerialProvider();
+  provider5 = new OpenStreetMap.OpenStreetMapProvider();
+  provider6 = new OpenStreetMap.OSMGrayProvider();
+  provider7 = new EsriProvider.WorldStreetMap();
+  provider8 = new EsriProvider.DeLorme();
+  provider9 = new EsriProvider.WorldShadedRelief();
+  provider0 = new EsriProvider.NatGeoWorldMap();
+  providerq = new EsriProvider.OceanBasemap();
+  providerw = new EsriProvider.WorldGrayCanvas();
+  providere = new EsriProvider.WorldPhysical();
+  providerr = new EsriProvider.WorldStreetMap();
+  providert = new EsriProvider.WorldTerrain();
+  providery = new EsriProvider.WorldTopoMap();
+  provideru = new Google.GoogleMapProvider();
+
+  provider1Attrib = "Carto";
+  provider2Attrib = "Stamen Design";
+  provider3Attrib = "Stamen Design";
+  provider4Attrib = "Bing Maps";
+  provider5Attrib = "OpenStreetMap";
+  provider6Attrib = "OpenStreetMap";
+  provider7Attrib = "ESRI";
+  provider8Attrib = "ESRI";
+  provider9Attrib = "ESRI";
+  provider0Attrib = "ESRI";
+  providerqAttrib = "ESRI";
+  providerwAttrib = "ESRI";
+  providereAttrib = "ESRI";
+  providerrAttrib = "ESRI";
+  providertAttrib = "ESRI";
+  provideryAttrib = "ESRI";
+  provideruAttrib = "Google Maps";
 
   smooth();
 
   loadData();
 
-  map = new UnfoldingMap(this, providert);
+  map = new UnfoldingMap(this, provider1);
   MapUtils.createDefaultEventDispatcher(this, map);
   println("Scenario: " + scenario);
+
+  attrib = "© Mapzen | Transitland | Unfolding Maps | " + provider1Attrib;
+  attribWidth = textWidth(attrib);
 
   switch(scenario) {
   case "Dynamic":
@@ -493,7 +535,7 @@ void draw() {
    noStroke();
    rect(xmargin + frameCount/hscale-5, height-ymargin-120, 110, 135,7);
    fill(150, 220);
-   rect(width-390, height-18, 390, 18, 1);
+   rect(width-(attribWidth+10), height-18, (attribWidth+10), 18, 3);
    c = color(255,255,255,255);
    strokeWeight(1);
    stroke(c);
@@ -638,9 +680,9 @@ void draw() {
 
     textSize(16);
     text(date, 75, 128);
-    textSize(12);
-    text("© Mapzen | Transitland | Carto | OpenStreetMap | Unfolding Maps", width-385, height-5);
 
+    textSize(12);
+    text(attrib, width-(attribWidth+5), height-5);
 
     if (recording == true) {
       if (frameCount < totalFrames) {
@@ -662,41 +704,72 @@ void draw() {
 void keyPressed() {
   if (key == '1') {
     map.mapDisplay.setProvider(provider1);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + provider1Attrib;
+    attribWidth = textWidth(attrib);
   } else if (key == '2') {
     map.mapDisplay.setProvider(provider2);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + provider2Attrib;
+    attribWidth = textWidth(attrib);
   } else if (key == '3') {
     map.mapDisplay.setProvider(provider3);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + provider3Attrib;
+    attribWidth = textWidth(attrib);
   } else if (key == '4') {
     map.mapDisplay.setProvider(provider4);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + provider4Attrib;
+    attribWidth = textWidth(attrib);
   } else if (key == '5') {
     map.mapDisplay.setProvider(provider5);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + provider5Attrib;
+    attribWidth = textWidth(attrib);
   } else if (key == '6') {
     map.mapDisplay.setProvider(provider6);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + provider6Attrib;
+    attribWidth = textWidth(attrib);
   } else if (key == '7') {
     map.mapDisplay.setProvider(provider7);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + provider7Attrib;
+    attribWidth = textWidth(attrib);
   } else if (key == '8') {
     map.mapDisplay.setProvider(provider8);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + provider8Attrib;
+    attribWidth = textWidth(attrib);
   } else if (key == '9') {
     map.mapDisplay.setProvider(provider9);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + provider9Attrib;
+    attribWidth = textWidth(attrib);
   } else if (key == '0') {
     map.mapDisplay.setProvider(provider0);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + provider0Attrib;
+    attribWidth = textWidth(attrib);
   } else if (key == 'q') {
     map.mapDisplay.setProvider(providerq);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + providerqAttrib;
+    attribWidth = textWidth(attrib);
   } else if (key == 'w') {
     map.mapDisplay.setProvider(providerw);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + providerwAttrib;
+    attribWidth = textWidth(attrib);
   } else if (key == 'e') {
     map.mapDisplay.setProvider(providere);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + providereAttrib;
+    attribWidth = textWidth(attrib);
   } else if (key == 'r') {
     map.mapDisplay.setProvider(providerr);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + providerrAttrib;
+    attribWidth = textWidth(attrib);
   } else if (key == 't') {
     map.mapDisplay.setProvider(providert);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + providertAttrib;
+    attribWidth = textWidth(attrib);
   } else if (key == 'y') {
     map.mapDisplay.setProvider(providery);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + provideryAttrib;
+    attribWidth = textWidth(attrib);
   } else if (key == 'u') {
     map.mapDisplay.setProvider(provideru);
-    screenfillalpha = 50;
-  } else if (key == 'i') {
-    map.mapDisplay.setProvider(provideri);
+    attrib = "© Mapzen | Transitland | Unfolding Maps | " + provideruAttrib;
+    attribWidth = textWidth(attrib);
   }
 }
 
