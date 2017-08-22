@@ -68,10 +68,6 @@ Visualize all transit flows in the (greater) San Francisco Bay Area with:
 [![IMAGE ALT TEXT](http://i.imgur.com/749hhoE.png)](https://vimeo.com/230490552 "Atlanta Transit Flows")
 
 
-## New Zealand
-
-## Boston / Chicago, New York, DC, Vancouver
-
 ## How it works
 
 To get the data, the `transitflow.py` makes use of three Transitland API endpoints:
@@ -88,9 +84,9 @@ There are two ways to go about using this tool:
 
 #### 1) Search by transit operator onestop_id
 
-To animate a particular transit operator, search for that operator's `onestop_id` using the [Transitland Feed Registery](https://transit.land/feed-registry/). The `onestop_id` for BART, for example, is `o-9q9-bart`.
+To animate a particular transit operator, find that operator's `onestop_id` using the [Transitland Feed Registery](https://transit.land/feed-registry/). The `onestop_id` for BART, for example, is `o-9q9-bart`.
 
-Then, you can download the data and create an animation for that operator using *TransitFlow* with a single command line argument, such as:
+Then, you can download the data and create an animation for that operator with a single command line argument, such as:
 
 `python transitflow.py --date=2017-08-15 --name=bay_area --operator=o-9q9-bart`
 
@@ -106,8 +102,8 @@ For example, this command line argument will produce an animation of every trans
 
 **Key**|**Status**|**Description**
 -----|-----|-----
---date|required|The data that you want to animate
 --name|required|The name of your project
+--date|optional|Defaults to today's date
 --operator|optional|Operator onestop, id
 --bbox|optional|Bounding box
 --clip\_to\_bbox|optional|Clip results to bounding box
