@@ -194,8 +194,8 @@ if __name__ == "__main__":
     ferries_counts_output['frame'] = ferries_counts_output.index
 
     # Save these vehicle count stats to csv's.
-    if not os.path.exists("data/{}/{}/vehicle_counts".format(OUTPUT_NAME, DATE)):
-        os.makedirs("data/{}/{}/vehicle_counts".format(OUTPUT_NAME, DATE))
+    if not os.path.exists("sketches/{}/{}/data/vehicle_counts".format(OUTPUT_NAME, DATE)):
+        os.makedirs("sketches/{}/{}/data/vehicle_counts".format(OUTPUT_NAME, DATE))
     vehicles_counts_output.to_csv("sketches/{}/{}/data/vehicle_counts/vehicles_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
     buses_counts_output.to_csv("sketches/{}/{}/data/vehicle_counts/buses_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
     trams_counts_output.to_csv("sketches/{}/{}/data/vehicle_counts/trams_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
