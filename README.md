@@ -3,7 +3,7 @@ Animating scheduled transit trips using the [Transitland API](https://transit.la
 
 Here is an example animation generated for the Bay Area:
 
-[![IMAGE ALT TEXT](http://i.imgur.com/kkOxCil.png)](https://vimeo.com/226987064 "Transit Flow Map of San Francisco Bay Area")
+[![IMAGE ALT TEXT](http://i.imgur.com/22mNuxp.jpg)](https://vimeo.com/226987064 "Bay Area Transit Flows")
 
 ### Set up Processing:
 1. Download [Processing 3](https://processing.org/).
