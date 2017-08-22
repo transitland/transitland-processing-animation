@@ -108,3 +108,4 @@ For example, this command line argument will produce an animation of every trans
 --bbox|optional|Bounding box
 --clip\_to\_bbox|optional|Clip results to bounding box
 --exclude|optional|Operators to be excluded
+--apikey|optional|Mapzen API key
