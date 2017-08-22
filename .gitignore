@@ -11,7 +11,6 @@
 virtualenv/
 venv/
 census/
-indiv_operators/
 sketches/
 
 # Byte-compiled / optimized / DLL files
