@@ -44,8 +44,6 @@ Atlanta:
 Los Angeles:
 - `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=los_angeles --bbox=-119.448853,32.925707,-116.768188,34.664841 --clip_to_bbox`
 
-
-
 ### Room for future improvements...
 - The Processing sketch currently uses simple linear interpolation to animate a point from stop A to stop B given the departure and arrival times. It does not show vehicles following their actual, real-life routes. The sketch would be more meaningful if vehicles actually followed their routes. This seems entirely possible to do for operators that provide route shapes... just haven't gotten there yet!
 
@@ -56,14 +54,13 @@ Los Angeles:
 ### Credits:
 - Data: [Mapzen](https://mapzen.com/), [Transitland](https://transit.land/)
 - Basemap: Carto, OpenStreetMap
-- Processing Code: The processing code builds off of code from [this workshop](https://github.com/juanfrans-courses/DataScienceSocietyWorkshop) by [Juan Francisco Saldarriaga](http://juanfrans.com/), a researcher at the Center for Spatial Research at Columbia University and an adjunct assistant professor of urban planning and architecture. It also relies on the fantastic [Unfolding Maps](http://unfoldingmaps.org/) library and its many useful examples. Unfolding Maps was created and is primarily maintained by [Till Nagel](http://tillnagel.com/), a professor of visual analytics at University of Applied Sciences Mannheim and previously a researcher with the FHP Urban Complexity Lab and MIT Senseable City Lab.
+- Processing Code: The Processing code builds off [this workshop](https://github.com/juanfrans-courses/DataScienceSocietyWorkshop) by [Juan Francisco Saldarriaga](http://juanfrans.com/), a researcher at the Center for Spatial Research at Columbia University and an adjunct assistant professor of urban planning and architecture. It also relies on the [Unfolding Maps](http://unfoldingmaps.org/) library for converting geolocations to screen positions. Unfolding Maps was created and is primarily maintained by [Till Nagel](http://tillnagel.com/), a professor of visual analytics at University of Applied Sciences Mannheim.
 
-### Related projects / inspirations:
+### Sources of inspiration:
 - *[Shanghai Metro Flow](http://tillnagel.com/2013/12/shanghai-metro-flow/)*, Till Nagel
 - *[Barcelona Cycle Challenge](http://juanfrans.com/projects/barcelonaCycleChallenge.html)*, Juan Francisco Saldarriaga
 - *[Seven Days of Carsharing in Milan](http://labs.densitydesign.org/carsharing/))*, Matteo Azzi, Daniele Ciminieri, others
 - *[NYC Taxis: A Day in the Life](http://chriswhong.github.io/nyctaxi/)*, Chris Whong
-- *[TaxiVis](http://vgc.poly.edu/projects/taxivis/)
 
 And here are a few that I've made in the past using similar methods:
 - *[Multimodal Symphony: 24 Hours of Transit in New York City](https://vimeo.com/212484620)*, Will Geary
@@ -71,7 +68,3 @@ And here are a few that I've made in the past using similar methods:
 - *[California Transit Flows](https://vimeo.com/227178693)*, Will Geary
 - *[New York City Taxi Flows](https://vimeo.com/210264431)*, Will Geary
 - *[New York City Subway Flows](https://vimeo.com/194378581)*, Will Geary
-
-
-### To Do's:
-- Add Transitland, Mapzen, Carto, OSM attributions into animation
