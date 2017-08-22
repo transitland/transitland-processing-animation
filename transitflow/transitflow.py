@@ -243,8 +243,10 @@ def count_vehicles_on_screen(concatenated_df, date):
     return vehicles, buses, trams, metros, cablecars, trains, ferries
 
 if __name__ == "__main__":
+    todays_date = str(dt.datetime.today()).split(" ")[0]
+
     parser = argparse.ArgumentParser()
-    parser.add_argument("--date", help="Animation day") # default=TODAY
+    parser.add_argument("--date", default=todays_date, help="Animation day")
     parser.add_argument("--apikey", help="Mapzen API Key")
     parser.add_argument(
       "--name",
