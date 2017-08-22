@@ -27,25 +27,22 @@ Navigate to folder:
 - `cd transitflow`
 
 Visualize transit flows by operator onestop_id:
-- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bart --operator=o-9q9-bart`
+- `python transitflow.py --date=2017-08-15 --name=bart --operator=o-9q9-bart`
 
 Visualize transit flows by bounding box:
-- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=sacramento --bbox=38.466493,-121.640625,38.683366,-121.297302`
+- `python transitflow.py --date=2017-08-15 --name=sacramento --bbox=-121.640625,38.466493,-121.297302,38.683366`
 
 Bay area:
-- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
+- `python transitflow.py --date=2017-08-15 --name=bay_area --bbox=-123.280334,37.011326,-120.607910,38.955137 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
 
 Vancouver:
-- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=vancouver --bbox=49.007249,-123.441010,49.426160,-122.632141 --clip_to_bbox`
+- `python transitflow.py --date=2017-08-15 --name=vancouver --bbox=-123.441010,49.007249,-122.632141,49.426160 --clip_to_bbox`
 
 Atlanta:
-- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=atlanta --bbox=33.321349,-84.880371,34.198173,-83.908081 --clip_to_bbox`
+- `python transitflow.py --date=2017-08-15 --name=atlanta --bbox=-84.880371,33.321349,-83.908081,34.198173 --clip_to_bbox`
 
 Los Angeles:
-- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=los_angeles --bbox=32.925707,-119.448853,34.664841,-116.768188 --clip_to_bbox`
-
-New Zealand:
-- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=new_zealand --bbox=-48.980217,162.905273,-32.879587,182.329102 --clip_to_bbox`
+- `python transitflow.py --date=2017-08-15 --apikey=mapzen-ai1duha --name=los_angeles --bbox=-119.448853,32.925707,-116.768188,34.664841 --clip_to_bbox`
 
 
 
