@@ -13,6 +13,7 @@ venv/
 census/
 indiv_operators/
 data/
+sketches/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
