@@ -62,8 +62,6 @@ float hscale = float(totalFrames) / float(width)*0.12;
 
 Table busCount;
 ArrayList<Line> busLines = new ArrayList<Line>();
-ArrayList<Line> busXAxis = new ArrayList<Line>();
-ArrayList<String> busXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> busFrames = new ArrayList<Integer>();
 ArrayList<Integer> busCounts = new ArrayList<Integer>();
 ArrayList<String> busLabels = new ArrayList<String>();
@@ -71,8 +69,6 @@ ArrayList<Float> busHeights = new ArrayList<Float>();
 
 Table tramCount;
 ArrayList<Line> tramLines = new ArrayList<Line>();
-ArrayList<Line> tramXAxis = new ArrayList<Line>();
-ArrayList<String> tramXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> tramFrames = new ArrayList<Integer>();
 ArrayList<Integer> tramCounts = new ArrayList<Integer>();
 ArrayList<String> tramLabels = new ArrayList<String>();
@@ -80,8 +76,6 @@ ArrayList<Float> tramHeights = new ArrayList<Float>();
 
 Table metroCount;
 ArrayList<Line> metroLines = new ArrayList<Line>();
-ArrayList<Line> metroXAxis = new ArrayList<Line>();
-ArrayList<String> metroXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> metroFrames = new ArrayList<Integer>();
 ArrayList<Integer> metroCounts = new ArrayList<Integer>();
 ArrayList<String> metroLabels = new ArrayList<String>();
@@ -89,8 +83,6 @@ ArrayList<Float> metroHeights = new ArrayList<Float>();
 
 Table cablecarCount;
 ArrayList<Line> cablecarLines = new ArrayList<Line>();
-ArrayList<Line> cablecarXAxis = new ArrayList<Line>();
-ArrayList<String> cablecarXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> cablecarFrames = new ArrayList<Integer>();
 ArrayList<Integer> cablecarCounts = new ArrayList<Integer>();
 ArrayList<String> cablecarLabels = new ArrayList<String>();
@@ -98,8 +90,6 @@ ArrayList<Float> cablecarHeights = new ArrayList<Float>();
 
 Table trainCount;
 ArrayList<Line> trainLines = new ArrayList<Line>();
-ArrayList<Line> trainXAxis = new ArrayList<Line>();
-ArrayList<String> trainXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> trainFrames = new ArrayList<Integer>();
 ArrayList<Integer> trainCounts = new ArrayList<Integer>();
 ArrayList<String> trainLabels = new ArrayList<String>();
@@ -107,8 +97,6 @@ ArrayList<Float> trainHeights = new ArrayList<Float>();
 
 Table ferryCount;
 ArrayList<Line> ferryLines = new ArrayList<Line>();
-ArrayList<Line> ferryXAxis = new ArrayList<Line>();
-ArrayList<String> ferryXAxisLabels = new ArrayList<String>();
 ArrayList<Integer> ferryFrames = new ArrayList<Integer>();
 ArrayList<Integer> ferryCounts = new ArrayList<Integer>();
 ArrayList<String> ferryLabels = new ArrayList<String>();
@@ -383,10 +371,7 @@ void loadData() {
     float lineHeight = map(h, 0, maxVehicleCount, 0, maxPixels);
     busHeights.add(lineHeight);
     Line line = new Line(xmargin + i/hscale, height-ymargin, xmargin + i/hscale, height-ymargin-lineHeight, c);
-    c = color(255);
-    Line xaxis = new Line(xmargin, height-ymargin+xaxisoffset, xmargin + i/hscale+1, height-ymargin+xaxisoffset, c);
     busLines.add(line);
-    busXAxis.add(xaxis);
   }
 
   // tram stacked bar
@@ -496,9 +481,7 @@ void draw() {
     // draw stacked area chart with a bunch of skinny lines
     for (int i = 0; i < frameCount; i++) {
       Line busLine = busLines.get(i);
-      Line xaxis = busXAxis.get(i);
       busLine.plot();
-      xaxis.plot();
 
       Line trainLine = trainLines.get(i);
       trainLine.plot();
@@ -606,6 +589,8 @@ void draw() {
     if (monday == true) text("Monday", xlabelmargin, height-xlabeloffset);
 
     text(time, xmargin + frameCount/hscale, height - xlabeloffset-15);
+    // X axis
+    rect(xmargin-10, height-xlabeloffset-20, frameCount/hscale, 1);
 
     textFont(ralewayBold, 14);
     text("Number of Transit Vehicles in Motion", xlabelmargin, height-xlabeloffset-170);
