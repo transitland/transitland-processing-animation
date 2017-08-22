@@ -1,7 +1,7 @@
 ////// MAIN INPUTS ///////
 String directoryName = "${DIRECTORY_NAME}";
 String date = "${DATE}";
-String inputFile = "../../data/" + directoryName + "/" + date + "/output.csv";
+String inputFile = "../data/output.csv";
 String scenario = "Dynamic";
 int totalFrames = ${TOTAL_FRAMES};
 boolean recording = ${RECORDING};
@@ -39,13 +39,13 @@ VideoExport videoExport;
 UnfoldingMap map;
 
 // Statistics input files (for stacked area chart)
-String vehicleCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/vehicles_" + totalFrames + ".csv";
-String busCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/buses_" + totalFrames + ".csv";
-String tramCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/trams_" + totalFrames + ".csv";
-String cablecarCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/cablecars_" + totalFrames + ".csv";
-String metroCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/metros_" + totalFrames + ".csv";
-String trainCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/trains_" + totalFrames + ".csv";
-String ferryCountFile = "../../data/" + directoryName + "/" + date + "/vehicle_counts/ferries_" + totalFrames + ".csv";
+String vehicleCountFile = "../data/vehicle_counts/vehicles_" + totalFrames + ".csv";
+String busCountFile = "../data/vehicle_counts/buses_" + totalFrames + ".csv";
+String tramCountFile = "../data/vehicle_counts/trams_" + totalFrames + ".csv";
+String cablecarCountFile = "../data/vehicle_counts/cablecars_" + totalFrames + ".csv";
+String metroCountFile = "../data/vehicle_counts/metros_" + totalFrames + ".csv";
+String trainCountFile = "../data/vehicle_counts/trains_" + totalFrames + ".csv";
+String ferryCountFile = "../data/vehicle_counts/ferries_" + totalFrames + ".csv";
 
 int totalSeconds;
 Table tripTable;
