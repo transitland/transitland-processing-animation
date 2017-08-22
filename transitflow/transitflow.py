@@ -158,7 +158,7 @@ def animate_operators(operators, date):
             results.append(output)
             print "success!"
             print ""
-            output.to_csv("data/{}/{}/indiv_operators/{}.csv".format(OUTPUT_NAME, DATE, i))
+            output.to_csv("sketches/{}/{}/data/indiv_operators/{}.csv".format(OUTPUT_NAME, DATE, i))
         except StandardError as e:
             failures.append(i)
             print "failed:"
@@ -300,6 +300,8 @@ if __name__ == "__main__":
     print "name: ", OUTPUT_NAME
     print "API key: ", args.apikey
 
+    timer_start = dt.datetime.now()
+
     if args.bbox:
         west, south, east, north = args.bbox.split(",")
         # west, south, east, north = args.bbox.split(",")
@@ -330,8 +332,8 @@ if __name__ == "__main__":
     print ""
     ############
 
-    if not os.path.exists("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE)):
-        os.makedirs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
+    if not os.path.exists("sketches/{}/{}/data/indiv_operators".format(OUTPUT_NAME, DATE)):
+        os.makedirs("sketches/{}/{}/data/indiv_operators".format(OUTPUT_NAME, DATE))
     results, failures = animate_operators(operators, DATE)
     print len(results), "operators successfully downloaded."
     print len(failures), "operators failed."
@@ -339,7 +341,7 @@ if __name__ == "__main__":
 
     # ### Concatenate all individual operator csv files into one big dataframe
     print "Concatenating individual operator outputs."
-    df = concatenate_csvs("data/{}/{}/indiv_operators".format(OUTPUT_NAME, DATE))
+    df = concatenate_csvs("sketches/{}/{}/data/indiv_operators".format(OUTPUT_NAME, DATE))
     print "Calculating trip segment bearings."
     df['bearing'] = df.apply(lambda row: calc_bearing_between_points(row['start_lat'], row['start_lon'], row['end_lat'], row['end_lon']), axis=1)
 
@@ -351,7 +353,7 @@ if __name__ == "__main__":
         ]
 
     # Save to csv.
-    df.to_csv("data/{}/{}/output.csv".format(OUTPUT_NAME, DATE))
+    df.to_csv("sketches/{}/{}/data/output.csv".format(OUTPUT_NAME, DATE))
     print "Total rows: ", df.shape[0]
 
     # ### That's it for the trip data!
@@ -394,15 +396,15 @@ if __name__ == "__main__":
     ferries_counts_output['frame'] = ferries_counts_output.index
 
     # Save these vehicle count stats to csv's.
-    if not os.path.exists("data/{}/{}/vehicle_counts".format(OUTPUT_NAME, DATE)):
-        os.makedirs("data/{}/{}/vehicle_counts".format(OUTPUT_NAME, DATE))
-    vehicles_counts_output.to_csv("data/{}/{}/vehicle_counts/vehicles_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
-    buses_counts_output.to_csv("data/{}/{}/vehicle_counts/buses_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
-    trams_counts_output.to_csv("data/{}/{}/vehicle_counts/trams_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
-    metros_counts_output.to_csv("data/{}/{}/vehicle_counts/metros_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
-    cablecars_counts_output.to_csv("data/{}/{}/vehicle_counts/cablecars_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
-    trains_counts_output.to_csv("data/{}/{}/vehicle_counts/trains_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
-    ferries_counts_output.to_csv("data/{}/{}/vehicle_counts/ferries_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
+    if not os.path.exists("sketches/{}/{}/data/vehicle_counts".format(OUTPUT_NAME, DATE)):
+        os.makedirs("sketches/{}/{}/data/vehicle_counts".format(OUTPUT_NAME, DATE))
+    vehicles_counts_output.to_csv("sketches/{}/{}/data/vehicle_counts/vehicles_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
+    buses_counts_output.to_csv("sketches/{}/{}/data/vehicle_counts/buses_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
+    trams_counts_output.to_csv("sketches/{}/{}/data/vehicle_counts/trams_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
+    metros_counts_output.to_csv("sketches/{}/{}/data/vehicle_counts/metros_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
+    cablecars_counts_output.to_csv("sketches/{}/{}/data/vehicle_counts/cablecars_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
+    trains_counts_output.to_csv("sketches/{}/{}/data/vehicle_counts/trains_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
+    ferries_counts_output.to_csv("sketches/{}/{}/data/vehicle_counts/ferries_{}.csv".format(OUTPUT_NAME, DATE, FRAMES))
 
     # Hacky way to center the sketch
     if not args.bbox:
@@ -414,16 +416,17 @@ if __name__ == "__main__":
     with open(template_path) as f:
         data = f.read()
     s = Template(data)
-    if not os.path.exists("sketches/{}".format(OUTPUT_NAME)):
-        os.makedirs("sketches/{}".format(OUTPUT_NAME))
+
+    if not os.path.exists("sketches/{}/{}/sketch".format(OUTPUT_NAME, DATE)):
+        os.makedirs("sketches/{}/{}/sketch".format(OUTPUT_NAME, DATE))
 
     for asset in ['calendar_icon.png', 'clock_icon.png']:
       shutil.copyfile(
         os.path.join(module_path, 'assets', asset),
-        os.path.join('sketches', OUTPUT_NAME, asset)
+        os.path.join('sketches', OUTPUT_NAME, DATE, "sketch", asset)
       )
 
-    with open("sketches/{}/{}.pde".format(OUTPUT_NAME, OUTPUT_NAME), "w") as f:
+    with open("sketches/{}/{}/sketch/sketch.pde".format(OUTPUT_NAME, DATE), "w") as f:
         f.write(
             s.substitute(
                 DIRECTORY_NAME=OUTPUT_NAME,
@@ -434,3 +437,7 @@ if __name__ == "__main__":
                 AVG_LON=(float(west) + float(east))/2.0
             )
         )
+
+    timer_finish = dt.datetime.now()
+    time_delta = timer_finish - timer_start
+    print "Time elapsed: ", str(time_delta)
