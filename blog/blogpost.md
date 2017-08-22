@@ -107,7 +107,8 @@ For example, this command line argument will produce an animation of every trans
 **Key**|**Status**|**Description**
 -----|-----|-----
 --date|required|The data that you want to animate
---name|required|The name of your project.
+--name|required|The name of your project
 --operator|optional|Operator onestop, id
 --bbox|optional|Bounding box
 --clip\_to\_bbox|optional|Clip results to bounding box
+--exclude|optional|Operators to be excluded
