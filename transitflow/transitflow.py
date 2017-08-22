@@ -14,7 +14,7 @@ TLAPI = None
 OUTPUT_NAME = None
 DATE = None
 FRAMES = None
-PER_PAGE = 1000
+PER_PAGE = 10000
 
 # Helper functions
 
