@@ -152,6 +152,7 @@ def animate_operators(operators, date):
     count = 1
 
     for i in operators:
+        i = i.encode('utf-8')
         print i, count, "/", length
         try:
             output = animate_one_day(i, date)
