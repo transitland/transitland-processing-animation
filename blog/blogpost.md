@@ -42,23 +42,26 @@ Here's another example of visualizing a single operator, this time the Chicago M
 
 [![IMAGE ALT TEXT](http://i.imgur.com/nLQtQDP.jpg)](https://vimeo.com/230506003 "Chicago Metra")
 
-It's interesting to note how much more bimodal the distribution of vehicles en route is for the Chicago Metra than BART. The Metra has clear morning and evening peaks, while BART is much flatter throughout the day. 
-
-## Bay Area Transit Flows
-You can also visualize all operators within a bounding box. I like using bboxfinder.com to draw a bbox.
-
-Visualize all transit flows in the (greater) San Francisco Bay Area with:
-
-- `python transitflow.py --name=bay_area --bbox=-123.280334,37.011326,-120.607910,38.955137, --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
-
-[![IMAGE ALT TEXT](http://i.imgur.com/ol8rMTM.png)](https://vimeo.com/226987064 "Bay Area Transit Flows")
+It's interesting to note how much more bimodal the distribution of vehicles en route is for the Chicago Metra than BART. The Metra has clear morning and evening peaks, while BART is much flatter throughout the day.
 
 ## San Francisco Transit Flows
-Increase frames to 7,200 for a two minute video (60 fps * 120 seconds = 7,200 frames).
+You can also visualize all operators within a bounding box. I like using bboxfinder.com to draw a bounding box. The bounding box  must  be in the format: West, South, East, North.
+
+Visualize all transit flows in San Francisco:
 
 - `python transitflow.py --name=san_francisco --bbox=-122.515411,37.710714,-122.349243,37.853983 --clip_to_bbox --frames=7200`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/3zF4uE7.png)](https://vimeo.com/230827684 "San Francisco Transit Flows")
+
+Note: Here I am using the optional `--frames` parameter to increase frames to 7,200, in order to make a two minute video (60 frames per second * 120 seconds = 7,200 frames). By default, `--frames` is set to 3,600, which generates a 60 second video.
+
+
+## Bay Area Transit Flows
+Next, let's zoom out and visualize all transit flows in the (greater) San Francisco Bay Area, including surrounding cities such as Santa Rosa, Sacramento, Stockton, and San Jose:
+
+- `python transitflow.py --name=bay_area --bbox=-123.280334,37.011326,-120.607910,38.955137, --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
+
+[![IMAGE ALT TEXT](http://i.imgur.com/ol8rMTM.png)](https://vimeo.com/226987064 "Bay Area Transit Flows")
 
 ## Los Angeles Transit Flows
 
