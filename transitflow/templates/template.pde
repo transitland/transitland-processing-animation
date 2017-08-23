@@ -607,12 +607,12 @@ void draw() {
       switch(vehicle_type) {
       case "bus":
         c = color(0, 173, 253);
-        fill(c, 220);
+        fill(c, 240);
         trip.plotBus();
         break;
       case "bus_service":
         c = color(0, 173, 253);
-        fill(c, 220);
+        fill(c, 240);
         trip.plotBus();
         break;
       case("tram"):
