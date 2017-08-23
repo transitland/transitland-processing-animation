@@ -21,6 +21,8 @@ This is the motivation behind *TransitFlow*, an experimental set of tools that c
 
 Let's look at a few examples of what you can do with *TransitFlow*.
 
+# Examples
+
 ## San Francisco BART
 You can visualize a single transit operator by passing in the operator's onestop_id. You can look up an operator's onestop_id using the [Transitland Feed Registery](https://transit.land/feed-registry/). For example, the onestop_id for San Francisco BART is `o-9q9-bart`.
 
@@ -37,6 +39,8 @@ Here's another example of visualizing a single operator, this time the Chicago M
 - `python transitflow.py --date=2017-08-15 --name=chicago_metra --operator=o-dp3-metra`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/Vzt1aaj.jpg)](https://vimeo.com/230506003 "Chicago Metra")
+
+It's interesting to note how much more bimodal the distribution of vehicles en route is for the Chicago Metra than BART.
 
 ## Bay Area Transit Flows
 You can also visualize all operators within a bounding box. I like using bboxfinder.com to draw a bbox.
@@ -74,21 +78,21 @@ Visualize all transit flows in the (greater) San Francisco Bay Area with:
 [![IMAGE ALT TEXT](http://i.imgur.com/749hhoE.png)](https://vimeo.com/230490552 "Atlanta Transit Flows")
 
 
-## How it works
+# How it works
 
 To get the data, the `transitflow.py` makes use of three Transitland API endpoints:
 
 1) **Stops** to get transit stop locations
 2) **Routes** to get operator vehicle types
-3) **ScheduleStopPairs** to get scheduled origin -> destination stop pairs, including timestamps and geolocations.
+3) **ScheduleStopPairs** to get origin -> destination schedule stop pairs, including timestamps and geolocations.
 
-The `ScheduleStopPairs` endpoint does the bulk of the work. Each `ScheduleStopPair` contains an origin stop, a destination stop, a route, an operator, and arrival and departure times. Each `ScheduleStopPair` also includes a service calendar, describing which days a trip is possible. *TransitFlow* uses the [schedule stop pairs API](http://transit.land/api/v1/schedule_stop_pairs) endpoint to search for all `ScheduleStopPair`s for a specified operator or within a specified bounding box. It then concatenates these `ScheduleStopPair`s into a table and outputs a single output csv file which will drive the animation. The Processing sketch reads in this output csv file, uses the [Unfolding Maps](http://unfoldingmaps.org/) library to convert geolocations into screen positions, and animates vehicle movements from origin stop to destination stop using linear interpolation.
+The `ScheduleStopPairs` endpoint does the bulk of the work. Each `ScheduleStopPair` is an edge between an origin stop and a destination stop. Each `ScheduleStopPair` also includes origin departure time and destination arrival time, and a service calendar which tells you which days a trip is possible. *TransitFlow* searches for all `ScheduleStopPairs` for a specified operator or within a specified bounding box. It then concatenates these `ScheduleStopPairs` into a table and outputs a single output csv file which will drive the animation. The Processing sketch reads in this output csv file, uses the [Unfolding Maps](http://unfoldingmaps.org/) library to convert geolocations into screen positions, and animates vehicle movements from origin stop to destination stop using linear interpolation.
 
-## How to use it
+# How to use it
 
 There are two ways to go about using this tool:
 
-#### 1) Search by transit operator onestop_id
+### 1) Search by transit operator onestop_id
 
 To animate a particular transit operator, find that operator's `onestop_id` using the [Transitland Feed Registery](https://transit.land/feed-registry/). The `onestop_id` for BART, for example, is `o-9q9-bart`.
 
@@ -96,7 +100,7 @@ Then, you can download the data and create an animation for that operator with a
 
 `python transitflow.py --date=2017-08-15 --name=bay_area --operator=o-9q9-bart`
 
-#### 2) Search by bounding box
+### 2) Search by bounding box
 
 To animate every operator in a bounding box, you may pass in the bounding box as a command line argument. You may also decide to clip the results to that bounding box, or exclude particular operators.
 
@@ -104,7 +108,7 @@ For example, this command line argument will produce an animation of every trans
 
 `python transitflow.py --date=2017-08-15 --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle,o-9q-amtrakcalifornia`
 
-## Command line arguments
+# Command line arguments
 
 **Key**|**Status**|**Description**
 -----|-----|-----
