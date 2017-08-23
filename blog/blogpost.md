@@ -49,7 +49,7 @@ Visualize all transit flows in the (greater) San Francisco Bay Area with:
 
 - `python transitflow.py --name=bay_area --bbox=-123.280334,37.011326,-120.607910,38.955137, --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/twYVa47.jpg)](https://vimeo.com/226987064 "Bay Area Transit Flows")
+[![IMAGE ALT TEXT](http://i.imgur.com/ol8rMTM.png)](https://vimeo.com/226987064 "Bay Area Transit Flows")
 
 ## San Francisco Transit Flows
 Increase frames to 7,200 for a two minute video (60 fps * 120 seconds = 7,200 frames).
