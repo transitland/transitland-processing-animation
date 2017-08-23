@@ -1,6 +1,6 @@
-# TransitFlow: Visualize transit networks from the command line...
+# Visualizing transit freqency from the command line
 
-...using Mapzen's [Transitland API](transit.land) to download transit schedule data and [Processing](processing.org) with [Unfolding Maps](http://unfoldingmaps.org/) to create spatial-temporal visualizations.
+Using Mapzen's [Transitland API](transit.land) to download transit schedule data and [Processing](processing.org) with [Unfolding Maps](http://unfoldingmaps.org/) to create spatial-temporal visualizations.
 
 Here is an example animation generated for the Bay Area with a single command:
 
