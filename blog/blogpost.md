@@ -55,7 +55,7 @@ Visualize all transit flows in the (greater) San Francisco Bay Area with:
 
 - `python transitflow.py --name=los_angeles --bbox=-119.448853,32.925707,-116.768188,34.664841 --clip_to_bbox`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/8J3Vv1a.jpg)](https://vimeo.com/230629960 "Los Angeles Transit Flows")
+[![IMAGE ALT TEXT](http://i.imgur.com/wHlD0OU.jpg)](https://vimeo.com/230629960 "Los Angeles Transit Flows")
 
 
 ## Boston Transit Flows
