@@ -28,7 +28,7 @@ You can visualize a single transit operator by passing in the operator's onestop
 
 Visualize one day of BART transit flows:
 
-- `python transitflow.py --date=2017-08-15 --name=bart --operator=o-9q9-bart`
+- `python transitflow.py --name=bart --operator=o-9q9-bart`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/cssT1Vq.png)](https://vimeo.com/230364702 "One Day of BART Trips")
 
@@ -36,7 +36,7 @@ Visualize one day of BART transit flows:
 
 Here's another example of visualizing a single operator, this time the Chicago Metra (onestop_id: `o-dp3-metra`).
 
-- `python transitflow.py --date=2017-08-15 --name=chicago_metra --operator=o-dp3-metra`
+- `python transitflow.py --name=chicago_metra --operator=o-dp3-metra`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/Vzt1aaj.jpg)](https://vimeo.com/230506003 "Chicago Metra")
 
@@ -47,20 +47,20 @@ You can also visualize all operators within a bounding box. I like using bboxfin
 
 Visualize all transit flows in the (greater) San Francisco Bay Area with:
 
-- `python transitflow.py --date=2017-08-15 --name=bay_area --bbox=-123.280334,37.011326,-120.607910,38.955137, --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
+- `python transitflow.py --name=bay_area --bbox=-123.280334,37.011326,-120.607910,38.955137, --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/SSqpoQB.png)](https://vimeo.com/226987064 "Bay Area Transit Flows")
 
 ## Los Angeles Transit Flows
 
-- `python transitflow.py --date=2017-08-15 --name=los_angeles --bbox=-119.448853,32.925707,-116.768188,34.664841 --clip_to_bbox`
+- `python transitflow.py --name=los_angeles --bbox=-119.448853,32.925707,-116.768188,34.664841 --clip_to_bbox`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/8J3Vv1a.jpg)](https://vimeo.com/230629960 "Los Angeles Transit Flows")
 
 
 ## Boston Transit Flows
 
-- `python transitflow.py --date=2017-08-15 --name=boston --bbox=-71.386414,42.194951,-70.753326,42.600609 --clip_to_bbox`
+- `python transitflow.py --name=boston --bbox=-71.386414,42.194951,-70.753326,42.600609 --clip_to_bbox`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/yTulKRR.png)](https://vimeo.com/230631173 "Boston Transit Flows")
 
@@ -73,7 +73,7 @@ Visualize all transit flows in the (greater) San Francisco Bay Area with:
 
 ## Atlanta Transit Flows
 
-- `python transitflow.py --date=2017-08-15 --name=atlanta --bbox=-84.880371,33.321349,-83.908081,34.198173 --clip_to_bbox`
+- `python transitflow.py --name=atlanta --bbox=-84.880371,33.321349,-83.908081,34.198173 --clip_to_bbox`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/749hhoE.png)](https://vimeo.com/230490552 "Atlanta Transit Flows")
 
@@ -98,7 +98,7 @@ To animate a particular transit operator, find that operator's `onestop_id` usin
 
 Then, you can download the data and create an animation for that operator with a single command line argument, such as:
 
-`python transitflow.py --date=2017-08-15 --name=bay_area --operator=o-9q9-bart`
+`python transitflow.py --name=bay_area --operator=o-9q9-bart`
 
 ### 2) Search by bounding box
 
@@ -106,7 +106,7 @@ To animate every operator in a bounding box, you may pass in the bounding box as
 
 For example, this command line argument will produce an animation of every transit operator in the "greater" Bay Area, excluding Amtrak.
 
-`python transitflow.py --date=2017-08-15 --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle,o-9q-amtrakcalifornia`
+`python transitflow.py --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak
 
 ### Play your animation
 
@@ -120,7 +120,7 @@ Cycle through the first two rows on the keyboard (1 to 0, q to u) to see the bui
 
 Read more about Unfolding Maps map providers here: http://unfoldingmaps.org/tutorials/mapprovider-and-tiles.html
 
-### Exporting to video
+### Exporting to video  
 
 Open `sketch.pde` file.
 
