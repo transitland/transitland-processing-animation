@@ -108,14 +108,33 @@ For example, this command line argument will produce an animation of every trans
 
 `python transitflow.py --date=2017-08-15 --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle,o-9q-amtrakcalifornia`
 
+### Play your animation
+
+Navigate to `sketches\bay_area\2017-08-15\sketch` and open the `sketch.pde` file.
+
+This should open the Processing application. Simply click Play or `command + r` to play the animation.
+
+### Change map providers
+
+Cycle through the first two rows on the keyboard (1 to 0, q to u) to see the built in map provider options.
+
+Read more about Unfolding Maps map providers here: http://unfoldingmaps.org/tutorials/mapprovider-and-tiles.html
+
+### Exporting to video
+
+Open `sketch.pde` file.
+
+- Faster, lower quality: set `boolean recording = true;`. Generates a medium quality mp4 file.
+- Slower, high quality: set `boolean recording = true;` and `boolean HQ = true;`. Generates 3,600 .tiff images. You can use then ffmpeg or Processing's built in movie maker to stitch them together.
+
 # Command line arguments
 
-**Key**|**Status**|**Description**
------|-----|-----
---name|required|The name of your project
---date|optional|Defaults to today's date
---operator|optional|Operator onestop, id
---bbox|optional|Bounding box
---clip\_to\_bbox|optional|Clip results to bounding box
---exclude|optional|Operators to be excluded
---apikey|optional|Mapzen API key
+**Key**|**Status**|**Description**|**Example**
+-----|-----|-----|-----
+--name|required|The name of your project|--name=boston
+--date|optional|Defaults to today's date|--date=2017-08-15
+--operator|optional|Operator onestop_id|--operator=o-drt-mbta
+--bbox|optional|West, South, East, North| --bbox=-71.4811,42.1135,-70.6709,42.6157
+--clip\_to\_bbox|optional|Clip results to bounding box|--clip\_to\_bbox
+--exclude|optional|Operators to be excluded|--exclude=o-9-amtrak
+--apikey|optional|Mapzen API key|--apikey=mapzen-abc1234
