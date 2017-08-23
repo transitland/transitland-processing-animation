@@ -43,7 +43,7 @@ Note, the optional use of `--clip_to_bbox`. This command will clip the dataset t
 ### Command line arguments:
 
 **Key**|**Status**|**Description**|**Example**
------|-----|-----
+-----|-----|-----|-----
 --name|required|The name of your project|boston
 --date|optional|Defaults to today's date|--date=2017-08-15
 --operator|optional|Operator onestop_id|--operator=o-drt-mbta
