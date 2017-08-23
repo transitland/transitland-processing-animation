@@ -38,7 +38,7 @@ Here's another example of visualizing a single operator, this time the Chicago M
 
 - `python transitflow.py --name=chicago_metra --operator=o-dp3-metra`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/Vzt1aaj.jpg)](https://vimeo.com/230506003 "Chicago Metra")
+[![IMAGE ALT TEXT](http://i.imgur.com/nLQtQDP.jpg)](https://vimeo.com/230506003 "Chicago Metra")
 
 It's interesting to note how much more bimodal the distribution of vehicles en route is for the Chicago Metra than BART.
 
@@ -56,7 +56,7 @@ Increase frames to 7,200 for a two minute video (60 fps * 120 seconds = 7,200 fr
 
 - `python transitflow.py --name=san_francisco --bbox=-122.515411,37.710714,-122.349243,37.853983 --clip_to_bbox --frames=7200`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/3zF4uE7.png)](https://vimeo.com/230629960 "San Francisco Transit Flows")
+[![IMAGE ALT TEXT](http://i.imgur.com/3zF4uE7.png)](https://vimeo.com/230827684 "San Francisco Transit Flows")
 
 ## Los Angeles Transit Flows
 
