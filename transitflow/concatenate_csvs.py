@@ -49,10 +49,10 @@ def count_vehicles_on_screen(concatenated_df, date, frames):
     day = dt.datetime.strptime(date, "%Y-%m-%d")
     thisday = dt.datetime.strftime(day, "%Y-%m-%d")
 
-    chunks = int(float(frames) / (60*24))
-    increment = int(60.0 / chunks)
+    chunks = float(frames) / (60*24)
+    increment = float(60.0 / chunks)
 
-    the_day = [pd.to_datetime(thisday) + dt.timedelta(seconds = i*increment) for i in range(60 * 24 * chunks)]
+    the_day = [pd.to_datetime(thisday) + dt.timedelta(seconds = i*increment) for i in range(int(60 * 24 * chunks))]
     print "Divide 24 hours into", len(the_day), "increments."
 
     count = 0
