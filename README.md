@@ -50,7 +50,9 @@ Visualize one day of BART transit flows:
 
 You can also visualize transit flows by searching for all operators within a bounding box (west, south, east, north). I like using [bboxfinder](bboxfinder.com) to draw rectangular bounding boxes. Here's the command to visualize transit flows in Vancouver):
 
-- `python transitflow.py --name=vancouver --bbox=-123.441010,49.007249,-122.632141,49.426160 --clip_to_bbox`
+- `python transitflow.py  --name=vancouver --bbox=-123.441010,49.007249,-122.632141,49.426160 --clip_to_bbox`
+
+[![IMAGE ALT TEXT](http://i.imgur.com/Lfs8Z1G.jpg)](https://vimeo.com/230689642)
 
 Note, the optional use of `--clip_to_bbox`. This command will clip the dataset to only include transit vehicle trips within the specified bounding box, both in the geo-visualization and in the calculations that drive the stacked bar chart. You may also specify a date with `--date=2017-08-01`, for example. If you do not specify a date, the program will use today's date by default.
 
