@@ -186,7 +186,7 @@ def calc_bearing_between_points(startLat, startLong, endLat, endLong):
     return bearing
 
 # Stacked bar chart functions
-def count_vehicles_on_screen(concatenated_df, date):
+def count_vehicles_on_screen(concatenated_df, date, frames):
     number_of_vehicles = []
     number_of_buses = []
     number_of_trams = []
@@ -198,13 +198,16 @@ def count_vehicles_on_screen(concatenated_df, date):
     day = dt.datetime.strptime(date, "%Y-%m-%d")
     thisday = dt.datetime.strftime(day, "%Y-%m-%d")
 
-    # Every minute in the day
-    the_day = [pd.to_datetime(thisday) + dt.timedelta(seconds = i*15) for i in range(60 * 24 * 4)]
+    chunks = float(frames) / (60*24)
+    increment = float(60.0 / chunks)
+
+    the_day = [pd.to_datetime(thisday) + dt.timedelta(seconds = i*increment) for i in range(int(60 * 24 * chunks))]
+    print "Divide 24 hours into", len(the_day), "increments."
 
     count = 0
-    for minute in the_day:
+    for increment in the_day:
 
-        vehicles_on_the_road = concatenated_df[(concatenated_df['end_time'] > minute) & (concatenated_df['start_time'] <= minute)]
+        vehicles_on_the_road = concatenated_df[(concatenated_df['end_time'] > increment) & (concatenated_df['start_time'] <= increment)]
         number_vehicles_on_the_road = len(vehicles_on_the_road)
         number_of_vehicles.append(number_vehicles_on_the_road)
 
@@ -224,8 +227,8 @@ def count_vehicles_on_screen(concatenated_df, date):
             elif route_type == 'ferry':
                 number_of_ferries.append(number_of_this_mode)
 
-        if count % (60*4) == 0:
-            print minute
+        if count % (60*chunks) == 0:
+            print increment
 
         count += 1
 
@@ -369,7 +372,7 @@ if __name__ == "__main__":
     # stacked area chart.
 
     print "Counting number of vehicles in transit."
-    vehicles, buses, trams, metros, cablecars, trains, ferries = count_vehicles_on_screen(df, DATE)
+    vehicles, buses, trams, metros, cablecars, trains, ferries = count_vehicles_on_screen(df, DATE, FRAMES)
 
     # ### Save vehicle counts to csv (3600 frame version)
     # Our Processing sketch has 3,600 frames (at 60 frames per second makes
@@ -380,7 +383,7 @@ if __name__ == "__main__":
     # vehicle types by using a consitent set of random indices to select
     # counts for different vehicle types.
 
-    random_indices = np.sort(np.random.choice(vehicles.index, FRAMES, replace=False))
+    random_indices = np.sort(np.random.choice(vehicles.index, int(FRAMES), replace=False))
 
     vehicles_counts_output = vehicles.loc[random_indices].reset_index(drop=True)
     vehicles_counts_output['frame'] = vehicles_counts_output.index
