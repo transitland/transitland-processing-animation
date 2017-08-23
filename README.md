@@ -42,15 +42,15 @@ Note, the optional use of `--clip_to_bbox`. This command will clip the dataset t
 
 ### Command line arguments:
 
-**Key**|**Status**|**Description**
+**Key**|**Status**|**Description**|**Example**
 -----|-----|-----
---name|required|The name of your project
---date|optional|Defaults to today's date
---operator|optional|Operator onestop, id
---bbox|optional|West, South, East, North
---clip\_to\_bbox|optional|Clip results to bounding box
---exclude|optional|Operators to be excluded
---apikey|optional|Mapzen API key
+--name|required|The name of your project|boston
+--date|optional|Defaults to today's date|--date=2017-08-15
+--operator|optional|Operator onestop_id|--operator=o-drt-mbta
+--bbox|optional|West, South, East, North| --bbox=-71.481171,42.113505,-70.670929,42.615770
+--clip\_to\_bbox|optional|Clip results to bounding box|--clip\_to\_bbox
+--exclude|optional|Operators to be excluded|--exclude=o-9-amtrak
+--apikey|optional|Mapzen API key|--apikey=mapzen-abc1234
 
 ### Credits:
 - Will Geary, Ian Rees for Mapzen, August 2017
