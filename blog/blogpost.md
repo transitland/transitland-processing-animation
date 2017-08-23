@@ -51,6 +51,13 @@ Visualize all transit flows in the (greater) San Francisco Bay Area with:
 
 [![IMAGE ALT TEXT](http://i.imgur.com/twYVa47.jpg)](https://vimeo.com/226987064 "Bay Area Transit Flows")
 
+## San Francisco Transit Flows
+Increase frames to 7,200 for a two minute video (60 fps * 120 seconds = 7,200 frames).
+
+- `python transitflow.py --name=san_francisco --bbox=-122.515411,37.710714,-122.349243,37.853983 --clip_to_bbox --frames=7200`
+
+[![IMAGE ALT TEXT](http://i.imgur.com/3zF4uE7.png)](https://vimeo.com/230629960 "San Francisco Transit Flows")
+
 ## Los Angeles Transit Flows
 
 - `python transitflow.py --name=los_angeles --bbox=-119.448853,32.925707,-116.768188,34.664841 --clip_to_bbox`
@@ -62,7 +69,7 @@ Visualize all transit flows in the (greater) San Francisco Bay Area with:
 
 - `python transitflow.py --name=boston --bbox=-71.386414,42.194951,-70.753326,42.600609 --clip_to_bbox`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/yTulKRR.png)](https://vimeo.com/230631173 "Boston Transit Flows")
+[![IMAGE ALT TEXT](http://i.imgur.com/vbQ9Exj.png)](https://vimeo.com/230631173 "Boston Transit Flows")
 
 
 ## Vancouver Transit Flows
