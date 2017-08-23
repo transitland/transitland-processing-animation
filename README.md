@@ -44,7 +44,7 @@ Note, the optional use of `--clip_to_bbox`. This command will clip the dataset t
 
 **Key**|**Status**|**Description**|**Example**
 -----|-----|-----|-----
---name|required|The name of your project|boston
+--name|required|The name of your project|--name=boston
 --date|optional|Defaults to today's date|--date=2017-08-15
 --operator|optional|Operator onestop_id|--operator=o-drt-mbta
 --bbox|optional|West, South, East, North| --bbox=-71.4811,42.1135,-70.6709,42.6157
