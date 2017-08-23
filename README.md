@@ -40,6 +40,18 @@ You can also visualize transit flows by searching for all operators within a bou
 
 Note, the optional use of `--clip_to_bbox`. This command will clip the dataset to only include transit vehicle trips within the specified bounding box, both in the geo-visualization and in the calculations that drive the stacked bar chart. You may also specify a date with `--date=2017-08-01`, for example. If you do not specify a date, the program will use today's date by default.
 
+### Command line arguments
+
+**Key**|**Status**|**Description**
+-----|-----|-----
+--name|required|The name of your project
+--date|optional|Defaults to today's date
+--operator|optional|Operator onestop, id
+--bbox|optional|Bounding box
+--clip\_to\_bbox|optional|Clip results to bounding box
+--exclude|optional|Operators to be excluded
+--apikey|optional|Mapzen API key
+
 ### Credits:
 - Will Geary, Ian Rees for Mapzen, August 2017
 - Data: [Mapzen](https://mapzen.com/), [Transitland](https://transit.land/)
@@ -59,15 +71,3 @@ And here are a few more visualizations that Will made in the past using similar 
 - *[California Transit Flows](https://vimeo.com/227178693)*, Will Geary
 - *[New York City Taxi Flows](https://vimeo.com/210264431)*, Will Geary
 - *[New York City Subway Flows](https://vimeo.com/194378581)*, Will Geary
-
-## Command line arguments
-
-**Key**|**Status**|**Description**
------|-----|-----
---name|required|The name of your project
---date|optional|Defaults to today's date
---operator|optional|Operator onestop, id
---bbox|optional|Bounding box
---clip\_to\_bbox|optional|Clip results to bounding box
---exclude|optional|Operators to be excluded
---apikey|optional|Mapzen API key
