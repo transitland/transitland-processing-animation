@@ -38,7 +38,7 @@ def get_stop_lat_lons(operator_onestop_id):
 # Get Schedule data
 def get_schedule_stop_pairs(operator_onestop_id, date):
     """This function gets origin-destination pairs and timestamps from the schedule stop pairs API. This is the most important function and the largest API request."""
-    ssp_request = TLAPI.request('schedule_stop_pairs', operator_onestop_id=operator_onestop_id, date=date, per_page=PER_PAGE)
+    ssp_request = TLAPI.request('schedule_stop_pairs', operator_onestop_id=operator_onestop_id, date=date, per_page=PER_PAGE, sort_min_id=0)
     origin_times = []
     destination_times = []
     origin_stops = []
