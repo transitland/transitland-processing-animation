@@ -82,7 +82,7 @@ Increase frames to 7,200 for a two minute video (60 fps * 120 seconds = 7,200 fr
 
 - `python transitflow.py --name=atlanta --bbox=-84.880371,33.321349,-83.908081,34.198173 --clip_to_bbox`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/749hhoE.png)](https://vimeo.com/230490552 "Atlanta Transit Flows")
+[![IMAGE ALT TEXT](http://i.imgur.com/XNXbEpE.png)](https://vimeo.com/230490552 "Atlanta Transit Flows")
 
 
 # How it works
