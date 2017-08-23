@@ -6,9 +6,7 @@ Here is an example animation generated for the Bay Area with a single command:
 
 `python transitflow.py --name=san_francisco --bbox=-122.515411,37.710714,-122.349243,37.853983 --clip_to_bbox`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/zyXrCi0.gifv)](https://vimeo.com/230827684 "SF Transit Flows")
-
-[![IMAGE ALT TEXT](http://i.imgur.com/SSqpoQB.png)](https://vimeo.com/226987064 "Bay Area Transit Flows")
+[![IMAGE ALT TEXT](http://i.imgur.com/3zF4uE7.png)](https://vimeo.com/230827684 "San Francisco Transit Flows")
 
 ## Set up Processing:
 1. Download [Processing 3](https://processing.org/).
@@ -38,11 +36,15 @@ There are two ways to go about using this tool:
 
 ### 1) Search by transit operator onestop_id
 
-To animate a particular transit operator, find that operator's `onestop_id` using the [Transitland Feed Registery](https://transit.land/feed-registry/). The `onestop_id` for BART, for example, is `o-9q9-bart`.
+You can visualize a single transit operator by passing in the operator's Onestop ID. What's a Onestop ID, you ask? As part of Transitland's [Onestop ID  Scheme](https://transit.land/documentation/onestop-id-scheme/), every transit operator, route, feed and stop are assigned a unique identifier called a Onestop ID.
 
-Here's the command to visualize BART in San Francisco (onestop_id = `o-9q9-bart`):
+You can look up an operator's onestop_id using the [Transitland Feed Registery](https://transit.land/feed-registry/). For example, the onestop_id for San Francisco BART is `o-9q9-bart`.
+
+Visualize one day of BART transit flows:
 
 - `python transitflow.py --name=bart --operator=o-9q9-bart`
+
+[![IMAGE ALT TEXT](http://i.imgur.com/NFPEnYj.png)](https://vimeo.com/230364702 "One Day of BART Trips")
 
 ### 2) Search by bounding box
 
