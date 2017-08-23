@@ -42,7 +42,7 @@ Here's another example of visualizing a single operator, this time the Chicago M
 
 [![IMAGE ALT TEXT](http://i.imgur.com/nLQtQDP.jpg)](https://vimeo.com/230506003 "Chicago Metra")
 
-It's interesting to note how much more bimodal the distribution of vehicles en route is for the Chicago Metra than BART.
+It's interesting to note how much more bimodal the distribution of vehicles en route is for the Chicago Metra than BART. The Metra has clear morning and evening peaks, while BART is much flatter throughout the day. 
 
 ## Bay Area Transit Flows
 You can also visualize all operators within a bounding box. I like using bboxfinder.com to draw a bbox.
