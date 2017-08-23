@@ -24,7 +24,9 @@ Let's look at a few examples of what you can do with *TransitFlow*.
 # Examples
 
 ## San Francisco BART
-You can visualize a single transit operator by passing in the operator's onestop_id. You can look up an operator's onestop_id using the [Transitland Feed Registery](https://transit.land/feed-registry/). For example, the onestop_id for San Francisco BART is `o-9q9-bart`.
+You can visualize a single transit operator by passing in the operator's Onestop ID. What's a Onestop ID, you ask? As part of Transitland's [Onestop ID  Scheme](https://transit.land/documentation/onestop-id-scheme/), every transit operator, route, feed and stop are assigned a unique identifier called a Onestop ID.
+
+You can look up an operator's onestop_id using the [Transitland Feed Registery](https://transit.land/feed-registry/). For example, the onestop_id for San Francisco BART is `o-9q9-bart`.
 
 Visualize one day of BART transit flows:
 
@@ -76,7 +78,7 @@ Increase frames to 7,200 for a two minute video (60 fps * 120 seconds = 7,200 fr
 
 - `python transitflow.py  --name=vancouver --bbox=-123.441010,49.007249,-122.632141,49.426160 --clip_to_bbox`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/TYvyn1m.jpg)](https://vimeo.com/230689642)
+[![IMAGE ALT TEXT](http://i.imgur.com/Lfs8Z1G.jpg)](https://vimeo.com/230689642)
 
 ## Atlanta Transit Flows
 
