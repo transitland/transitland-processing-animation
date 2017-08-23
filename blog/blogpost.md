@@ -30,7 +30,7 @@ Visualize one day of BART transit flows:
 
 - `python transitflow.py --name=bart --operator=o-9q9-bart`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/cssT1Vq.png)](https://vimeo.com/230364702 "One Day of BART Trips")
+[![IMAGE ALT TEXT](http://i.imgur.com/NFPEnYj.png)](https://vimeo.com/230364702 "One Day of BART Trips")
 
 ## Chicago Metra
 
