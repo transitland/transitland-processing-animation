@@ -1,7 +1,8 @@
-# Transitland Processing Animation (work in progress)
-Animating scheduled transit trips using the [Transitland API](https://transit.land/) from Mapzen and the [Processing](https://processing.org/) language with the [Unfolding Maps](http://unfoldingmaps.org/) library.
+# TransitFlow: Visualizing transit networks from the command line...
 
-Here is an example animation generated for the Bay Area:
+...using Mapzen's [Transitland API](transit.land) to download transit schedule data and [Processing](processing.org) with [Unfolding Maps](http://unfoldingmaps.org/) to create spatial-temporal visualizations.
+
+Here is an example animation generated for the Bay Area with a single command:
 
 [![IMAGE ALT TEXT](http://i.imgur.com/SSqpoQB.png)](https://vimeo.com/226987064 "Bay Area Transit Flows")
 
@@ -34,6 +35,7 @@ You can visualize transit flows for a particular operator or set of operators by
 - `python transitflow.py --name=bart --operator=o-9q9-bart`
 
 You can also visualize transit flows by searching for all operators within a bounding box (west, south, east, north). I like using bboxfinder.com to draw rectangular bounding boxes. Here's the command to visualize transit flows in Vancouver):
+
 - `python transitflow.py --name=vancouver --bbox=-123.441010,49.007249,-122.632141,49.426160 --clip_to_bbox`
 
 Note, the optional use of `--clip_to_bbox`. This command will clip the dataset to only include transit vehicle trips within the specified bounding box, both in the geo-visualization and in the calculations that drive the stacked bar chart. You may also specify a date with `--date=2017-08-01`, for example. If you do not specify a date, the program will use today's date by default.
@@ -41,8 +43,8 @@ Note, the optional use of `--clip_to_bbox`. This command will clip the dataset t
 ### Credits:
 - Will Geary, Ian Rees for Mapzen, August 2017
 - Data: [Mapzen](https://mapzen.com/), [Transitland](https://transit.land/)
-- Basemaps: Carto, Stamen, OpenStreetMap, ESRI
-- Visualization: The Processing code in this project builds off [this workshop](https://github.com/juanfrans-courses/DataScienceSocietyWorkshop) by [Juan Francisco Saldarriaga](http://juanfrans.com/), a researcher at the Center for Spatial Research at Columbia University and an adjunct assistant professor of urban planning and architecture. It also relies on the [Unfolding Maps](http://unfoldingmaps.org/) library for converting geolocations to screen positions. Unfolding Maps was created and is primarily maintained by [Till Nagel](http://tillnagel.com/), a professor of visual analytics at University of Applied Sciences Mannheim.
+- Basemaps: [Carto](http://carto.com/), [Stamen](https://stamen.com/), [OpenStreetMap](http://www.openstreetmap.org/), [ESRI](http://www.esri.com/)
+- Visualization: The Processing code in this project builds off [this workshop](https://github.com/juanfrans-courses/DataScienceSocietyWorkshop) by [Juan Francisco Saldarriaga](http://juanfrans.com/). It also relies on the [Unfolding Maps](http://unfoldingmaps.org/) library by [Till Nagel](http://tillnagel.com/) for converting geolocations to screen positions and other functions.
 
 ### Sources of inspiration:
 - *[Shanghai Metro Flow](http://tillnagel.com/2013/12/shanghai-metro-flow/)*, Till Nagel
@@ -51,9 +53,21 @@ Note, the optional use of `--clip_to_bbox`. This command will clip the dataset t
 - *[NYC Taxis: A Day in the Life](http://chriswhong.github.io/nyctaxi/)*, Chris Whong
 - *[Analyzing 1.1 Billion NYC Taxi and Uber Trips](http://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/)*, Todd Schneider
 
-And here are a few more visualizations Will made in the past using similar methods:
+And here are a few more visualizations that Will made in the past using similar methods:
 - *[Multimodal Symphony: 24 Hours of Transit in New York City](https://vimeo.com/212484620)*, Will Geary
 - *[Los Angeles Transit Flows](https://vimeo.com/227178693)*, Will Geary
 - *[California Transit Flows](https://vimeo.com/227178693)*, Will Geary
 - *[New York City Taxi Flows](https://vimeo.com/210264431)*, Will Geary
 - *[New York City Subway Flows](https://vimeo.com/194378581)*, Will Geary
+
+## Command line arguments
+
+**Key**|**Status**|**Description**
+-----|-----|-----
+--name|required|The name of your project
+--date|optional|Defaults to today's date
+--operator|optional|Operator onestop, id
+--bbox|optional|Bounding box
+--clip\_to\_bbox|optional|Clip results to bounding box
+--exclude|optional|Operators to be excluded
+--apikey|optional|Mapzen API key
