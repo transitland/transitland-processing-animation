@@ -106,7 +106,7 @@ To animate every operator in a bounding box, you may pass in the bounding box as
 
 For example, this command line argument will produce an animation of every transit operator in the "greater" Bay Area, excluding Amtrak.
 
-`python transitflow.py --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak
+`python transitflow.py --name=bay_area --bbox=37.011326,-123.280334,38.955137,-120.607910 --clip_to_bbox --exclude=o-9-amtrak`
 
 ### Play your animation
 
