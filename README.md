@@ -1,4 +1,4 @@
-# TransitFlow: Visualizing transit networks from the command line...
+# TransitFlow: Visualize transit networks from the command line...
 
 ...using Mapzen's [Transitland API](transit.land) to download transit schedule data and [Processing](processing.org) with [Unfolding Maps](http://unfoldingmaps.org/) to create spatial-temporal visualizations.
 
@@ -40,14 +40,14 @@ You can also visualize transit flows by searching for all operators within a bou
 
 Note, the optional use of `--clip_to_bbox`. This command will clip the dataset to only include transit vehicle trips within the specified bounding box, both in the geo-visualization and in the calculations that drive the stacked bar chart. You may also specify a date with `--date=2017-08-01`, for example. If you do not specify a date, the program will use today's date by default.
 
-### Command line arguments
+### Command line arguments:
 
 **Key**|**Status**|**Description**
 -----|-----|-----
 --name|required|The name of your project
 --date|optional|Defaults to today's date
 --operator|optional|Operator onestop, id
---bbox|optional|Bounding box
+--bbox|optional|West, South, East, North
 --clip\_to\_bbox|optional|Clip results to bounding box
 --exclude|optional|Operators to be excluded
 --apikey|optional|Mapzen API key
