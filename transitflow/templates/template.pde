@@ -186,9 +186,9 @@ void setup() {
   //fullScreen(P3D);
 
 
-  provider1 = new CartoDB.Positron();
-  provider2 = new StamenMapProvider.TonerLite();
-  provider3 = new StamenMapProvider.TonerBackground();
+  provider1 = new StamenMapProvider.TonerLite();
+  provider2 = new StamenMapProvider.TonerBackground();
+  provider3 = new CartoDB.Positron();
   provider4 = new Microsoft.AerialProvider();
   provider5 = new OpenStreetMap.OpenStreetMapProvider();
   provider6 = new OpenStreetMap.OSMGrayProvider();
@@ -204,9 +204,9 @@ void setup() {
   providery = new EsriProvider.WorldTopoMap();
   provideru = new Google.GoogleMapProvider();
 
-  provider1Attrib = "Carto";
+  provider1Attrib = "Stamen Design";
   provider2Attrib = "Stamen Design";
-  provider3Attrib = "Stamen Design";
+  provider3Attrib = "Carto";
   provider4Attrib = "Bing Maps";
   provider5Attrib = "OpenStreetMap";
   provider6Attrib = "OpenStreetMap";
