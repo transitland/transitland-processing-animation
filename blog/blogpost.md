@@ -67,7 +67,7 @@ Next, let's zoom out and visualize all transit flows in the (greater) San Franci
 
 - `python transitflow.py --name=los_angeles --bbox=-119.448853,32.925707,-116.768188,34.664841 --clip_to_bbox`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/wHlD0OU.jpg)](https://vimeo.com/230629960 "Los Angeles Transit Flows")
+[![IMAGE ALT TEXT](http://i.imgur.com/dvuQNoo.png)](https://vimeo.com/230629960 "Los Angeles Transit Flows")
 
 
 ## Boston Transit Flows
