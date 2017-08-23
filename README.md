@@ -4,6 +4,10 @@ Using Mapzen's [Transitland API](transit.land) to download transit schedule data
 
 Here is an example animation generated for the Bay Area with a single command:
 
+`python transitflow.py --name=san_francisco --bbox=-122.515411,37.710714,-122.349243,37.853983 --clip_to_bbox`
+
+[![IMAGE ALT TEXT](http://i.imgur.com/zyXrCi0.gifv)](https://vimeo.com/230827684 "SF Transit Flows")
+
 [![IMAGE ALT TEXT](http://i.imgur.com/SSqpoQB.png)](https://vimeo.com/226987064 "Bay Area Transit Flows")
 
 ## Set up Processing:
