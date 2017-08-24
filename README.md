@@ -48,13 +48,16 @@ Visualize one day of BART transit flows:
 
 ### 2) Search by bounding box
 
-You can also visualize transit flows by searching for all operators within a bounding box (west, south, east, north). I like using [bboxfinder](bboxfinder.com) to draw rectangular bounding boxes. Here's the command to visualize transit flows in Vancouver):
+You can also visualize transit flows by searching for all operators within a bounding box (west, south, east, north). I like using [bboxfinder](bboxfinder.com) to draw rectangular bounding boxes. Here's the command to visualize transit flows in Chicago:
 
-- `python transitflow.py  --name=vancouver --bbox=-123.441010,49.007249,-122.632141,49.426160 --clip_to_bbox`
+- `python transitflow.py --name=chicago --bbox=-87.992249,41.605175,-87.302856,42.126747 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/Lfs8Z1G.jpg)](https://vimeo.com/230689642)
+[![IMAGE ALT TEXT](http://i.imgur.com/vrlsPLy.png)](https://vimeo.com/230857619 "Chicago Transit Flows")
 
-Note, the optional use of `--clip_to_bbox`. This command will clip the dataset to only include transit vehicle trips within the specified bounding box, both in the geo-visualization and in the calculations that drive the stacked bar chart. You may also specify a date with `--date=2017-08-01`, for example. If you do not specify a date, the program will use today's date by default.
+
+Note, the optional use of `--clip_to_bbox`. This command will clip the dataset to only include transit vehicle trips within the specified bounding box, both in the geo-visualization and in the vehicle count calculations that drive the stacked bar chart.
+
+Also, note the optional use of `--exclude`. This command will exclude specified operators, Amtrak in this case.
 
 ### Play your animation
 
