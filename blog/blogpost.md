@@ -81,7 +81,6 @@ Next, let's zoom out and visualize all transit flows in the (greater) San Franci
 
 [![IMAGE ALT TEXT](http://i.imgur.com/vbQ9Exj.png)](https://vimeo.com/230631173 "Boston Transit Flows")
 
-
 ## Vancouver Transit Flows
 
 - `python transitflow.py  --name=vancouver --bbox=-123.441010,49.007249,-122.632141,49.426160 --clip_to_bbox`
@@ -93,6 +92,13 @@ Next, let's zoom out and visualize all transit flows in the (greater) San Franci
 - `python transitflow.py --name=atlanta --bbox=-84.880371,33.321349,-83.908081,34.198173 --clip_to_bbox`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/XNXbEpE.png)](https://vimeo.com/230490552 "Atlanta Transit Flows")
+
+## Prague Transit Flows
+
+- `python transitflow.py --name=prague --bbox=14.158630,49.912325,14.782104,50.240179 --clip_to_bbox`
+
+[![IMAGE ALT TEXT](http://i.imgur.com/ftb4swq.png)](https://vimeo.com/230490552 "Atlanta Transit Flows")
+
 
 
 # How it works
