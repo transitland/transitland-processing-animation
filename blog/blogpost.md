@@ -69,6 +69,12 @@ Next, let's zoom out and visualize all transit flows in the (greater) San Franci
 
 [![IMAGE ALT TEXT](http://i.imgur.com/dvuQNoo.png)](https://vimeo.com/230629960 "Los Angeles Transit Flows")
 
+## New York City Transit Flows
+
+- `python transitflow.py --name=new_york --bbox=-74.341736,40.470980,-73.541107,40.956048 --clip_to_bbox`
+
+[![IMAGE ALT TEXT](http://i.imgur.com/5iLqlBg.png)](https://vimeo.com/230629960 "Los Angeles Transit Flows")
+
 ## Chicago Transit Flows
 
 - `python transitflow.py --name=chicago --bbox=-87.992249,41.605175,-87.302856,42.126747 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
