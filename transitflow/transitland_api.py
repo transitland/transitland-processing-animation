@@ -53,7 +53,8 @@ class TransitlandRequest(object):
     data = data or {}
     if self.apikey:
       data['apikey'] = self.apikey
-    next_uri = '%s/api/v1/%s?%s'%(self.host, endpoint, urllib.urlencode(data))
+
+    next_uri = '%s/api/v1/%s?%s'%(self.host, endpoint, urllib.urlencode(data).replace("%7E","%7e"))
 
     # Pagination
     while next_uri:
