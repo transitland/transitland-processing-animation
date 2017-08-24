@@ -90,7 +90,7 @@ Open `sketch.pde` file.
 --apikey|optional|Mapzen API key|--apikey=mapzen-abc1234
 
 ## Credits:
-- Will Geary for Mapzen, August 2017
+- [Will Geary](https://twitter.com/wgeary) for Mapzen, August 2017
 - Data: [Mapzen](https://mapzen.com/), [Transitland](https://transit.land/)
 - Basemaps: [Carto](http://carto.com/), [Stamen](https://stamen.com/), [OpenStreetMap](http://www.openstreetmap.org/), [ESRI](http://www.esri.com/)
 - Visualization: The visualization incorporates Processing code from [this workshop](https://github.com/juanfrans-courses/DataScienceSocietyWorkshop) by [Juan Francisco Saldarriaga](http://juanfrans.com/) to plot trips using linear interpolation. It also relies on the [Unfolding Maps](http://unfoldingmaps.org/) library by [Till Nagel](http://tillnagel.com/) for converting geolocations to screen positions and other functions.
