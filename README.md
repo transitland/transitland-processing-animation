@@ -23,11 +23,10 @@ To run within a virtual environment (optional, recommended):
 - `virtualenv virtualenv`
 - `source virtualenv/bin/activate`
 - `python virtualenv/bin/pip install -r requirements.txt`
+- `cd transitflow`
 
 Without a virtual environment:
 - `pip install -r requirements.txt`
-
-Navigate to the main directory:
 - `cd transitflow`
 
 Now, you are ready to download transit schedule data and generate visualizations.
