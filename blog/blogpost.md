@@ -55,7 +55,6 @@ Visualize all transit flows in San Francisco:
 
 Note: Here I am using the optional `--frames` parameter to increase frames to 7,200, in order to make a two minute video (60 frames per second * 120 seconds = 7,200 frames). By default, `--frames` is set to 3,600, which generates a 60 second video.
 
-
 ## Bay Area Transit Flows
 Next, let's zoom out and visualize all transit flows in the (greater) San Francisco Bay Area, including surrounding cities such as Santa Rosa, Sacramento, Stockton, and San Jose:
 
@@ -73,13 +72,13 @@ Next, let's zoom out and visualize all transit flows in the (greater) San Franci
 
 - `python transitflow.py --name=new_york --bbox=-74.341736,40.470980,-73.541107,40.956048 --clip_to_bbox`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/5iLqlBg.png)](https://vimeo.com/230629960 "Los Angeles Transit Flows")
+[![IMAGE ALT TEXT](http://i.imgur.com/5iLqlBg.png)](https://vimeo.com/231002191 "New York City Transit Flows")
 
 ## Chicago Transit Flows
 
 - `python transitflow.py --name=chicago --bbox=-87.992249,41.605175,-87.302856,42.126747 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/vrlsPLy.png)](https://vimeo.com/230857619 "Chicago Transit Flows")
+[![IMAGE ALT TEXT](http://i.imgur.com/pH7AwgB.png)](https://vimeo.com/230857619 "Chicago Transit Flows")
 
 ## Boston Transit Flows
 
@@ -117,8 +116,17 @@ Next, let's zoom out and visualize all transit flows in the (greater) San Franci
 
 [![IMAGE ALT TEXT](http://i.imgur.com/AIWoy6D.png)](https://vimeo.com/230987955 "Rome Transit Flows")
 
+## Sydney Transit Flows
 
+- `python transitflow.py --name=sydney --bbox=149.996338,-34.569906,152.215576,-33.063924 --clip_to_bbox`
 
+[![IMAGE ALT TEXT](http://i.imgur.com/M8R5T4y.png)](https://vimeo.com/231005754 "Sydney Transit Flows")
+
+## Paris Transit Flows
+
+- `python transitflow.py --name=paris --bbox=1.304626,48.396385,3.375549,49.280348 --clip_to_bbox`
+
+[![IMAGE ALT TEXT](http://i.imgur.com/M8R5T4y.png)](https://vimeo.com/231005754 "Sydney Transit Flows")
 
 
 # How it works
