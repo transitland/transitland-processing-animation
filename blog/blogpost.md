@@ -97,7 +97,15 @@ Next, let's zoom out and visualize all transit flows in the (greater) San Franci
 
 - `python transitflow.py --name=prague --bbox=14.158630,49.912325,14.782104,50.240179 --clip_to_bbox`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/ftb4swq.png)](https://vimeo.com/230490552 "Atlanta Transit Flows")
+[![IMAGE ALT TEXT](http://i.imgur.com/ftb4swq.png)](https://vimeo.com/230983917 "Prague Transit Flows")
+
+## Rome Transit Flows
+
+- `python transitflow.py --name=rome --bbox=12.161865,41.667783,12.786713,42.068665 --clip_to_bbox`
+
+[![IMAGE ALT TEXT](http://i.imgur.com/AIWoy6D.png)](https://vimeo.com/230987955 "Rome Transit Flows")
+
+
 
 
 
