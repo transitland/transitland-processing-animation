@@ -230,7 +230,7 @@ void setup() {
   MapUtils.createDefaultEventDispatcher(this, map);
   println("Scenario: " + scenario);
 
-  attrib = "© Mapzen | Transitland | Unfolding Maps | " + provider1Attrib;
+  attrib = "© Mapzen | Transitland | Unfolding Maps | Basemap by " + provider1Attrib;
   attribWidth = textWidth(attrib);
 
   switch(scenario) {
