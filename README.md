@@ -53,7 +53,6 @@ You can also visualize transit flows by searching for all operators within a bou
 
 [![IMAGE ALT TEXT](http://i.imgur.com/vrlsPLy.png)](https://vimeo.com/230857619 "Chicago Transit Flows")
 
-
 Note, the optional use of `--clip_to_bbox`. This command will clip the dataset to only include transit vehicle trips within the specified bounding box, both in the geo-visualization and in the vehicle count calculations that drive the stacked bar chart.
 
 Also, note the optional use of `--exclude`. This command will exclude specified operators, Amtrak in this case.
@@ -104,7 +103,7 @@ Open `sketch.pde` file.
 
 And here are a few more visualizations that Will made in the past using similar methods:
 - *[Multimodal Symphony: 24 Hours of Transit in New York City](https://vimeo.com/212484620)*, Will Geary
-- *[Los Angeles Transit Flows](https://vimeo.com/227178693)*, Will Geary
-- *[California Transit Flows](https://vimeo.com/227178693)*, Will Geary
+- *[San Francisco Transit Flows](https://vimeo.com/230827684)*, Will Geary
+- *[Los Angeles Transit Flows](https://vimeo.com/230629960)*, Will Geary
 - *[New York City Taxi Flows](https://vimeo.com/210264431)*, Will Geary
 - *[New York City Subway Flows](https://vimeo.com/194378581)*, Will Geary
