@@ -54,7 +54,7 @@ class TransitlandRequest(object):
     if self.apikey:
       data['apikey'] = self.apikey
 
-    next_uri = '%s/api/v1/%s?%s'%(self.host, endpoint, urllib.urlencode(data).replace("%7E","%7e"))
+    next_uri = '%s/api/v1/%s?%s'%(self.host, endpoint, urllib.urlencode(data).replace("%7E","~")) # to fix o-dr5-nj~transit
 
     # Pagination
     while next_uri:
@@ -65,6 +65,6 @@ class TransitlandRequest(object):
         if next_uri and self.apikey and ('apikey=' not in next_uri):
           next_uri = "%s&apikey=%s"%(next_uri, self.apikey)
         # transitland responses will have one main key that isn't "meta"
-        main_key = (set(data.keys()) - set(['meta'])).pop()
+        main_key = (set(data.keys()) - set(['meta'])).pop().replace("%7E","~") # to fix o-dr5-nj~transit
         for item in data[main_key]:
             yield item
