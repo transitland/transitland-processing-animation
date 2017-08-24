@@ -2,7 +2,7 @@
 
 Using Mapzen's [Transitland API](transit.land) to download transit schedule data and [Processing](processing.org) with [Unfolding Maps](http://unfoldingmaps.org/) to create spatial-temporal visualizations.
 
-Here is an example animation generated for the Bay Area with a single command:
+Here is an example animation generated for San Francisco with a single command:
 
 `python transitflow.py --name=san_francisco --bbox=-122.515411,37.710714,-122.349243,37.853983 --clip_to_bbox`
 
