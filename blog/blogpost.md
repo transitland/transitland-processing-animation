@@ -39,7 +39,7 @@ Let's look at a few examples of what you can do with *TransitFlow*.
 
 [![IMAGE ALT TEXT](http://i.imgur.com/OAAXmAY.png)](https://vimeo.com/231107441 "Mexico City Transit Flows")
 
-More examples available [here](https://vimeopro.com/willgeary/transit-flows).
+Many more examples available [here](https://vimeopro.com/willgeary/transit-flows).
 
 # How it works
 
