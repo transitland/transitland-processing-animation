@@ -110,7 +110,6 @@ Next, let's zoom out and visualize all transit flows in the (greater) San Franci
 
 [![IMAGE ALT TEXT](http://i.imgur.com/F1p1qTb.png)](https://vimeo.com/231015040 "Seattle Transit Flows")
 
-
 ## Prague Transit Flows
 
 - `python transitflow.py --name=prague --bbox=14.158630,49.912325,14.782104,50.240179 --clip_to_bbox`
