@@ -88,6 +88,8 @@ Open `sketch.pde` file.
 --exclude|optional|Operators to be excluded|--exclude=o-9-amtrak
 --apikey|optional|Mapzen API key|--apikey=mapzen-abc1234
 
+A Mapzen API Key is optional, but recommended for faster results. Sign up for a [Mapzen API Key here](https://mapzen.com/developers/sign_up). 
+
 ## Troubleshooting
 
 If your visualization is not working as expected...
