@@ -43,11 +43,11 @@ Let's look at a few examples of what you can do with *TransitFlow*.
 
 #### Getting the data
 
-*TransitFlow* makes use of three Transitland API endpoints to get the data:
+*TransitFlow* makes use of three [Transitland API](https://transit.land/documentation/datastore/api-endpoints.html) endpoints to get the data.
 
 1) **Stops** to get transit stop locations
 2) **Routes** to get operator vehicle types
-3) **ScheduleStopPairs** to get origin -> destination schedule stop pairs, including timestamps and geolocations.
+3) **ScheduleStopPairs** to get origin -> destination schedule stop pairs
 
 The `ScheduleStopPairs` endpoint does the bulk of the work. Each `ScheduleStopPair` is an edge between an origin stop and a destination stop. Each `ScheduleStopPair` includes origin departure time and location, destination arrival time and location, and a service calendar which tells you which days a trip is possible. *TransitFlow* searches for all `ScheduleStopPairs` for a specified operator or for many operators within a specified bounding box. It then does some data cleaning, calculates trip durations and bearings, and concatenates everything into a table. It then outputs this table to single CSV file which will drive the animation.
 
