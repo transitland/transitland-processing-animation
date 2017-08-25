@@ -29,9 +29,7 @@ def seconds_to_hms(value):
     h, m = divmod(m, 60)
     return h, m, s
 
-
 # Helper functions
-
 def get_vehicle_types(operator_onestop_id):
     """This function will get all **vehicle types** for an operator, by route. So we can ask *"what vehicle type is this particular trip?"* and color code trips by vehicle type."""
     routes_request = TLAPI.request('routes', operated_by=operator_onestop_id, per_page=PER_PAGE)
