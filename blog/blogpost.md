@@ -79,3 +79,8 @@ To view your transit visualization, navigate to `sketches\{name}\{date}\sketch` 
 --clip\_to\_bbox|optional|Clip results to bounding box|--clip\_to\_bbox
 --exclude|optional|Operators to be excluded|--exclude=o-9-amtrak
 --apikey|optional|Mapzen API key|--apikey=mapzen-abc1234
+
+
+# Map with us
+
+If you use this tool, we'd love you hear from you! Share your visualizations by tagging @transitland on Twitter or reaching out to us at hello@mapzen.com. Happy mapping!
