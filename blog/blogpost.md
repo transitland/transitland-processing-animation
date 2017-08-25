@@ -51,7 +51,7 @@ Many more examples available [here](https://vimeopro.com/willgeary/transit-flows
 2) **Routes** to get operator vehicle types
 3) **ScheduleStopPairs** to get origin -> destination schedule stop pairs
 
-The `ScheduleStopPairs` endpoint does the bulk of the work. Each `ScheduleStopPair` is an edge between an origin stop and a destination stop. Each `ScheduleStopPair` includes origin departure time and location, destination arrival time and location, and a service calendar which tells you which days a trip is possible. *TransitFlow* searches for all `ScheduleStopPairs` for a specified operator or for many operators within a specified bounding box. It then does some data cleaning, calculates trip durations and bearings, and concatenates everything into a table. It then outputs this table to single CSV file which will drive the animation.
+The `ScheduleStopPairs` endpoint does the bulk of the work. Each `ScheduleStopPair` is an edge between an origin stop and a destination stop. Each `ScheduleStopPair` includes origin departure time and location, destination arrival time and location, and a service calendar which tells you which days a trip is possible. *TransitFlow* searches for all `ScheduleStopPairs` for a specified operator or for many operators within a specified bounding box. It then parses the data, calculates trip durations and bearings, and concatenates everything into a tidy, tabular dataset. It then outputs this dataset to single CSV file, which will drive the animation.
 
 #### Visualizing the data
 
