@@ -1,4 +1,4 @@
-# Visualizing Transit Frequency
+# Visualizing Regional Transit Frequency
 
 Urban planner Jarrett Walker emphasizes the importance of **transit frequency**:
 
@@ -15,7 +15,7 @@ This is the motivation behind *[TransitFlow](https://github.com/transitland/tran
 *Mmmm... timetables. Provided by the San Francisco Municipal Transportation Agency.*
 
 *TransitFlow* consists of two parts:
-  1) A few python scripts to retrieve and wrangle transit schedule data from [Transitland](https://transit.land/), an open-source data service sponsored by [Mapzen](https://mapzen.com/) that aggregates transit networks around the world.
+  1) A few python scripts to retrieve and wrangle transit schedule data from [Transitland](https://transit.land/), an open-source data service sponsored by [Mapzen](https://mapzen.com/) that aggregates transit networks around the world. Transitland enables us to merge transit schedules from different operators without having to worry about the granular details of each operator's GTFS data.
 
   2) A template to generate a [Processing](https://processing.org/) sketch to animate that data.
 
