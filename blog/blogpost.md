@@ -41,13 +41,20 @@ Let's look at a few examples of what you can do with *TransitFlow*.
 
 # How it works
 
+### Getting the data
+
 *TransitFlow* makes use of three Transitland API endpoints to get the data:
 
 1) **Stops** to get transit stop locations
 2) **Routes** to get operator vehicle types
 3) **ScheduleStopPairs** to get origin -> destination schedule stop pairs, including timestamps and geolocations.
 
-The `ScheduleStopPairs` endpoint does the bulk of the work. Each `ScheduleStopPair` is an edge between an origin stop and a destination stop. Each `ScheduleStopPair` includes origin departure time and location, destination arrival time and location, and a service calendar which tells you which days a trip is possible. *TransitFlow* searches for all `ScheduleStopPairs` for a specified operator or for many operators within a specified bounding box. It then cleans and concatenates these `ScheduleStopPairs` into a table and outputs a single output.csv file which will drive the animation. The Processing sketch reads in this output.csv file, uses the [Unfolding Maps](http://unfoldingmaps.org/) library to convert geolocations into screen positions, and animates vehicle movements from origin stop to destination stop using linear interpolation.
+The `ScheduleStopPairs` endpoint does the bulk of the work. Each `ScheduleStopPair` is an edge between an origin stop and a destination stop. Each `ScheduleStopPair` includes origin departure time and location, destination arrival time and location, and a service calendar which tells you which days a trip is possible. *TransitFlow* searches for all `ScheduleStopPairs` for a specified operator or for many operators within a specified bounding box. It then does some data cleaning, calculates trip durations and bearings, and concatenates everything into a table. It then outputs this table to single CSV file which will drive the animation. 
+
+### Visualizing the data
+
+*TransitFlow* generates a [Processing](https://processing.org/) sketch file based on your command line arguments.
+The Processing sketch reads in the CSV file from the previous step, uses the [Unfolding Maps](http://unfoldingmaps.org/) library to convert geolocations into screen positions, and animates vehicle movements from origin stop to destination stop using linear interpolation.
 
 # How to use it
 
