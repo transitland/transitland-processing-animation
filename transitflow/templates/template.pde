@@ -2,8 +2,9 @@
 String directoryName = "${DIRECTORY_NAME}";
 String date = "${DATE}";
 String inputFile = "../data/output.csv";
-String scenario = "Dynamic";
 int totalFrames = ${TOTAL_FRAMES};
+Location center = new Location(${AVG_LAT}, ${AVG_LON});
+Integer zoom_start = 9;
 boolean recording = ${RECORDING};
 boolean HQ = false;
 boolean rotateBearing = true;
@@ -119,10 +120,9 @@ PFont raleway;
 PFont ralewayBold;
 Integer screenfillalpha = 120;
 
-Location place_start;
+
 Float firstLat;
 Float firstLon;
-Integer zoom_start;
 color c;
 
 // define date format of raw data
@@ -185,7 +185,6 @@ void setup() {
   //size(1000, 960, P3D);
   //fullScreen(P3D);
 
-
   provider1 = new StamenMapProvider.TonerLite();
   provider2 = new StamenMapProvider.TonerBackground();
   provider3 = new CartoDB.Positron();
@@ -233,39 +232,7 @@ void setup() {
   attrib = "© Mapzen | Transitland | Unfolding Maps | Basemap by " + provider1Attrib;
   attribWidth = textWidth(attrib);
 
-  switch(scenario) {
-  case "Dynamic":
-    place_start = new Location(${AVG_LAT}, ${AVG_LON});
-    zoom_start = 9;
-    break;
-  case "USA":
-    Location USA = new Location(41, -98);
-    place_start = USA;
-    zoom_start = 4;
-    break;
-  case "California":
-    Location california = new Location(37.93, -122.23);
-    place_start = california;
-    zoom_start = 6;
-    break;
-  case "LA":
-    Location LA = new Location(34.5522, -118.2437);
-    place_start = LA;
-    zoom_start = 9;
-    break;
-  case "SF downtown":
-    Location SF_downtown = new Location(37.7749, -122.4194);
-    place_start = SF_downtown;
-    zoom_start = 11;
-    break;
-  case "Bay Area":
-    Location bay_area = new Location(37.8749, -122.0094);
-    place_start = bay_area;
-    zoom_start = 9;
-    break;
-  }
-
-  map.zoomAndPanTo(zoom_start, place_start);
+  map.zoomAndPanTo(zoom_start, center);
 
   // Fonts and icons
   raleway  = createFont("Raleway-Heavy", 32);
