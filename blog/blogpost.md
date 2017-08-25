@@ -49,18 +49,18 @@ Let's look at a few examples of what you can do with *TransitFlow*.
 2) **Routes** to get operator vehicle types
 3) **ScheduleStopPairs** to get origin -> destination schedule stop pairs, including timestamps and geolocations.
 
-The `ScheduleStopPairs` endpoint does the bulk of the work. Each `ScheduleStopPair` is an edge between an origin stop and a destination stop. Each `ScheduleStopPair` includes origin departure time and location, destination arrival time and location, and a service calendar which tells you which days a trip is possible. *TransitFlow* searches for all `ScheduleStopPairs` for a specified operator or for many operators within a specified bounding box. It then does some data cleaning, calculates trip durations and bearings, and concatenates everything into a table. It then outputs this table to single CSV file which will drive the animation. 
+The `ScheduleStopPairs` endpoint does the bulk of the work. Each `ScheduleStopPair` is an edge between an origin stop and a destination stop. Each `ScheduleStopPair` includes origin departure time and location, destination arrival time and location, and a service calendar which tells you which days a trip is possible. *TransitFlow* searches for all `ScheduleStopPairs` for a specified operator or for many operators within a specified bounding box. It then does some data cleaning, calculates trip durations and bearings, and concatenates everything into a table. It then outputs this table to single CSV file which will drive the animation.
 
 ### Visualizing the data
 
 *TransitFlow* generates a [Processing](https://processing.org/) sketch file based on your command line arguments.
-The Processing sketch reads in the CSV file from the previous step, uses the [Unfolding Maps](http://unfoldingmaps.org/) library to convert geolocations into screen positions, and animates vehicle movements from origin stop to destination stop using linear interpolation.
+The Processing sketch reads in the CSV file from the previous step, uses the [Unfolding Maps](http://unfoldingmaps.org/) library to load map tiles and convert geolocations into screen positions, and animates vehicle movements from origin stop to destination stop using linear interpolation.
 
 # How to use it
 
-You can visualize a single transit operator by passing in the operator's Onestop ID as a command line argument. What's a Onestop ID, you ask? As part of Transitland's [Onestop ID  Scheme](https://transit.land/documentation/onestop-id-scheme/), every transit operator, route, feed and stop are assigned a unique identifier called a Onestop ID. You may look up an operator's onestop_id using the [Transitland Feed Registery](https://transit.land/feed-registry/). For example, the onestop_id for San Francisco BART is `o-9q9-bart`.
+You can visualize a single transit operator by passing in the operator's Onestop ID as a command line argument. What's a Onestop ID, you ask? As part of Transitland's [Onestop ID  Scheme](https://transit.land/documentation/onestop-id-scheme/), every transit operator, route, feed and stop are assigned a unique identifier called a Onestop ID. You may look up an operator's onestop_id using the [Transitland Feed Registery](https://transit.land/feed-registry/). For example, the onestop_id for San Francisco BART is `o-9q9-bart`. To visualize BART's schedule on today's date: `python transitflow.py --name=bart --operator=o-9q9-bart`
 
-You can also visualize many operators within a region by passing in your bounding box of interest as a command line argument. I like using [bboxfinder](bboxfinder.com) to draw a bounding box. The bounding box must be in this format: West, South, East, North.
+You can also visualize many operators within a region by passing in your bounding box of interest as a command line argument. I like using [bboxfinder](bboxfinder.com) to draw a bounding box. The bounding box must be in this format: West, South, East, North. For example, here is a bounding box around Vancouver: -123.035889,45.257489,-122.250366,45.798170 . To visualize Vancouver transit flows on today's date:  `python transitflow.py --name=portland --bbox=-123.035889,45.257489,-122.250366,45.798170 --clip_to_bbox`
 
 To view your transit visualization, navigate to `sketches\{name}\{date}\sketch` and open the `sketch.pde` file. This should open the Processing application. Simply click the play button or `command + r` to run the animation.
 
