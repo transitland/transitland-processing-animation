@@ -8,7 +8,7 @@ Here is an example animation generated for San Francisco with a single command:
 
 [![IMAGE ALT TEXT](http://i.imgur.com/3zF4uE7.png)](https://vimeo.com/230827684 "San Francisco Transit Flows")
 
-## Set up Processing:
+## Install Processing:
 1. Download [Processing 3](https://processing.org/).
 2. Download [Unfolding Maps version 0.9.9 for Processing 3](http://services.informatik.hs-mannheim.de/~nagel/GDV/Unfolding_for_processing_0.9.9beta.zip).
 3. Navigate to `~/Documents/Processing/libraries` on your machine.
@@ -88,11 +88,19 @@ Open `sketch.pde` file.
 --exclude|optional|Operators to be excluded|--exclude=o-9-amtrak
 --apikey|optional|Mapzen API key|--apikey=mapzen-abc1234
 
+## Troubleshooting:
+
+If your visualization is not working as expected...
+
+- Make sure that the operator of interest actually has service on the specified date (no `--date` argument defaults to today's date). Some operators are better than others at sharing updated data. For example, Mexico City's [Metrobús](https://transit.land/api/v1/schedule_stop_pairs?operator_onestop_id=o-9g3w-metrobs) has a `service_end_date` of 2016-08-17. So, you would need pass in a `--date=2016-08-17` or earlier or to download and visualize the Metrobús.
+
+- Make sure that Transitland has coverage in your area of interest. You can search for transit operators and feeds using the [Transitland Feed Registery](https://transit.land/feed-registry/).
+
 ## Credits:
-- [Will Geary](https://twitter.com/wgeary) for Mapzen, August 2017
-- Data: [Mapzen](https://mapzen.com/), [Transitland](https://transit.land/)
-- Basemaps: [Carto](http://carto.com/), [Stamen](https://stamen.com/), [OpenStreetMap](http://www.openstreetmap.org/), [ESRI](http://www.esri.com/)
-- Visualization: The visualization incorporates Processing code from [this workshop](https://github.com/juanfrans-courses/DataScienceSocietyWorkshop) by [Juan Francisco Saldarriaga](http://juanfrans.com/) to plot trips using linear interpolation. It also relies on the [Unfolding Maps](http://unfoldingmaps.org/) library by [Till Nagel](http://tillnagel.com/) for converting geolocations to screen positions and other functions.
+- Coded by [Will Geary](https://twitter.com/wgeary) for Mapzen, August 2017
+- Transit schedule data from [Mapzen](https://mapzen.com/), [Transitland](https://transit.land/)
+- Map tiles from [Stamen](https://stamen.com/), [Carto](http://carto.com/), [OpenStreetMap](http://www.openstreetmap.org/), [ESRI](http://www.esri.com/), [Bing Maps](https://www.bing.com/maps)
+- The visualization incorporates Processing code from [this workshop](https://github.com/juanfrans-courses/DataScienceSocietyWorkshop) by [Juan Francisco Saldarriaga](http://juanfrans.com/) to plot trips using linear interpolation. It also relies on the [Unfolding Maps](http://unfoldingmaps.org/) library by [Till Nagel](http://tillnagel.com/) for converting geolocations to screen positions and other functions. Thank you to Juan and Till for your inspiring work and commitment to open-source software!
 
 ## Sources of inspiration:
 - *[Shanghai Metro Flow](http://tillnagel.com/2013/12/shanghai-metro-flow/)*, Till Nagel
@@ -101,9 +109,4 @@ Open `sketch.pde` file.
 - *[NYC Taxis: A Day in the Life](http://chriswhong.github.io/nyctaxi/)*, Chris Whong
 - *[Analyzing 1.1 Billion NYC Taxi and Uber Trips](http://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/)*, Todd Schneider
 
-And here are a few more visualizations that Will made in the past using similar methods:
-- *[Multimodal Symphony: 24 Hours of Transit in New York City](https://vimeo.com/212484620)*, Will Geary
-- *[San Francisco Transit Flows](https://vimeo.com/230827684)*, Will Geary
-- *[Los Angeles Transit Flows](https://vimeo.com/230629960)*, Will Geary
-- *[New York City Taxi Flows](https://vimeo.com/210264431)*, Will Geary
-- *[New York City Subway Flows](https://vimeo.com/194378581)*, Will Geary
+See more visualizations created with TransitFlow here: https://vimeopro.com/willgeary/transit-flows
