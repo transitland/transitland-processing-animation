@@ -178,7 +178,7 @@ Open `sketch.pde` file.
 - Faster, lower quality: set `boolean recording = true;`. Generates a medium quality mp4 file.
 - Slower, high quality: set `boolean recording = true;` and `boolean HQ = true;`. Generates 3,600 .tiff images. You can use then ffmpeg or Processing's built in movie maker to stitch them together.
 
-# Command line arguments
+### Command line arguments
 
 **Key**|**Status**|**Description**|**Example**
 -----|-----|-----|-----
