@@ -74,42 +74,36 @@ Table busCount;
 ArrayList<Line> busLines = new ArrayList<Line>();
 ArrayList<Integer> busFrames = new ArrayList<Integer>();
 ArrayList<Integer> busCounts = new ArrayList<Integer>();
-ArrayList<String> busLabels = new ArrayList<String>();
 ArrayList<Float> busHeights = new ArrayList<Float>();
 
 Table tramCount;
 ArrayList<Line> tramLines = new ArrayList<Line>();
 ArrayList<Integer> tramFrames = new ArrayList<Integer>();
 ArrayList<Integer> tramCounts = new ArrayList<Integer>();
-ArrayList<String> tramLabels = new ArrayList<String>();
 ArrayList<Float> tramHeights = new ArrayList<Float>();
 
 Table metroCount;
 ArrayList<Line> metroLines = new ArrayList<Line>();
 ArrayList<Integer> metroFrames = new ArrayList<Integer>();
 ArrayList<Integer> metroCounts = new ArrayList<Integer>();
-ArrayList<String> metroLabels = new ArrayList<String>();
 ArrayList<Float> metroHeights = new ArrayList<Float>();
 
 Table cablecarCount;
 ArrayList<Line> cablecarLines = new ArrayList<Line>();
 ArrayList<Integer> cablecarFrames = new ArrayList<Integer>();
 ArrayList<Integer> cablecarCounts = new ArrayList<Integer>();
-ArrayList<String> cablecarLabels = new ArrayList<String>();
 ArrayList<Float> cablecarHeights = new ArrayList<Float>();
 
 Table trainCount;
 ArrayList<Line> trainLines = new ArrayList<Line>();
 ArrayList<Integer> trainFrames = new ArrayList<Integer>();
 ArrayList<Integer> trainCounts = new ArrayList<Integer>();
-ArrayList<String> trainLabels = new ArrayList<String>();
 ArrayList<Float> trainHeights = new ArrayList<Float>();
 
 Table ferryCount;
 ArrayList<Line> ferryLines = new ArrayList<Line>();
 ArrayList<Integer> ferryFrames = new ArrayList<Integer>();
 ArrayList<Integer> ferryCounts = new ArrayList<Integer>();
-ArrayList<String> ferryLabels = new ArrayList<String>();
 ArrayList<Float> ferryHeights = new ArrayList<Float>();
 
 ScreenPosition startPos;
