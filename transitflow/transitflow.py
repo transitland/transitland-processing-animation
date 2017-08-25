@@ -69,7 +69,7 @@ def get_schedule_stop_pairs(operator_onestop_id, date):
             end = time_to_seconds(i['frequency_end_time'])
             incr = i['frequency_headway_seconds']
             while now <= end:
-                print "freq: ", start, now, end, incr
+                print "freq: start %s now %s end %s incr %s"%(start, now, end, incr)
                 odt = (time_to_seconds(i['origin_departure_time']) - start) + now
                 dat = (time_to_seconds(i['destination_arrival_time']) - start) + now
                 now += incr
