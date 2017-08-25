@@ -17,16 +17,8 @@ Here is an example animation generated for San Francisco with a single command:
 6. Quit and re-open Processing.
 
 ## Instructions
-- Download the repository, unzip it and `cd` into it.
-
-To run within a virtual environment (recommended):
-- `virtualenv virtualenv`
-- `source virtualenv/bin/activate`
-- `python virtualenv/bin/pip install -r requirements.txt`
-- `cd transitflow`
-
-Without a virtual environment:
-- `pip install -r requirements.txt`
+- Download the repository, unzip it and `cd` into it
+- `pip install -r requirements.txt` to install the python requirements (pandas, numpy, requests)
 - `cd transitflow`
 
 Now, you are ready to download transit schedule data and generate visualizations.
@@ -73,10 +65,10 @@ Read more about Unfolding Maps map providers here: http://unfoldingmaps.org/tuto
 
 Open `sketch.pde` file.
 
-- Faster, lower quality: set `boolean recording = true;`. Generates a medium quality mp4 file.
-- Slower, high quality: set `boolean recording = true;` and `boolean HQ = true;`. Generates 3,600 .tiff images. You can use then ffmpeg or Processing's built in movie maker to stitch them together.
+- For a quick, medium quality video, set `boolean recording = true;`
+- For a high quality video, set `boolean recording = true;` and `boolean HQ = true;`. This will generate 3,600 .tiff frames that can be stiched together using ffmpeg or Processing's built in movie maker tool.
 
-### Command line arguments
+## Command line arguments
 
 **Key**|**Status**|**Description**|**Example**
 -----|-----|-----|-----
