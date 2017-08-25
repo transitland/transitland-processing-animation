@@ -64,7 +64,7 @@ You can also visualize many operators within a region by passing in your boundin
 
 To view your transit visualization, navigate to `sketches\{name}\{date}\sketch` and open the `sketch.pde` file. This should open the Processing application. Simply click the play button or `command + r` to run the animation.
 
-### Command line arguments
+#### Command line arguments
 
 **Key**|**Status**|**Description**|**Example**
 -----|-----|-----|-----
