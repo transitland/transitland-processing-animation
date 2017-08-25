@@ -1,3 +1,12 @@
+/*
+Will Geary (@wgeary)
+https://github.com/transitland/transitland-processing-animation
+
+Credits:
+Uses code from Juan Francisco Saldarriaga's workshop: https://github.com/juanfrans-courses/DataScienceSocietyWorkshop
+Uses Till Nagel's Unfolding Maps library: http://unfoldingmaps.org/
+*/
+
 ////// MAIN INPUTS ///////
 String directoryName = "${DIRECTORY_NAME}";
 String date = "${DATE}";
@@ -8,7 +17,6 @@ Integer zoom_start = 9;
 boolean recording = ${RECORDING};
 boolean HQ = false;
 boolean rotateBearing = true;
-
 //////////////////////////
 
 // Import Unfolding Maps
@@ -37,6 +45,7 @@ import com.hamoid.*;
 VideoExport videoExport;
 
 // Declare Global Variables
+
 UnfoldingMap map;
 
 // Statistics input files (for stacked area chart)
@@ -444,7 +453,7 @@ void draw() {
     fill(0, screenfillalpha);
     rect(0, 0, width, height);
 
-    // draw stacked area chart with a bunch of skinny lines
+    // draw stacked bar chart with a bunch of skinny lines
     for (int i = 0; i < frameCount; i++) {
       Line busLine = busLines.get(i);
       busLine.plot();
@@ -480,16 +489,17 @@ void draw() {
 
     //fill(255, 255, 255);
 
-   fill(0,150);
-   noStroke();
-   rect(xmargin + frameCount/hscale-5, height-ymargin-120, 110, 135,7);
-   fill(150, 220);
-   rect(width-(attribWidth+10), height-18, (attribWidth+10), 18, 3);
-   c = color(255,255,255,255);
-   strokeWeight(1);
-   stroke(c);
-   line(xmargin + frameCount/hscale, height-ymargin-24, xmargin + frameCount/hscale+100, height-ymargin-24);
-   noStroke();
+    fill(0,150);
+    noStroke();
+    rect(xmargin + frameCount/hscale-5, height-ymargin-120, 110, 135,7);
+    fill(150, 220);
+    rect(width-(attribWidth+10), height-18, (attribWidth+10), 18, 3);
+    c = color(255,255,255,255);
+    strokeWeight(1);
+    stroke(c);
+    line(xmargin + frameCount/hscale, height-ymargin-24, xmargin + frameCount/hscale+100, height-ymargin-24);
+
+    noStroke();
 
     int h_bus = busCounts.get(frameCount);
     fill(0, 173, 253, 255);
@@ -744,16 +754,6 @@ class Line {
 
 
 class Trips {
-
-  // Credits:
- //
- // This class builds off of Juan Francisco Saldarriaga's
- // Citibike animation processing sketch:
- // https://github.com/juanfrans-courses/DataScienceSocietyWorkshop
- //
- // And integrates it with Unfolding Maps library
- // Till Nagel, creator of the Unfolding Maps Library
- // https://github.com/tillnagel/unfolding
 
  int tripFrames;
  int startFrame;
