@@ -19,7 +19,7 @@ Here is an example animation generated for San Francisco with a single command:
 ## Instructions
 - Download the repository, unzip it and `cd` into it.
 
-To run within a virtual environment (optional, recommended):
+To run within a virtual environment (recommended):
 - `virtualenv virtualenv`
 - `source virtualenv/bin/activate`
 - `python virtualenv/bin/pip install -r requirements.txt`
@@ -33,11 +33,11 @@ Now, you are ready to download transit schedule data and generate visualizations
 
 There are two ways to go about using this tool:
 
-### 1) Search by transit operator onestop_id
+### 1) Search by transit operator Onestop ID
 
 You can visualize a single transit operator by passing in the operator's Onestop ID. What's a Onestop ID, you ask? As part of Transitland's [Onestop ID  Scheme](https://transit.land/documentation/onestop-id-scheme/), every transit operator, route, feed and stop are assigned a unique identifier called a Onestop ID.
 
-You can look up an operator's onestop_id using the [Transitland Feed Registery](https://transit.land/feed-registry/). For example, the onestop_id for San Francisco BART is `o-9q9-bart`.
+You can look up an operator's Onestop ID using the [Transitland Feed Registery](https://transit.land/feed-registry/). For example, the Onestop ID for San Francisco BART is `o-9q9-bart`.
 
 Visualize one day of BART transit flows:
 
@@ -47,13 +47,13 @@ Visualize one day of BART transit flows:
 
 ### 2) Search by bounding box
 
-You can also visualize transit flows by searching for all operators within a bounding box (west, south, east, north). I like using [bboxfinder](bboxfinder.com) to draw rectangular bounding boxes. Here's the command to visualize transit flows in Chicago:
+You can also visualize transit flows by searching for all operators within a bounding box. The bounding box must be in the format: West, South, East, North. I like using [bboxfinder](http://bboxfinder.com/) to draw bounding boxes. For example, here's the command to visualize transit flows in Chicago:
 
 - `python transitflow.py --name=chicago --bbox=-87.992249,41.605175,-87.302856,42.126747 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
 
 [![IMAGE ALT TEXT](http://i.imgur.com/pH7AwgB.png)](https://vimeo.com/230857619 "Chicago Transit Flows")
 
-Note, the optional use of `--clip_to_bbox`. This command will clip the dataset to only include transit vehicle trips within the specified bounding box, both in the geo-visualization and in the vehicle count calculations that drive the stacked bar chart.
+Note, the use of `--clip_to_bbox`. This command will clip the dataset to only include transit vehicle trips within the specified bounding box, both in the geo-visualization and in the vehicle count calculations that drive the stacked bar chart.
 
 Also, note the optional use of `--exclude`. This command will exclude specified operators, Amtrak in this case.
 
@@ -82,7 +82,7 @@ Open `sketch.pde` file.
 -----|-----|-----|-----
 --name|required|The name of your project|--name=boston
 --date|optional|Defaults to today's date|--date=2017-08-15
---operator|optional|Operator onestop_id|--operator=o-drt-mbta
+--operator|optional|Operator Onestop ID|--operator=o-drt-mbta
 --bbox|optional|West, South, East, North| --bbox=-71.4811,42.1135,-70.6709,42.6157
 --clip\_to\_bbox|optional|Clip results to bounding box|--clip\_to\_bbox
 --exclude|optional|Operators to be excluded|--exclude=o-9-amtrak
