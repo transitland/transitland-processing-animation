@@ -59,7 +59,7 @@ Also, note the optional use of `--exclude`. This command will exclude specified 
 
 ### Play your animation
 
-Navigate to `sketches\bay_area\2017-08-15\sketch` and open the `sketch.pde` file.
+Navigate to `sketches\{name}\{date}\sketch` and open the `sketch.pde` file.
 
 This should open the Processing application. Simply click Play or `command + r` to play the animation.
 
