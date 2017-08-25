@@ -36,7 +36,7 @@ Visualize one day of BART transit flows:
 
 ## Chicago Metra
 
-Here's another example of visualizing a single operator, this time the Chicago Metra (onestop_id: `o-dp3-metra`).
+Here's another example of visualizing a single operator, this time the Chicago Metra (Onestop ID: `o-dp3-metra`).
 
 - `python transitflow.py --name=chicago_metra --operator=o-dp3-metra`
 
@@ -45,7 +45,7 @@ Here's another example of visualizing a single operator, this time the Chicago M
 It's interesting to note how much more bimodal the distribution of vehicles en route is for the Chicago Metra than BART. The Metra has clear morning and evening peaks, while BART is much flatter throughout the day.
 
 ## San Francisco Transit Flows
-You can also visualize all operators within a bounding box. I like using bboxfinder.com to draw a bounding box. The bounding box  must  be in the format: West, South, East, North.
+You can also visualize all operators within a bounding box. I like using [bboxfinder](bboxfinder.com) to draw a bounding box. The bounding box  must  be in the format: West, South, East, North.
 
 Visualize all transit flows in San Francisco:
 
