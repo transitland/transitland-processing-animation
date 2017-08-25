@@ -94,7 +94,7 @@ If your visualization is not working as expected...
 
 - Make sure that the operator of interest actually has service on the specified date (no `--date` argument defaults to today's date). Some operators are better than others at sharing updated data. For example, Mexico City's [Metrobús](https://transit.land/api/v1/schedule_stop_pairs?operator_onestop_id=o-9g3w-metrobs) has a `service_end_date` of 2016-08-17. So, you would need pass in a `--date=2016-08-17` or earlier or to download and visualize the Metrobús.
 
-- Make sure that Transitland has coverage in your area of interest. You can search for transit operators and feeds using the [Transitland Feed Registery](https://transit.land/feed-registry/).
+- Make sure that Transitland has coverage in your area of interest. You can search for transit operators and feeds using the [Transitland Feed Registery](https://transit.land/feed-registry/). Is Transitland missing a feed? [Let us know](https://transit.land/participate/)!
 
 ## Credits:
 - Coded by [Will Geary](https://twitter.com/wgeary) for Mapzen, August 2017
