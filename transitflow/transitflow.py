@@ -16,6 +16,20 @@ DATE = None
 FRAMES = None
 PER_PAGE = 10000
 
+# Time
+def time_to_seconds(value):
+    h, m, s = map(int, value.split(':'))
+    return (h * 60 * 60) + (m * 60) + s
+
+def seconds_to_time(value):
+    return '%02d:%02d:%02d'%(seconds_to_hms(value))
+
+def seconds_to_hms(value):
+    m, s = divmod(value, 60)
+    h, m = divmod(m, 60)
+    return h, m, s
+
+
 # Helper functions
 
 def get_vehicle_types(operator_onestop_id):
@@ -49,18 +63,34 @@ def get_schedule_stop_pairs(operator_onestop_id, date):
         count+=1
         if count % 10000 == 0:
             print count
-        origin_times.append(i['origin_departure_time'])
-        destination_times.append(i['destination_arrival_time'])
-        origin_stops.append(i['origin_onestop_id'])
-        destination_stops.append(i['destination_onestop_id'])
-        route_ids.append(i['route_onestop_id'])
+        if i['frequency_start_time']:
+            start = time_to_seconds(i['frequency_start_time'])
+            now = start
+            end = time_to_seconds(i['frequency_end_time'])
+            incr = i['frequency_headway_seconds']
+            while now <= end:
+                print "freq: ", start, now, end, incr
+                odt = (time_to_seconds(i['origin_departure_time']) - start) + now
+                dat = (time_to_seconds(i['destination_arrival_time']) - start) + now
+                now += incr
+                origin_times.append(seconds_to_time(odt))
+                destination_times.append(seconds_to_time(dat))
+                origin_stops.append(i['origin_onestop_id'])
+                destination_stops.append(i['destination_onestop_id'])
+                route_ids.append(i['route_onestop_id'])
+        else:
+            origin_times.append(i['origin_departure_time'])
+            destination_times.append(i['destination_arrival_time'])
+            origin_stops.append(i['origin_onestop_id'])
+            destination_stops.append(i['destination_onestop_id'])
+            route_ids.append(i['route_onestop_id'])
 
     return origin_times, destination_times, origin_stops, destination_stops, route_ids
 
 def calculate_durations(origin_times, destination_times):
     """This function calculates durations between origin and destination pairs (in seconds)."""
-    origin_since_epoch = [int(i.split(':')[0])*60*60 + int(i.split(':')[1])*60 + int(i.split(':')[2]) for i in origin_times]
-    destination_since_epoch = [int(i.split(':')[0])*60*60 + int(i.split(':')[1])*60 + int(i.split(':')[2]) for i in destination_times]
+    origin_since_epoch = map(time_to_seconds, origin_times)
+    destination_since_epoch = map(time_to_seconds, destination_times)
     durations = [b - a for a, b in zip(origin_since_epoch, destination_since_epoch)]
     return durations
 
