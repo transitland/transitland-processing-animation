@@ -227,7 +227,6 @@ void setup() {
 
   map = new UnfoldingMap(this, provider1);
   MapUtils.createDefaultEventDispatcher(this, map);
-  println("Scenario: " + scenario);
 
   attrib = "© Mapzen | Transitland | Unfolding Maps | Basemap by " + provider1Attrib;
   attribWidth = textWidth(attrib);
