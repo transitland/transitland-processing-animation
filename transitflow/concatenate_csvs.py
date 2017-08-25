@@ -235,14 +235,14 @@ if __name__ == "__main__":
             os.path.join('sketches', OUTPUT_NAME, DATE, "sketch", asset)
           )
 
-    with open("sketches/{}/{}/sketch/sketch.pde".format(OUTPUT_NAME, DATE), "w") as f:
-            f.write(
-                s.substitute(
-                    DIRECTORY_NAME=OUTPUT_NAME,
-                    DATE=DATE,
-                    TOTAL_FRAMES=FRAMES,
-                    RECORDING=str(RECORDING).lower(),
-                    AVG_LAT=(float(south) + float(north))/2.0,
-                    AVG_LON=(float(west) + float(east))/2.0
+        with open("sketches/{}/{}/sketch/sketch.pde".format(OUTPUT_NAME, DATE), "w") as f:
+                f.write(
+                    s.substitute(
+                        DIRECTORY_NAME=OUTPUT_NAME,
+                        DATE=DATE,
+                        TOTAL_FRAMES=FRAMES,
+                        RECORDING=str(RECORDING).lower(),
+                        AVG_LAT=(float(south) + float(north))/2.0,
+                        AVG_LON=(float(west) + float(east))/2.0
+                    )
                 )
-            )
