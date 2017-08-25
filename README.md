@@ -8,7 +8,7 @@ Here is an example animation generated for San Francisco with a single command:
 
 [![IMAGE ALT TEXT](http://i.imgur.com/3zF4uE7.png)](https://vimeo.com/230827684 "San Francisco Transit Flows")
 
-## Install Processing:
+## Install Processing
 1. Download [Processing 3](https://processing.org/).
 2. Download [Unfolding Maps version 0.9.9 for Processing 3](http://services.informatik.hs-mannheim.de/~nagel/GDV/Unfolding_for_processing_0.9.9beta.zip).
 3. Navigate to `~/Documents/Processing/libraries` on your machine.
@@ -16,7 +16,7 @@ Here is an example animation generated for San Francisco with a single command:
 5. Open Processing, navigate to Sketch > Import Library > Add Libary. Search for "Video Export" and click Install.
 6. Quit and re-open Processing.
 
-## Instructions:
+## Instructions
 - Download the repository, unzip it and `cd` into it.
 
 To run within a virtual environment (optional, recommended):
@@ -76,7 +76,7 @@ Open `sketch.pde` file.
 - Faster, lower quality: set `boolean recording = true;`. Generates a medium quality mp4 file.
 - Slower, high quality: set `boolean recording = true;` and `boolean HQ = true;`. Generates 3,600 .tiff images. You can use then ffmpeg or Processing's built in movie maker to stitch them together.
 
-### Command line arguments:
+### Command line arguments
 
 **Key**|**Status**|**Description**|**Example**
 -----|-----|-----|-----
@@ -88,7 +88,7 @@ Open `sketch.pde` file.
 --exclude|optional|Operators to be excluded|--exclude=o-9-amtrak
 --apikey|optional|Mapzen API key|--apikey=mapzen-abc1234
 
-## Troubleshooting:
+## Troubleshooting
 
 If your visualization is not working as expected...
 
@@ -96,13 +96,13 @@ If your visualization is not working as expected...
 
 - Make sure that Transitland has coverage in your area of interest. You can search for transit operators and feeds using the [Transitland Feed Registery](https://transit.land/feed-registry/). Is Transitland missing a feed? [Let us know](https://transit.land/participate/)!
 
-## Credits:
+## Credits
 - Coded by [Will Geary](https://twitter.com/wgeary) for Mapzen, August 2017
 - Transit schedule data from [Mapzen](https://mapzen.com/), [Transitland](https://transit.land/)
 - Map tiles from [Stamen](https://stamen.com/), [Carto](http://carto.com/), [OpenStreetMap](http://www.openstreetmap.org/), [ESRI](http://www.esri.com/), [Bing Maps](https://www.bing.com/maps)
 - The visualization incorporates Processing code from [this workshop](https://github.com/juanfrans-courses/DataScienceSocietyWorkshop) by [Juan Francisco Saldarriaga](http://juanfrans.com/) to plot trips using linear interpolation. It also relies on the [Unfolding Maps](http://unfoldingmaps.org/) library by [Till Nagel](http://tillnagel.com/) for converting geolocations to screen positions and other functions. Thank you to Juan and Till for your inspiring work and commitment to open-source software!
 
-## Sources of inspiration:
+## Sources of inspiration
 - *[Shanghai Metro Flow](http://tillnagel.com/2013/12/shanghai-metro-flow/)*, Till Nagel
 - *[Barcelona Cycle Challenge](http://juanfrans.com/projects/barcelonaCycleChallenge.html)*, Juan Francisco Saldarriaga
 - *[Seven Days of Car-Sharing in Milan](http://labs.densitydesign.org/carsharing/))*, Matteo Azzi, Daniele Ciminieri, others
