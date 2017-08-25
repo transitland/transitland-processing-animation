@@ -100,7 +100,7 @@ If your visualization is not working as expected...
 - Coded by [Will Geary](https://twitter.com/wgeary) for Mapzen, August 2017
 - Transit schedule data from [Mapzen](https://mapzen.com/), [Transitland](https://transit.land/)
 - Map tiles from [Stamen](https://stamen.com/), [Carto](http://carto.com/), [OpenStreetMap](http://www.openstreetmap.org/), [ESRI](http://www.esri.com/), [Bing Maps](https://www.bing.com/maps)
-- The visualization incorporates Processing code from [this workshop](https://github.com/juanfrans-courses/DataScienceSocietyWorkshop) by [Juan Francisco Saldarriaga](http://juanfrans.com/) to plot trips using linear interpolation. It also relies on the [Unfolding Maps](http://unfoldingmaps.org/) library by [Till Nagel](http://tillnagel.com/) for converting geolocations to screen positions and other functions. Thank you to Juan and Till for your inspiring work and commitment to open-source software!
+- The visualization incorporates Processing code from [this workshop](https://github.com/juanfrans-courses/DataScienceSocietyWorkshop) by [Juan Francisco Saldarriaga](http://juanfrans.com/) to plot trips using linear interpolation. It also relies on the [Unfolding Maps](http://unfoldingmaps.org/) library by [Till Nagel](http://tillnagel.com/) for its built-in map tiles and functions to geolocations into screen positionsconverting geolocations to screen positions and other functions. Thank you to Juan and Till for your inspiring work and commitment to open-source software!
 
 ## Sources of inspiration
 - *[Shanghai Metro Flow](http://tillnagel.com/2013/12/shanghai-metro-flow/)*, Till Nagel
