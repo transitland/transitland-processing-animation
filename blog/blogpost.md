@@ -8,7 +8,7 @@ This makes intuitive sense. Transit networks with higher frequency and shorter w
 
 Analyzing transit frequency in an intuitive way, however, can be difficult. Static transit maps provide geographic context but do not give any information about frequency. Timetables provide information about frequency but can be overwhelming, unintuitive and lacking geographic context. Perhaps we can use spatial-temporal visualization to combine the spatial information of a static transit map with the temporal information of a timetable, and make it easer to think and talk about transit frequency!
 
-This is the motivation behind *TransitFlow*, an experimental set of tools to generate spatial-temporal transit frequency datasets and visualizations from the command line.
+This is the motivation behind *[TransitFlow](https://github.com/transitland/transitland-processing-animation)*, an experimental set of tools to generate spatial-temporal transit frequency datasets and visualizations from the command line.
 
 ![IMAGE ALT TEXT](http://i.imgur.com/cMDfgkQ.png)
 
