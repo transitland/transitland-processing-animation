@@ -402,15 +402,6 @@ if __name__ == "__main__":
     print "Counting number of vehicles in transit."
     vehicles, buses, trams, metros, cablecars, trains, ferries = count_vehicles_on_screen(df, DATE, FRAMES)
 
-    # ### Save vehicle counts to csv (3600 frame version)
-    # Our Processing sketch has 3,600 frames (at 60 frames per second makes
-    # a one minute video). One day has 5,760 15-second intervals. So to make
-    # things easy we will select the vehicle counts at 3,600 of the 15-second
-    # intervals throughout the day. We will select them randomly, but will
-    # maintain chronological order by sorting and also consistency between
-    # vehicle types by using a consitent set of random indices to select
-    # counts for different vehicle types.
-
     random_indices = np.sort(np.random.choice(vehicles.index, int(FRAMES), replace=False))
 
     vehicles_counts_output = vehicles.loc[random_indices].reset_index(drop=True)
