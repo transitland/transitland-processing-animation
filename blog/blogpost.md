@@ -25,19 +25,19 @@ Let's look at a few examples of what you can do with *TransitFlow*.
 
 - `python transitflow.py --name=bay_area --bbox=-123.280334,37.011326,-120.607910,38.955137, --clip_to_bbox`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/ol8rMTM.png)](https://vimeo.com/226987064 "Bay Area Transit Flows")
+[![IMAGE ALT TEXT](http://i.imgur.com/ol8rMTM.png)](https://vimeo.com/226987064?quality=1080p "Bay Area Transit Flows")
 
 ## Chicago Transit Flows
 
 - `python transitflow.py --name=chicago --bbox=-87.992249,41.605175,-87.302856,42.126747 --clip_to_bbox`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/pH7AwgB.png)](https://vimeo.com/230857619 "Chicago Transit Flows")
+[![IMAGE ALT TEXT](http://i.imgur.com/pH7AwgB.png)](https://vimeo.com/230857619?quality=1080p "Chicago Transit Flows")
 
 ## Mexico City Transit Flows
 
 - `python transitflow.py --name=mexico_city --bbox=-100.041504,18.453557,-97.701416,20.040450 --clip_to_bbox --date=2016-06-01`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/OAAXmAY.png)](https://vimeo.com/231107441 "Mexico City Transit Flows")
+[![IMAGE ALT TEXT](http://i.imgur.com/OAAXmAY.png)](https://vimeo.com/231107441?quality=1080p "Mexico City Transit Flows")
 
 Many more examples available [here](https://vimeopro.com/willgeary/transit-flows).
 
