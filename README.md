@@ -1,4 +1,4 @@
-# Visualizing transit freqency from the command line
+# Visualizing transit frequency from the command line
 
 Using Mapzen's [Transitland API](https://transit.land/) to download transit schedule data and [Processing](https://processing.org/) with [Unfolding Maps](http://unfoldingmaps.org/) to create spatial-temporal visualizations.
 
