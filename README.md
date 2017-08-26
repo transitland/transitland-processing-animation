@@ -6,7 +6,9 @@ Here is an example animation generated for San Francisco with a single command:
 
 `python transitflow.py --name=san_francisco --bbox=-122.515411,37.710714,-122.349243,37.853983 --clip_to_bbox`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/3zF4uE7.png)](https://vimeo.com/230827684 "San Francisco Transit Flows")
+[![IMAGE ALT TEXT](http://i.imgur.com/3zF4uE7.png)](https://vimeo.com/230827684?quality=1080p "San Francisco Transit Flows")
+
+See more visualizations created with TransitFlow here: https://vimeopro.com/willgeary/transit-flows
 
 ## Install Processing
 1. Download [Processing 3](https://processing.org/).
@@ -35,7 +37,7 @@ Visualize one day of BART transit flows:
 
 - `python transitflow.py --name=bart --operator=o-9q9-bart`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/NFPEnYj.png)](https://vimeo.com/230364702 "One Day of BART Trips")
+[![IMAGE ALT TEXT](http://i.imgur.com/NFPEnYj.png)](https://vimeo.com/230364702?quality=1080p "One Day of BART Trips")
 
 ### 2) Search by bounding box
 
@@ -43,7 +45,7 @@ You can also visualize transit flows by searching for all operators within a bou
 
 - `python transitflow.py --name=chicago --bbox=-87.992249,41.605175,-87.302856,42.126747 --clip_to_bbox --exclude=o-9-amtrak,o-9-amtrakcharteredvehicle`
 
-[![IMAGE ALT TEXT](http://i.imgur.com/pH7AwgB.png)](https://vimeo.com/230857619 "Chicago Transit Flows")
+[![IMAGE ALT TEXT](http://i.imgur.com/pH7AwgB.png)](https://vimeo.com/230857619?quality=1080p "Chicago Transit Flows")
 
 Note, the use of `--clip_to_bbox`. This command will clip the dataset to only include transit vehicle trips within the specified bounding box, both in the geo-visualization and in the vehicle count calculations that drive the stacked bar chart.
 
@@ -99,7 +101,7 @@ If your visualization is not working as expected...
 ## Sources of inspiration
 - *[Shanghai Metro Flow](http://tillnagel.com/2013/12/shanghai-metro-flow/)*, Till Nagel
 - *[Barcelona Cycle Challenge](http://juanfrans.com/projects/barcelonaCycleChallenge.html)*, Juan Francisco Saldarriaga
-- *[Seven Days of Car-Sharing in Milan](http://labs.densitydesign.org/carsharing/))*, Matteo Azzi, Daniele Ciminieri, others
+- *[Seven Days of Car-Sharing in Milan](http://labs.densitydesign.org/carsharing/)*, Matteo Azzi, Daniele Ciminieri, others
 - *[NYC Taxis: A Day in the Life](http://chriswhong.github.io/nyctaxi/)*, Chris Whong
 - *[Analyzing 1.1 Billion NYC Taxi and Uber Trips](http://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/)*, Todd Schneider
 
