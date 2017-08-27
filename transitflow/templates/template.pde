@@ -1,10 +1,11 @@
 /*
-Will Geary (@wgeary)
+TransitFlow
 https://github.com/transitland/transitland-processing-animation
+Will Geary for Mapzen, 2017
 
-Credits:
-Uses code from Juan Francisco Saldarriaga's workshop: https://github.com/juanfrans-courses/DataScienceSocietyWorkshop
-Uses Till Nagel's Unfolding Maps library: http://unfoldingmaps.org/
+Attribution:
+Juan Francisco Saldarriaga's workshop on Processing: https://github.com/juanfrans-courses/DataScienceSocietyWorkshop
+Till Nagel's Unfolding Maps library: http://unfoldingmaps.org/
 */
 
 ////// MAIN INPUTS ///////
