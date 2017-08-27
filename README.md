@@ -8,7 +8,7 @@ Here is an example animation generated for San Francisco with a single command:
 
 [![IMAGE ALT TEXT](http://i.imgur.com/3zF4uE7.png)](https://vimeo.com/230827684?quality=1080p "San Francisco Transit Flows")
 
-See more visualizations created with TransitFlow here: https://vimeopro.com/willgeary/transit-flows
+See here for more [transit flow visualizations](https://vimeopro.com/willgeary/transit-flows).
 
 ## Install Processing
 1. Download [Processing 3](https://processing.org/).
@@ -93,10 +93,10 @@ If your visualization is not working as expected...
 - Make sure that Transitland has coverage in your area of interest. You can search for transit operators and feeds using the [Transitland Feed Registery](https://transit.land/feed-registry/). Is Transitland missing a feed? [Let us know](https://transit.land/participate/)!
 
 ## Credits
-- Coded by [Will Geary](https://twitter.com/wgeary) for Mapzen, August 2017
+- [Will Geary](https://twitter.com/wgeary) for Mapzen, August 2017
 - Transit schedule data from [Mapzen](https://mapzen.com/), [Transitland](https://transit.land/)
 - Map tiles from [Stamen](https://stamen.com/), [Carto](http://carto.com/), [OpenStreetMap](http://www.openstreetmap.org/), [ESRI](http://www.esri.com/), [Bing Maps](https://www.bing.com/maps)
-- The visualization incorporates Processing code from [this workshop](https://github.com/juanfrans-courses/DataScienceSocietyWorkshop) by [Juan Francisco Saldarriaga](http://juanfrans.com/) to plot trips using linear interpolation. It also relies on the [Unfolding Maps](http://unfoldingmaps.org/) library by [Till Nagel](http://tillnagel.com/) for its built-in map tiles and functions to convert geolocations into screen positions. Thank you to Juan and Till for your inspiring work and commitment to open-source software!
+- The visualization incorporates Processing code from [this workshop](https://github.com/juanfrans-courses/DataScienceSocietyWorkshop) by [Juan Francisco Saldarriaga](http://juanfrans.com/) to plot trips using linear interpolation. It also relies on the [Unfolding Maps](http://unfoldingmaps.org/) library by [Till Nagel](http://tillnagel.com/) for its built-in map tiles and functions to convert geolocations into screen positions. Thank you to Juan and Till for your inspiring work!
 
 ## Sources of inspiration
 - *[Shanghai Metro Flow](http://tillnagel.com/2013/12/shanghai-metro-flow/)*, Till Nagel
