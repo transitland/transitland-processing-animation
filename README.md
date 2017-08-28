@@ -92,7 +92,7 @@ If your visualization is not working as expected...
 
 - Make sure that Transitland has coverage in your area of interest. You can search for transit operators and feeds using the [Transitland Feed Registery](https://transit.land/feed-registry/). Is Transitland missing a feed? [Let us know](https://transit.land/participate/)!
 
-## Credits
+## Attribution
 - [Will Geary](https://twitter.com/wgeary) for Mapzen, August 2017
 - Transit schedule data from [Mapzen](https://mapzen.com/), [Transitland](https://transit.land/)
 - Map tiles from [Stamen](https://stamen.com/), [Carto](http://carto.com/), [OpenStreetMap](http://www.openstreetmap.org/), [ESRI](http://www.esri.com/), [Bing Maps](https://www.bing.com/maps)
