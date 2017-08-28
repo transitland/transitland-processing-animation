@@ -34,6 +34,7 @@ def get_vehicle_types(operator_onestop_id):
     """This function will get all **vehicle types** for an operator, by route. So we can ask *"what vehicle type is this particular trip?"* and color code trips by vehicle type."""
     routes_request = TLAPI.request('routes', operated_by=operator_onestop_id, per_page=PER_PAGE)
     lookup_vehicle_types = {i['onestop_id']: i['vehicle_type'] for i in routes_request}
+    print len(lookup_vehicle_types.keys()), "routes found.\n"
     return lookup_vehicle_types
 
 # Get stops
@@ -45,12 +46,14 @@ def get_stop_lat_lons(operator_onestop_id):
     for stop in stops_request:
       lookup_stop_lats[stop['onestop_id']] = stop['geometry']['coordinates'][1]
       lookup_stop_lons[stop['onestop_id']] = stop['geometry']['coordinates'][0]
+    print len(lookup_stop_lats.keys()), "stops found.\n"
     return lookup_stop_lats, lookup_stop_lons
 
 # Get Schedule data
 def get_schedule_stop_pairs(operator_onestop_id, date):
     """This function gets origin-destination pairs and timestamps from the schedule stop pairs API. This is the most important function and the largest API request."""
     ssp_request = TLAPI.request('schedule_stop_pairs', operator_onestop_id=operator_onestop_id, date=date, per_page=PER_PAGE, sort_min_id=0)
+    #print sum(1 for _ in ssp_request), "schedule stop pairs found."
     origin_times = []
     destination_times = []
     origin_stops = []
@@ -82,7 +85,7 @@ def get_schedule_stop_pairs(operator_onestop_id, date):
             origin_stops.append(i['origin_onestop_id'])
             destination_stops.append(i['destination_onestop_id'])
             route_ids.append(i['route_onestop_id'])
-
+    print count, "schedule stop pairs found.\n"
     return origin_times, destination_times, origin_stops, destination_stops, route_ids
 
 def calculate_durations(origin_times, destination_times):
@@ -358,8 +361,7 @@ if __name__ == "__main__":
         print len(operators_in_bbox), "operators in bounding box."
         operators |= operators_in_bbox
 
-    # I.e. you may want to exclude national Amtrak trips from the visualizaton
-    # and vehicle counts: 'o-9-amtrak'
+    # Operators to be excluded from viz and stats
     operators -= exclude_operators
     print len(operators), "operators to be downloaded."
     print ""
