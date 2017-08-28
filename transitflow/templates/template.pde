@@ -1,7 +1,7 @@
 /*
 TransitFlow
 https://github.com/transitland/transitland-processing-animation
-Will Geary for Mapzen, 2017
+Will Geary (@wgeary) for Mapzen, 2017
 
 Attribution:
 Juan Francisco Saldarriaga's workshop on Processing: https://github.com/juanfrans-courses/DataScienceSocietyWorkshop
