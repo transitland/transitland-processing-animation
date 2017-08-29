@@ -442,7 +442,7 @@ void loadData() {
 
 void draw() {
 
-  if (frameCount <= totalFrames) {
+  if (frameCount < totalFrames) {
     map.draw();
     noStroke();
     fill(0, screenfillalpha);
