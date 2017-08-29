@@ -63,6 +63,10 @@ Cycle through the first two rows on the keyboard (1 to 0, q to u) to see the bui
 
 Read more about Unfolding Maps map providers here: http://unfoldingmaps.org/tutorials/mapprovider-and-tiles.html
 
+### Panning and zooming
+
+You can pan around on the map by clicking and dragging it. You can zoom in with Shift + "+" and zoom out with "-".
+
 ### Exporting to video
 
 Open `sketch.pde` file.
