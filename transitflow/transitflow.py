@@ -218,7 +218,7 @@ def calc_bearing_between_points(startLat, startLong, endLat, endLong):
     return bearing
 
 # Stacked bar chart functions
-def count_vehicles_on_screen(concatenated_df, date, frames):
+def count_vehicles_on_screen(concatenated_df, min_time, max_time, frames):
     number_of_vehicles = []
     number_of_buses = []
     number_of_trams = []
@@ -227,16 +227,16 @@ def count_vehicles_on_screen(concatenated_df, date, frames):
     number_of_trains = []
     number_of_ferries = []
 
-    day = dt.datetime.strptime(date, "%Y-%m-%d")
-    thisday = dt.datetime.strftime(day, "%Y-%m-%d")
 
-    chunks = float(frames) / (60*24)
-    increment = float(60.0 / chunks)
+    time_range = max_time - min_time
+    time_step = time_range / frames
+    time_segments = []
 
-    the_day = [pd.to_datetime(thisday) + dt.timedelta(seconds = i*increment) for i in range(int(60 * 24 * chunks))]
+    for i in range(frames):
+        time = min_time + i*time_step
+        time_segments.append(time)
 
-    count = 0
-    for increment in the_day:
+    for increment in time_segments:
 
         vehicles_on_the_road = concatenated_df[(concatenated_df['end_time'] > increment) & (concatenated_df['start_time'] <= increment)]
         number_vehicles_on_the_road = len(vehicles_on_the_road)
@@ -258,18 +258,13 @@ def count_vehicles_on_screen(concatenated_df, date, frames):
             elif route_type == 'ferry':
                 number_of_ferries.append(number_of_this_mode)
 
-        if count % (60*chunks) == 0:
-            print increment
-
-        count += 1
-
-    vehicles = pd.DataFrame(zip(the_day, number_of_vehicles))
-    buses = pd.DataFrame(zip(the_day, number_of_buses))
-    trams = pd.DataFrame(zip(the_day, number_of_trams))
-    cablecars = pd.DataFrame(zip(the_day, number_of_cablecars))
-    metros = pd.DataFrame(zip(the_day, number_of_metros))
-    trains = pd.DataFrame(zip(the_day, number_of_trains))
-    ferries = pd.DataFrame(zip(the_day, number_of_ferries))
+    vehicles = pd.DataFrame(zip(time_segments, number_of_vehicles))
+    buses = pd.DataFrame(zip(time_segments, number_of_buses))
+    trams = pd.DataFrame(zip(time_segments, number_of_trams))
+    cablecars = pd.DataFrame(zip(time_segments, number_of_cablecars))
+    metros = pd.DataFrame(zip(time_segments, number_of_metros))
+    trains = pd.DataFrame(zip(time_segments, number_of_trains))
+    ferries = pd.DataFrame(zip(time_segments, number_of_ferries))
 
     for df in [vehicles, buses, trams, metros, cablecars, trains, ferries]:
         df.columns = ['time', 'count']
@@ -401,8 +396,11 @@ if __name__ == "__main__":
     # The Processing sketch will read in each file and use them to plot a
     # stacked area chart.
 
+    min_time = min(df['start_time'])
+    max_time = max(df['end_time'])
+
     print "Counting number of vehicles in transit."
-    vehicles, buses, trams, metros, cablecars, trains, ferries = count_vehicles_on_screen(df, DATE, FRAMES)
+    vehicles, buses, trams, metros, cablecars, trains, ferries = count_vehicles_on_screen(df, min_time, max_time, FRAMES)
 
     random_indices = np.sort(np.random.choice(vehicles.index, int(FRAMES), replace=False))
 
