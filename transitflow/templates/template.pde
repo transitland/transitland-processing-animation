@@ -487,9 +487,25 @@ void draw() {
 
     //fill(255, 255, 255);
 
+    int h_bus = busCounts.get(frameCount);
+    int h_tram = tramCounts.get(frameCount);
+    int h_metro = metroCounts.get(frameCount);
+    int h_train = trainCounts.get(frameCount);
+    int h_cablecar = cablecarCounts.get(frameCount);
+    int h_ferry = ferryCounts.get(frameCount);
+    
+    int ymargin_adjust = 30;
+    
+    if (h_bus != 0) ymargin_adjust = ymargin_adjust + 15;
+    if (h_tram != 0) ymargin_adjust = ymargin_adjust + 15;
+    if (h_metro != 0) ymargin_adjust = ymargin_adjust + 15;
+    if (h_train != 0) ymargin_adjust = ymargin_adjust + 15;
+    if (h_cablecar != 0) ymargin_adjust = ymargin_adjust + 15;
+    if (h_ferry != 0) ymargin_adjust = ymargin_adjust + 15;
+
     fill(0,150);
     noStroke();
-    rect(xmargin + frameCount/hscale-5, height-ymargin-120, 110, 135,7);
+    rect(xmargin + frameCount/hscale-5, height-ymargin - ymargin_adjust, 110, 135,7);
     fill(150, 220);
     rect(width-(attribWidth+10), height-18, (attribWidth+10), 18, 3);
     c = color(255,255,255,255);
@@ -499,47 +515,61 @@ void draw() {
 
     noStroke();
 
-    int h_bus = busCounts.get(frameCount);
-    fill(0, 173, 253, 255);
-    text("Buses: ", xmargin + frameCount/hscale, height - ymargin-105);
-    textAlign(RIGHT);
-    text(nfc(h_bus), xmargin + frameCount/hscale + 100, height - ymargin-105);
-    textAlign(LEFT);
+    ymargin_adjust = ymargin_adjust - 15;
 
-    int h_tram = tramCounts.get(frameCount);
-    fill(124, 252, 0, 255);
-    text("Light Rail: ", xmargin + frameCount/hscale, height-ymargin-90);
-    textAlign(RIGHT);
-    text(h_tram, xmargin + frameCount/hscale + 100, height-ymargin-90);
-    textAlign(LEFT);
+    if (h_bus != 0) {
+      fill(0, 173, 253, 255);
+      text("Buses: ", xmargin + frameCount/hscale, height - ymargin - ymargin_adjust);
+      textAlign(RIGHT);
+      text(nfc(h_bus), xmargin + frameCount/hscale + 100, height - ymargin - ymargin_adjust);
+      textAlign(LEFT);
+      ymargin_adjust = ymargin_adjust - 15;
+    }
 
-    int h_metro = metroCounts.get(frameCount);
-    fill(255,51,51, 255);
-    text("Subways: ", xmargin + frameCount/hscale, height-ymargin-75);
-    textAlign(RIGHT);
-    text(h_metro, xmargin + frameCount/hscale + 100, height-ymargin-75);
-    textAlign(LEFT);
+    if (h_tram != 0) {
+      fill(124, 252, 0, 255);
+      text("Light Rail: ", xmargin + frameCount/hscale, height-ymargin - ymargin_adjust);
+      textAlign(RIGHT);
+      text(h_tram, xmargin + frameCount/hscale + 100, height-ymargin - ymargin_adjust);
+      textAlign(LEFT);
+      ymargin_adjust = ymargin_adjust - 15;
+    }
 
-    int h_train = trainCounts.get(frameCount);
-    fill(255, 215, 0, 255);
-    text("Trains: ", xmargin + frameCount/hscale, height-ymargin-60);
-    textAlign(RIGHT);
-    text(h_train, xmargin + frameCount/hscale + 100, height-ymargin-60);
-    textAlign(LEFT);
+    if (h_metro != 0) {
+      fill(255,51,51, 255);
+      text("Subways: ", xmargin + frameCount/hscale, height-ymargin - ymargin_adjust);
+      textAlign(RIGHT);
+      text(h_metro, xmargin + frameCount/hscale + 100, height-ymargin - ymargin_adjust);
+      textAlign(LEFT);
+      ymargin_adjust = ymargin_adjust - 15;
+    }
 
-    int h_cablecar = cablecarCounts.get(frameCount);
-    fill(255,140,0, 255);
-    text("Cable Cars: ", xmargin + frameCount/hscale, height-ymargin-45);
-    textAlign(RIGHT);
-    text(h_cablecar, xmargin + frameCount/hscale + 100, height-ymargin-45);
-    textAlign(LEFT);
+    if (h_train != 0) {
+      fill(255, 215, 0, 255);
+      text("Trains: ", xmargin + frameCount/hscale, height-ymargin - ymargin_adjust);
+      textAlign(RIGHT);
+      text(h_train, xmargin + frameCount/hscale + 100, height-ymargin - ymargin_adjust);
+      textAlign(LEFT);
+      ymargin_adjust = ymargin_adjust - 15;
+    }
 
-    int h_ferry = ferryCounts.get(frameCount);
-    fill(255, 105, 180, 255);
-    text("Ferries: ", xmargin + frameCount/hscale, height-ymargin-30);
-    textAlign(RIGHT);
-    text(h_ferry, xmargin + frameCount/hscale + 100, height-ymargin-30);
-    textAlign(LEFT);
+    if (h_cablecar != 0) {
+      fill(255,140,0, 255);
+      text("Cable Cars: ", xmargin + frameCount/hscale, height-ymargin - ymargin_adjust);
+      textAlign(RIGHT);
+      text(h_cablecar, xmargin + frameCount/hscale + 100, height-ymargin - ymargin_adjust);
+      textAlign(LEFT);
+      ymargin_adjust = ymargin_adjust - 15;
+    }
+    
+    if (h_ferry != 0) {
+      fill(255, 105, 180, 255);
+      text("Ferries: ", xmargin + frameCount/hscale, height-ymargin - ymargin_adjust);
+      textAlign(RIGHT);
+      text(h_ferry, xmargin + frameCount/hscale + 100, height-ymargin - ymargin_adjust);
+      textAlign(LEFT);
+      ymargin_adjust = ymargin_adjust - 15;
+    }
 
     fill(255);
     text("Total: ", xmargin + frameCount/hscale, height-ymargin-10);
