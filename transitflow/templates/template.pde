@@ -15,6 +15,9 @@ String inputFile = "../data/output.csv";
 int totalFrames = ${TOTAL_FRAMES};
 Location center = new Location(${AVG_LAT}, ${AVG_LON});
 Integer zoom_start = 9;
+String date_format = "M/d/yy";
+String day_format = "EEEE";
+String time_format = "h:mm a";
 boolean recording = ${RECORDING};
 boolean HQ = false;
 boolean rotateBearing = true;
@@ -473,9 +476,9 @@ void draw() {
     float epoch_float = map(frameCount, 0, totalFrames, int(minDate.getTime()/1000), int(maxDate.getTime()/1000));
     int epoch = int(epoch_float);
 
-    String date = new java.text.SimpleDateFormat("M/d/yy").format(new java.util.Date(epoch * 1000L));
-    String day = new java.text.SimpleDateFormat("EEEE").format(new java.util.Date(epoch * 1000L));
-    String time = new java.text.SimpleDateFormat("h:mm a").format(new java.util.Date(epoch * 1000L));
+    String date = new java.text.SimpleDateFormat(date_format).format(new java.util.Date(epoch * 1000L));
+    String day = new java.text.SimpleDateFormat(day_format).format(new java.util.Date(epoch * 1000L));
+    String time = new java.text.SimpleDateFormat(time_format).format(new java.util.Date(epoch * 1000L));
 
     // draw labels
     textFont(ralewayBold, 12);
