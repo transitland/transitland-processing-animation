@@ -505,7 +505,7 @@ void draw() {
 
     fill(0,150);
     noStroke();
-    rect(xmargin + frameCount/hscale-5, height-ymargin - ymargin_adjust, 110, 135,7);
+    rect(xmargin + frameCount/hscale-5, height-ymargin - ymargin_adjust, 110, ymargin_adjust + 15, 7);
     fill(150, 220);
     rect(width-(attribWidth+10), height-18, (attribWidth+10), 18, 3);
     c = color(255,255,255,255);
