@@ -109,6 +109,13 @@ ArrayList<Line> ferryLines = new ArrayList<Line>();
 ArrayList<Integer> ferryFrames = new ArrayList<Integer>();
 ArrayList<Integer> ferryCounts = new ArrayList<Integer>();
 ArrayList<Float> ferryHeights = new ArrayList<Float>();
+ 
+boolean bus_label = false;
+boolean tram_label = false;
+boolean metro_label = false;
+boolean train_label = false;
+boolean cablecar_label = false;
+boolean ferry_label = false;
 
 ScreenPosition startPos;
 ScreenPosition endPos;
@@ -496,12 +503,12 @@ void draw() {
     
     int ymargin_adjust = 30;
     
-    if (h_bus != 0) ymargin_adjust = ymargin_adjust + 15;
-    if (h_tram != 0) ymargin_adjust = ymargin_adjust + 15;
-    if (h_metro != 0) ymargin_adjust = ymargin_adjust + 15;
-    if (h_train != 0) ymargin_adjust = ymargin_adjust + 15;
-    if (h_cablecar != 0) ymargin_adjust = ymargin_adjust + 15;
-    if (h_ferry != 0) ymargin_adjust = ymargin_adjust + 15;
+    if (h_bus != 0 || bus_label == true) ymargin_adjust = ymargin_adjust + 15;
+    if (h_tram != 0 || tram_label == true) ymargin_adjust = ymargin_adjust + 15;
+    if (h_metro != 0 || metro_label == true) ymargin_adjust = ymargin_adjust + 15;
+    if (h_train != 0 || train_label == true) ymargin_adjust = ymargin_adjust + 15;
+    if (h_cablecar != 0 || cablecar_label == true) ymargin_adjust = ymargin_adjust + 15;
+    if (h_ferry != 0 || ferry_label == true) ymargin_adjust = ymargin_adjust + 15;
 
     fill(0,150);
     noStroke();
@@ -517,58 +524,64 @@ void draw() {
 
     ymargin_adjust = ymargin_adjust - 15;
 
-    if (h_bus != 0) {
+    if (h_bus != 0 || bus_label == true) {
       fill(0, 173, 253, 255);
       text("Buses: ", xmargin + frameCount/hscale, height - ymargin - ymargin_adjust);
       textAlign(RIGHT);
       text(nfc(h_bus), xmargin + frameCount/hscale + 100, height - ymargin - ymargin_adjust);
       textAlign(LEFT);
       ymargin_adjust = ymargin_adjust - 15;
+      bus_label = true;
     }
 
-    if (h_tram != 0) {
+    if (h_tram != 0 || tram_label == true) {
       fill(124, 252, 0, 255);
       text("Light Rail: ", xmargin + frameCount/hscale, height-ymargin - ymargin_adjust);
       textAlign(RIGHT);
       text(h_tram, xmargin + frameCount/hscale + 100, height-ymargin - ymargin_adjust);
       textAlign(LEFT);
       ymargin_adjust = ymargin_adjust - 15;
+      tram_label = true;
     }
 
-    if (h_metro != 0) {
+    if (h_metro != 0 || metro_label == true) {
       fill(255,51,51, 255);
       text("Subways: ", xmargin + frameCount/hscale, height-ymargin - ymargin_adjust);
       textAlign(RIGHT);
       text(h_metro, xmargin + frameCount/hscale + 100, height-ymargin - ymargin_adjust);
       textAlign(LEFT);
       ymargin_adjust = ymargin_adjust - 15;
+      metro_label = true;
     }
 
-    if (h_train != 0) {
+    if (h_train != 0 || train_label == true) {
       fill(255, 215, 0, 255);
       text("Trains: ", xmargin + frameCount/hscale, height-ymargin - ymargin_adjust);
       textAlign(RIGHT);
       text(h_train, xmargin + frameCount/hscale + 100, height-ymargin - ymargin_adjust);
       textAlign(LEFT);
       ymargin_adjust = ymargin_adjust - 15;
+      train_label = true;
     }
 
-    if (h_cablecar != 0) {
+    if (h_cablecar != 0 || cablecar_label == true) {
       fill(255,140,0, 255);
       text("Cable Cars: ", xmargin + frameCount/hscale, height-ymargin - ymargin_adjust);
       textAlign(RIGHT);
       text(h_cablecar, xmargin + frameCount/hscale + 100, height-ymargin - ymargin_adjust);
       textAlign(LEFT);
       ymargin_adjust = ymargin_adjust - 15;
+      cablecar_label = true;
     }
     
-    if (h_ferry != 0) {
+    if (h_ferry != 0 || ferry_label == true) {
       fill(255, 105, 180, 255);
       text("Ferries: ", xmargin + frameCount/hscale, height-ymargin - ymargin_adjust);
       textAlign(RIGHT);
       text(h_ferry, xmargin + frameCount/hscale + 100, height-ymargin - ymargin_adjust);
       textAlign(LEFT);
       ymargin_adjust = ymargin_adjust - 15;
+      ferry_label = true;
     }
 
     fill(255);
