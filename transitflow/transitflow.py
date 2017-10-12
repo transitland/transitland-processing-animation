@@ -44,8 +44,11 @@ def get_stop_lat_lons(operator_onestop_id):
     lookup_stop_lats = {}
     lookup_stop_lons = {}
     for stop in stops_request:
-      lookup_stop_lats[stop['onestop_id']] = stop['geometry']['coordinates'][1]
-      lookup_stop_lons[stop['onestop_id']] = stop['geometry']['coordinates'][0]
+        try:
+          lookup_stop_lats[stop['onestop_id']] = stop['geometry']['coordinates'][1]
+          lookup_stop_lons[stop['onestop_id']] = stop['geometry']['coordinates'][0]
+        except:
+          pass
     print len(lookup_stop_lats.keys()), "stops found.\n"
     return lookup_stop_lats, lookup_stop_lons
 
@@ -126,10 +129,26 @@ def add_dates(date, origin_times_clean, destination_times_clean):
 # Output
 def generate_output(operator_onestop_id, origin_datetimes, destination_datetimes, durations, origin_stops, destination_stops, route_ids, lookup_stop_lats, lookup_stop_lons, lookup_vehicle_types):
     """This function generates the output table, to be saved later as a csv."""
-    origin_stop_lats = [lookup_stop_lats[i] for i in origin_stops]
-    origin_stop_lons = [lookup_stop_lons[i] for i in origin_stops]
-    destination_stop_lats = [lookup_stop_lats[i] for i in destination_stops]
-    destination_stop_lons = [lookup_stop_lons[i] for i in destination_stops]
+    origin_stop_lats = []
+    origin_stop_lons = []
+    for i in origin_stops:
+        try:
+            origin_stop_lats.append(lookup_stop_lats[i])
+            origin_stop_lons.append(lookup_stop_lons[i])
+        except:
+            origin_stop_lats.append(0)
+            origin_stop_lons.append(0)
+
+    destination_stop_lats = []
+    destination_stop_lons = []
+    for i in destination_stops:
+        try:
+            destination_stop_lats.append(lookup_stop_lats[i])
+            destination_stop_lons.append(lookup_stop_lons[i])
+        except:
+            destination_stop_lats.append(0)
+            destination_stop_lons.append(0)
+
     vehicle_types = []
     for i in route_ids:
         try:
@@ -149,6 +168,13 @@ def generate_output(operator_onestop_id, origin_datetimes, destination_datetimes
         'duration': durations
     })
     output = output[['start_time', 'start_lat', 'start_lon', 'end_time', 'end_lat', 'end_lon', 'duration', 'route_type']]
+
+    # drop rows where lat or lon = 0
+    output = output[output['start_lat'] != 0]
+    output = output[output['start_lon'] != 0]
+    output = output[output['end_lat'] != 0]
+    output = output[output['end_lon'] != 0]
+
     return output
 
 # Combine data
@@ -191,10 +217,10 @@ def animate_operators(operators, date):
             print "success!"
             print ""
             output.to_csv("sketches/{}/{}/data/indiv_operators/{}.csv".format(OUTPUT_NAME, DATE, i))
-        except StandardError as e:
+        except:#  StandardError as e:
             failures.append(i)
             print "failed:"
-            print e
+            #print e
         count += 1
 
     return results, failures
@@ -436,7 +462,7 @@ if __name__ == "__main__":
 
     ## Use processing sketch template to create processing sketch file
     module_path = os.path.join(os.path.dirname(__file__))
-    template_path = os.path.join(module_path, 'templates', 'template.pde')
+    template_path = os.path.join(module_path, 'templates', 'template2.pde')
     with open(template_path) as f:
         data = f.read()
     s = Template(data)

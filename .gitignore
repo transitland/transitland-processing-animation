@@ -17,6 +17,7 @@ notebooks/
 archive/
 blog/
 blogpost.md
+transitflow_paris.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
