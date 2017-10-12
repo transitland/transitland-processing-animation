@@ -217,7 +217,7 @@ def animate_operators(operators, date):
             print "success!"
             print ""
             output.to_csv("sketches/{}/{}/data/indiv_operators/{}.csv".format(OUTPUT_NAME, DATE, i))
-        except:  StandardError as e:
+        except StandardError as e:
             failures.append(i)
             print "failed:"
             print e
@@ -258,7 +258,7 @@ def count_vehicles_on_screen(concatenated_df, min_time, max_time, frames):
     time_segments = []
 
     for i in range(frames):
-        time = min_time + i*time_step
+        time = min_time + i * time_step
         time_segments.append(time)
 
     for increment in time_segments:
