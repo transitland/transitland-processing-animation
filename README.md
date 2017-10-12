@@ -112,3 +112,11 @@ If your visualization is not working as expected...
 - *[Analyzing 1.1 Billion NYC Taxi and Uber Trips](http://toddwschneider.com/posts/analyzing-1-1-billion-nyc-taxi-and-uber-trips-with-a-vengeance/)*, Todd Schneider
 
 See more visualizations created with TransitFlow here: https://vimeopro.com/willgeary/transit-flows
+
+## Press & Recognition
+
+**The Guardian** [*"Go with the flow: the hypnotic beauty of public transport – mapped"*](https://www.theguardian.com/cities/2017/oct/04/hypnotic-beauty-public-transport-mapped) (October 2017)
+
+**Kantar Information is Beautiful Awards Longlist** [*"Multimodal Symphony"*](https://www.informationisbeautifulawards.com/showcase/2347) (October 2017)
+
+**CityLab** [*"Mapping the Ebb and Flow of Transit Around the World"*](https://www.citylab.com/transportation/2017/09/visualize-transit-frequency-nearly-anywhere-in-the-world/538725/) (September 2017)
