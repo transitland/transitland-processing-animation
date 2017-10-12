@@ -253,7 +253,6 @@ def count_vehicles_on_screen(concatenated_df, min_time, max_time, frames):
     number_of_trains = []
     number_of_ferries = []
 
-
     time_range = max_time - min_time
     time_step = time_range / frames
     time_segments = []
@@ -462,7 +461,7 @@ if __name__ == "__main__":
 
     ## Use processing sketch template to create processing sketch file
     module_path = os.path.join(os.path.dirname(__file__))
-    template_path = os.path.join(module_path, 'templates', 'template2.pde')
+    template_path = os.path.join(module_path, 'templates', 'template.pde')
     with open(template_path) as f:
         data = f.read()
     s = Template(data)
