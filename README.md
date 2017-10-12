@@ -115,8 +115,8 @@ See more visualizations created with TransitFlow here: https://vimeopro.com/will
 
 ## Press & Recognition
 
-**The Guardian** [*"Go with the flow: the hypnotic beauty of public transport – mapped"*](https://www.theguardian.com/cities/2017/oct/04/hypnotic-beauty-public-transport-mapped) (October 2017)
+- **The Guardian** [*"Go with the flow: the hypnotic beauty of public transport – mapped"*](https://www.theguardian.com/cities/2017/oct/04/hypnotic-beauty-public-transport-mapped) (October 2017)
 
-**Kantar Information is Beautiful Awards Longlist** [*"Multimodal Symphony"*](https://www.informationisbeautifulawards.com/showcase/2347) (October 2017)
+- **Kantar Information is Beautiful Awards Longlist** [*"Multimodal Symphony"*](https://www.informationisbeautifulawards.com/showcase/2347) (October 2017)
 
-**CityLab** [*"Mapping the Ebb and Flow of Transit Around the World"*](https://www.citylab.com/transportation/2017/09/visualize-transit-frequency-nearly-anywhere-in-the-world/538725/) (September 2017)
+- **CityLab** [*"Mapping the Ebb and Flow of Transit Around the World"*](https://www.citylab.com/transportation/2017/09/visualize-transit-frequency-nearly-anywhere-in-the-world/538725/) (September 2017)
