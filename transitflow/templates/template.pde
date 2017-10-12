@@ -15,6 +15,9 @@ String inputFile = "../data/output.csv";
 int totalFrames = ${TOTAL_FRAMES};
 Location center = new Location(${AVG_LAT}, ${AVG_LON});
 Integer zoom_start = 9;
+String date_format = "M/d/yy";
+String day_format = "EEEE";
+String time_format = "h:mm a";
 boolean recording = ${RECORDING};
 boolean HQ = false;
 boolean rotateBearing = true;
@@ -106,6 +109,13 @@ ArrayList<Line> ferryLines = new ArrayList<Line>();
 ArrayList<Integer> ferryFrames = new ArrayList<Integer>();
 ArrayList<Integer> ferryCounts = new ArrayList<Integer>();
 ArrayList<Float> ferryHeights = new ArrayList<Float>();
+ 
+boolean bus_label = false;
+boolean tram_label = false;
+boolean metro_label = false;
+boolean train_label = false;
+boolean cablecar_label = false;
+boolean ferry_label = false;
 
 ScreenPosition startPos;
 ScreenPosition endPos;
@@ -473,9 +483,9 @@ void draw() {
     float epoch_float = map(frameCount, 0, totalFrames, int(minDate.getTime()/1000), int(maxDate.getTime()/1000));
     int epoch = int(epoch_float);
 
-    String date = new java.text.SimpleDateFormat("M/d/yy").format(new java.util.Date(epoch * 1000L));
-    String day = new java.text.SimpleDateFormat("EEEE").format(new java.util.Date(epoch * 1000L));
-    String time = new java.text.SimpleDateFormat("h:mm a").format(new java.util.Date(epoch * 1000L));
+    String date = new java.text.SimpleDateFormat(date_format).format(new java.util.Date(epoch * 1000L));
+    String day = new java.text.SimpleDateFormat(day_format).format(new java.util.Date(epoch * 1000L));
+    String time = new java.text.SimpleDateFormat(time_format).format(new java.util.Date(epoch * 1000L));
 
     // draw labels
     textFont(ralewayBold, 12);
@@ -484,9 +494,25 @@ void draw() {
 
     //fill(255, 255, 255);
 
+    int h_bus = busCounts.get(frameCount);
+    int h_tram = tramCounts.get(frameCount);
+    int h_metro = metroCounts.get(frameCount);
+    int h_train = trainCounts.get(frameCount);
+    int h_cablecar = cablecarCounts.get(frameCount);
+    int h_ferry = ferryCounts.get(frameCount);
+    
+    int ymargin_adjust = 30;
+    
+    if (h_bus != 0 || bus_label == true) ymargin_adjust = ymargin_adjust + 15;
+    if (h_tram != 0 || tram_label == true) ymargin_adjust = ymargin_adjust + 15;
+    if (h_metro != 0 || metro_label == true) ymargin_adjust = ymargin_adjust + 15;
+    if (h_train != 0 || train_label == true) ymargin_adjust = ymargin_adjust + 15;
+    if (h_cablecar != 0 || cablecar_label == true) ymargin_adjust = ymargin_adjust + 15;
+    if (h_ferry != 0 || ferry_label == true) ymargin_adjust = ymargin_adjust + 15;
+
     fill(0,150);
     noStroke();
-    rect(xmargin + frameCount/hscale-5, height-ymargin-120, 110, 135,7);
+    rect(xmargin + frameCount/hscale-5, height-ymargin - ymargin_adjust, 110, ymargin_adjust + 15, 7);
     fill(150, 220);
     rect(width-(attribWidth+10), height-18, (attribWidth+10), 18, 3);
     c = color(255,255,255,255);
@@ -496,47 +522,67 @@ void draw() {
 
     noStroke();
 
-    int h_bus = busCounts.get(frameCount);
-    fill(0, 173, 253, 255);
-    text("Buses: ", xmargin + frameCount/hscale, height - ymargin-105);
-    textAlign(RIGHT);
-    text(nfc(h_bus), xmargin + frameCount/hscale + 100, height - ymargin-105);
-    textAlign(LEFT);
+    ymargin_adjust = ymargin_adjust - 15;
 
-    int h_tram = tramCounts.get(frameCount);
-    fill(124, 252, 0, 255);
-    text("Light Rail: ", xmargin + frameCount/hscale, height-ymargin-90);
-    textAlign(RIGHT);
-    text(h_tram, xmargin + frameCount/hscale + 100, height-ymargin-90);
-    textAlign(LEFT);
+    if (h_bus != 0 || bus_label == true) {
+      fill(0, 173, 253, 255);
+      text("Buses: ", xmargin + frameCount/hscale, height - ymargin - ymargin_adjust);
+      textAlign(RIGHT);
+      text(nfc(h_bus), xmargin + frameCount/hscale + 100, height - ymargin - ymargin_adjust);
+      textAlign(LEFT);
+      ymargin_adjust = ymargin_adjust - 15;
+      bus_label = true;
+    }
 
-    int h_metro = metroCounts.get(frameCount);
-    fill(255,51,51, 255);
-    text("Subways: ", xmargin + frameCount/hscale, height-ymargin-75);
-    textAlign(RIGHT);
-    text(h_metro, xmargin + frameCount/hscale + 100, height-ymargin-75);
-    textAlign(LEFT);
+    if (h_tram != 0 || tram_label == true) {
+      fill(124, 252, 0, 255);
+      text("Light Rail: ", xmargin + frameCount/hscale, height-ymargin - ymargin_adjust);
+      textAlign(RIGHT);
+      text(h_tram, xmargin + frameCount/hscale + 100, height-ymargin - ymargin_adjust);
+      textAlign(LEFT);
+      ymargin_adjust = ymargin_adjust - 15;
+      tram_label = true;
+    }
 
-    int h_train = trainCounts.get(frameCount);
-    fill(255, 215, 0, 255);
-    text("Trains: ", xmargin + frameCount/hscale, height-ymargin-60);
-    textAlign(RIGHT);
-    text(h_train, xmargin + frameCount/hscale + 100, height-ymargin-60);
-    textAlign(LEFT);
+    if (h_metro != 0 || metro_label == true) {
+      fill(255,51,51, 255);
+      text("Subways: ", xmargin + frameCount/hscale, height-ymargin - ymargin_adjust);
+      textAlign(RIGHT);
+      text(h_metro, xmargin + frameCount/hscale + 100, height-ymargin - ymargin_adjust);
+      textAlign(LEFT);
+      ymargin_adjust = ymargin_adjust - 15;
+      metro_label = true;
+    }
 
-    int h_cablecar = cablecarCounts.get(frameCount);
-    fill(255,140,0, 255);
-    text("Cable Cars: ", xmargin + frameCount/hscale, height-ymargin-45);
-    textAlign(RIGHT);
-    text(h_cablecar, xmargin + frameCount/hscale + 100, height-ymargin-45);
-    textAlign(LEFT);
+    if (h_train != 0 || train_label == true) {
+      fill(255, 215, 0, 255);
+      text("Trains: ", xmargin + frameCount/hscale, height-ymargin - ymargin_adjust);
+      textAlign(RIGHT);
+      text(h_train, xmargin + frameCount/hscale + 100, height-ymargin - ymargin_adjust);
+      textAlign(LEFT);
+      ymargin_adjust = ymargin_adjust - 15;
+      train_label = true;
+    }
 
-    int h_ferry = ferryCounts.get(frameCount);
-    fill(255, 105, 180, 255);
-    text("Ferries: ", xmargin + frameCount/hscale, height-ymargin-30);
-    textAlign(RIGHT);
-    text(h_ferry, xmargin + frameCount/hscale + 100, height-ymargin-30);
-    textAlign(LEFT);
+    if (h_cablecar != 0 || cablecar_label == true) {
+      fill(255,140,0, 255);
+      text("Cable Cars: ", xmargin + frameCount/hscale, height-ymargin - ymargin_adjust);
+      textAlign(RIGHT);
+      text(h_cablecar, xmargin + frameCount/hscale + 100, height-ymargin - ymargin_adjust);
+      textAlign(LEFT);
+      ymargin_adjust = ymargin_adjust - 15;
+      cablecar_label = true;
+    }
+    
+    if (h_ferry != 0 || ferry_label == true) {
+      fill(255, 105, 180, 255);
+      text("Ferries: ", xmargin + frameCount/hscale, height-ymargin - ymargin_adjust);
+      textAlign(RIGHT);
+      text(h_ferry, xmargin + frameCount/hscale + 100, height-ymargin - ymargin_adjust);
+      textAlign(LEFT);
+      ymargin_adjust = ymargin_adjust - 15;
+      ferry_label = true;
+    }
 
     fill(255);
     text("Total: ", xmargin + frameCount/hscale, height-ymargin-10);
