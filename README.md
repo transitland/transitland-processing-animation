@@ -117,6 +117,12 @@ See more visualizations created with TransitFlow here: https://vimeopro.com/will
 
 - **The Guardian** [*"Go with the flow: the hypnotic beauty of public transport – mapped"*](https://www.theguardian.com/cities/2017/oct/04/hypnotic-beauty-public-transport-mapped) (October 2017)
 
+- **Le Monde** [*"L’étrange beauté des flux de Paris dans une carte animée"*](http://www.lemonde.fr/smart-cities/article/2017/10/12/l-etrange-beaute-des-flux-de-paris-dans-une-carte-animee_5200106_4811534.html#zqdvSAkUWw754WcX.99) (December 2017)
+
 - **Kantar Information is Beautiful Awards Longlist** [*"Multimodal Symphony"*](https://www.informationisbeautifulawards.com/showcase/2347) (October 2017)
 
 - **CityLab** [*"Mapping the Ebb and Flow of Transit Around the World"*](https://www.citylab.com/transportation/2017/09/visualize-transit-frequency-nearly-anywhere-in-the-world/538725/) (September 2017)
+
+- **Mobility Lab** [*"A visualized day of New York’s transit options, working together"*](https://mobilitylab.org/2017/04/11/nyc-visualization-transit-options/) (April 2017)
+
+- **Planetizen**[*"Watch Transit Move With These Animated Maps"*](https://www.planetizen.com/node/94598/watch-transit-move-these-animated-maps) (September 2017)
