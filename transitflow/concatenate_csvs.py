@@ -146,11 +146,11 @@ if __name__ == "__main__":
     FRAMES = args.frames
     RECORDING = args.recording
 
-    print ""
-    print "INPUTS:"
-    print "date: ", DATE
-    print "name: ", OUTPUT_NAME
-    print "API key: ", MAPZEN_APIKEY
+    #print ""
+    print("INPUTS:")
+    print("date: ", DATE)
+    print("name: ", OUTPUT_NAME)
+    print("API key: ", MAPZEN_APIKEY)
 
     if args.bbox:
         west, south, east, north = args.bbox.split(",")
@@ -160,7 +160,7 @@ if __name__ == "__main__":
     df = concatenate_csvs("sketches/{}/{}/data/indiv_operators".format(OUTPUT_NAME, DATE))
 
     if not args.skip_bearings:
-        print "Calculating trip segment bearings."
+        print("Calculating trip segment bearings.")
         df['bearing'] = df.apply(lambda row: calc_bearing_between_points(row['start_lat'], row['start_lon'], row['end_lat'], row['end_lon']), axis=1)
 
     if args.bbox and args.clip_to_bbox:
@@ -171,11 +171,11 @@ if __name__ == "__main__":
 
     # Save to csv.
     df.to_csv("sketches/{}/{}/data/output.csv".format(OUTPUT_NAME, DATE))
-    print "Total rows: ", df.shape[0]
+    print("Total rows: ", df.shape[0])
 
-    print "Counting number of vehicles in transit."
+    print("Counting number of vehicles in transit.")
     vehicles, buses, trams, metros, cablecars, trains, ferries = count_vehicles_on_screen(df, DATE, FRAMES)
-    print "Frames: ", FRAMES
+    print("Frames: ", FRAMES)
 
     # ### Save vehicle counts to csv (3600 frame version)
     # Our Processing sketch has 3,600 frames (at 60 frames per second makes

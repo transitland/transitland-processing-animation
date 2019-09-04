@@ -1,6 +1,6 @@
 import time
 import urllib
-import urllib2
+import urllib.request
 import json
 
 class TransitlandRequest(object):
@@ -26,25 +26,25 @@ class TransitlandRequest(object):
     self.last_request_time = now
 
   def _request(self, uri, retries=0):
-    print uri
+    print(uri)
     success = False
     data = {}
     while not success:
       self.wait_time()
       try:
-        req = urllib2.Request(uri)
+        req = urllib.request.Request(uri)
         req.add_header('Content-Type', 'application/json')
-        response = urllib2.urlopen(req)
+        response = urllib.request.urlopen(req)
         if response.getcode() >= 400:
-          raise StandardError('http error: %s'%(response.getcode()))
+          raise Exception('http error: %s'%(response.getcode()))
         else:
           success = True
           data = json.loads(response.read())
-      except StandardError as e:
+      except Exception:
         retries += 1
         if retries > self.retrylimit:
           raise e
-        print "retry %s / %s: %s"%(retries, self.retrylimit, e)
+        print ("retry %s / %s: %s"%(retries, self.retrylimit))
     return data
 
   def request(self, endpoint, **data):
@@ -54,7 +54,7 @@ class TransitlandRequest(object):
     if self.apikey:
       data['apikey'] = self.apikey
 
-    next_uri = '%s/api/v1/%s?%s'%(self.host, endpoint, urllib.urlencode(data))
+    next_uri = '%s/api/v1/%s?%s'%(self.host, endpoint, urllib.parse.urlencode(data))
 
     # Pagination
     while next_uri:
