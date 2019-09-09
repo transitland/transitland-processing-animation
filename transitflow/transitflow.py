@@ -34,7 +34,7 @@ def get_vehicle_types(operator_onestop_id):
     """This function will get all **vehicle types** for an operator, by route. So we can ask *"what vehicle type is this particular trip?"* and color code trips by vehicle type."""
     routes_request = TLAPI.request('routes', operated_by=operator_onestop_id, per_page=PER_PAGE)
     lookup_vehicle_types = {i['onestop_id']: i['vehicle_type'] for i in routes_request}
-    print len(lookup_vehicle_types.keys()), "routes found.\n"
+    print(len(lookup_vehicle_types.keys()), "routes found.\n")
     return lookup_vehicle_types
 
 # Get stops
@@ -49,7 +49,7 @@ def get_stop_lat_lons(operator_onestop_id):
           lookup_stop_lons[stop['onestop_id']] = stop['geometry']['coordinates'][0]
         except:
           pass
-    print len(lookup_stop_lats.keys()), "stops found.\n"
+    print(len(lookup_stop_lats.keys()), "stops found.\n")
     return lookup_stop_lats, lookup_stop_lons
 
 # Get Schedule data
@@ -66,7 +66,7 @@ def get_schedule_stop_pairs(operator_onestop_id, date):
     for i in ssp_request:
         count+=1
         if count % 10000 == 0:
-            print count
+            print(count)
         if i['frequency_start_time']:
             start = time_to_seconds(i['frequency_start_time'])
             now = start
@@ -88,7 +88,7 @@ def get_schedule_stop_pairs(operator_onestop_id, date):
             origin_stops.append(i['origin_onestop_id'])
             destination_stops.append(i['destination_onestop_id'])
             route_ids.append(i['route_onestop_id'])
-    print count, "schedule stop pairs found.\n"
+    print(count, "schedule stop pairs found.\n")
     return origin_times, destination_times, origin_stops, destination_stops, route_ids
 
 def calculate_durations(origin_times, destination_times):
@@ -214,18 +214,18 @@ def animate_operators(operators, date):
         except:
             i = unicode(i, 'utf-8')
             i = i.encode('utf-8')
-        print i, count, "/", length
-        
+        print(i, count, "/", length)
+
         try:
             output = animate_one_day(i, date)
             results.append(output)
-            print "success!"
-            print ""
+            print("success!")
+
             output.to_csv("sketches/{}/{}/data/indiv_operators/{}.csv".format(OUTPUT_NAME, DATE, i))
-        except StandardError as e:
+        except Exception:
             failures.append(i)
-            print "failed:"
-            print e
+            print("failed:")
+
         count += 1
 
     return results, failures
@@ -288,13 +288,13 @@ def count_vehicles_on_screen(concatenated_df, min_time, max_time, frames):
             elif route_type == 'ferry':
                 number_of_ferries.append(number_of_this_mode)
 
-    vehicles = pd.DataFrame(zip(time_segments, number_of_vehicles))
-    buses = pd.DataFrame(zip(time_segments, number_of_buses))
-    trams = pd.DataFrame(zip(time_segments, number_of_trams))
-    cablecars = pd.DataFrame(zip(time_segments, number_of_cablecars))
-    metros = pd.DataFrame(zip(time_segments, number_of_metros))
-    trains = pd.DataFrame(zip(time_segments, number_of_trains))
-    ferries = pd.DataFrame(zip(time_segments, number_of_ferries))
+    vehicles = pd.DataFrame(list(zip(time_segments, number_of_vehicles)))
+    buses = pd.DataFrame(list(zip(time_segments, number_of_buses)))
+    trams = pd.DataFrame(list(zip(time_segments, number_of_trams)))
+    cablecars = pd.DataFrame(list(zip(time_segments, number_of_cablecars)))
+    metros = pd.DataFrame(list(zip(time_segments, number_of_metros)))
+    trains = pd.DataFrame(list(zip(time_segments, number_of_trains)))
+    ferries = pd.DataFrame(list(zip(time_segments, number_of_ferries)))
 
     for df in [vehicles, buses, trams, metros, cablecars, trains, ferries]:
         df.columns = ['time', 'count']
@@ -355,11 +355,11 @@ if __name__ == "__main__":
       apikey=args.apikey
     )
 
-    print ""
-    print "INPUTS:"
-    print "date: ", DATE
-    print "name: ", OUTPUT_NAME
-    print "API key: ", args.apikey
+
+    print("INPUTS:")
+    print("date: ", DATE)
+    print("name: ", OUTPUT_NAME)
+    print("API key: ", args.apikey)
 
     timer_start = dt.datetime.now()
 
@@ -375,34 +375,34 @@ if __name__ == "__main__":
     exclude_operators = set()
     if args.exclude:
         exclude_operators |= set(args.exclude.split(","))
-        print "exclude: ", list(exclude_operators)
+        print("exclude: ", list(exclude_operators))
 
     if args.bbox:
-        print "bbox: ", west, south, east, north
-        print ""
+        print("bbox: ", west, south, east, north)
+
         # First, let's get a list of the onestop id's for every operator in our bounding box.
         operators_request = TLAPI.request('operators', bbox=','.join([west,south,east,north]), per_page=PER_PAGE)
         operators_in_bbox = {i['onestop_id'] for i in operators_request}
-        print len(operators_in_bbox), "operators in bounding box."
+        print(len(operators_in_bbox), "operators in bounding box.")
         operators |= operators_in_bbox
 
     # Operators to be excluded from viz and stats
     operators -= exclude_operators
-    print len(operators), "operators to be downloaded."
-    print ""
+    print(len(operators), "operators to be downloaded.")
+
     ############
 
     if not os.path.exists("sketches/{}/{}/data/indiv_operators".format(OUTPUT_NAME, DATE)):
         os.makedirs("sketches/{}/{}/data/indiv_operators".format(OUTPUT_NAME, DATE))
     results, failures = animate_operators(operators, DATE)
-    print len(results), "operators successfully downloaded."
-    print len(failures), "operators failed."
-    if len(failures): print "failed operators:", failures
+    print(len(results), "operators successfully downloaded.")
+    print(len(failures), "operators failed.")
+    if len(failures): print("failed operators:", failures)
 
     # ### Concatenate all individual operator csv files into one big dataframe
-    print "Concatenating individual operator outputs."
+    print("Concatenating individual operator outputs.")
     df = concatenate_csvs("sketches/{}/{}/data/indiv_operators".format(OUTPUT_NAME, DATE))
-    print "Calculating trip segment bearings."
+    print("Calculating trip segment bearings.")
     df['bearing'] = df.apply(lambda row: calc_bearing_between_points(row['start_lat'], row['start_lon'], row['end_lat'], row['end_lon']), axis=1)
 
     # Clip to bbox. Either the start stop is within the bbox OR the end stop is within the bbox
@@ -414,7 +414,7 @@ if __name__ == "__main__":
 
     # Save to csv.
     df.to_csv("sketches/{}/{}/data/output.csv".format(OUTPUT_NAME, DATE))
-    print "Total rows: ", df.shape[0]
+    print("Total rows: ", df.shape[0])
 
     # ### That's it for the trip data!
 
@@ -429,7 +429,7 @@ if __name__ == "__main__":
     min_time = min(df['start_time'])
     max_time = max(df['end_time'])
 
-    print "Counting number of vehicles in transit."
+    print("Counting number of vehicles in transit.")
     vehicles, buses, trams, metros, cablecars, trains, ferries = count_vehicles_on_screen(df, min_time, max_time, FRAMES)
 
     random_indices = np.sort(np.random.choice(vehicles.index, int(FRAMES), replace=False))
@@ -494,4 +494,4 @@ if __name__ == "__main__":
 
     timer_finish = dt.datetime.now()
     time_delta = timer_finish - timer_start
-    print "Time elapsed: ", str(time_delta)
+    print("Time elapsed: ", str(time_delta))
