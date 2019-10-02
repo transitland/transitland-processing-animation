@@ -1,9 +1,6 @@
-# Visualizing transit frequency from the command line
+# Visualizing scheduled transit frequency
 
-#### Python 2.7 will retire in 2020. The countdown timer is [here](https://pythonclock.org/)
-#### I have modified the code a tad bit to suit Python 3.7. It is a great program and I had a lot of fun using it.
-
-Using Mapzen's [Transitland API](https://transit.land/) to download transit schedule data and [Processing](https://processing.org/) with [Unfolding Maps](http://unfoldingmaps.org/) to create spatial-temporal visualizations.
+TransitFlow uses Mapzen's [Transitland API](https://transit.land/) to download transit schedule data and [Processing](https://processing.org/) with [Unfolding Maps](http://unfoldingmaps.org/) to animate scheduled transit frequency.
 
 See this blog post for more info: https://mapzen.com/blog/animating-transitland/
 
