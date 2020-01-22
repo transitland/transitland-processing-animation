@@ -1,8 +1,8 @@
 # Visualizing scheduled transit frequency
 
-TransitFlow uses Mapzen's [Transitland API](https://transit.land/) to download transit schedule data and [Processing](https://processing.org/) with [Unfolding Maps](http://unfoldingmaps.org/) to animate scheduled transit frequency.
+*TransitFlow* uses Mapzen's [Transitland API](https://transit.land/) to download transit schedule data and [Processing](https://processing.org/) with [Unfolding Maps](http://unfoldingmaps.org/) to animate scheduled transit frequency.
 
-See this blog post for more info: https://mapzen.com/blog/animating-transitland/
+*TransitFlow* was created by [Will Geary](https://twitter.com/wgeary) during an internship at Mapzen in 2017. See this blog post for more info: https://mapzen.com/blog/animating-transitland/
 
 Here is an example animation generated for San Francisco with a single command:
 
